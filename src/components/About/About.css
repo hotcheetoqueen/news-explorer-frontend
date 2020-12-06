@@ -1,0 +1,31 @@
+.author {
+    display: flex;
+    margin: 80px 216px 80px 104px;
+    justify-content: center;
+}
+
+.author__image {
+    border-radius: 50%;
+    height: 464px;
+    width: 464px;
+    object-fit: cover;
+    margin-top: 21px;
+}
+
+.author__content {
+    width: 600px;
+    margin-top: 50px;
+    text-align: left;
+    padding-left: 56px;
+}
+
+.author__content_title {
+    font-family: 'Roboto Slab';
+    font-size: 30px;
+    line-height: 40px;
+}
+
+.author__content_body {
+    font-size: 18px;
+    line-height: 24px;
+}

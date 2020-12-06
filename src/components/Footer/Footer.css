@@ -1,0 +1,32 @@
+.footer {
+    display: flex;
+    margin: 32px 104px 26px 106px;
+    justify-content: space-between;
+}
+
+.footer__copyright {
+    font-size: 16px;
+    color: #B6BCBF;
+    width: 433px;
+    text-align: left;
+
+}
+
+.footer__navigation {
+    padding-left: 383px;
+    list-style-type: none;
+    display: flex;
+}
+
+.footer__navigation-item {
+    font-size: 18px;
+    margin-left: 45px;
+}
+
+.footer__navigation-item:nth-child(2) {
+    width: 192px;
+}
+
+.footer__navigation-item:last-child {
+    margin-left: 20px;
+}

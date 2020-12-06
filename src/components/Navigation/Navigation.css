@@ -1,0 +1,28 @@
+.navigation__list {
+    display: flex;
+    margin-top: 30px;
+    padding-left: 625px;
+}
+
+.navigation__list-item {
+    list-style-type: none;
+    margin-right: 42px;
+}
+
+.navigation__list-link {
+    text-decoration: none;
+}
+
+.navigation__list-link:visited {
+    text-decoration: none;
+    color: white;
+}
+
+.navigation__list-link:hover {
+    cursor: pointer;
+}
+
+.navigation__list-link:active {
+    border-bottom: 3px;
+    color: white;
+}

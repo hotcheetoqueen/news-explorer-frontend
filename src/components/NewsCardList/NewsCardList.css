@@ -1,0 +1,31 @@
+.news-card__list {
+    background-color: #F5F6F7;
+    display: grid;
+    margin: 0 auto;
+}
+
+.news-card__grid {
+    display: inline-grid;
+    list-style: none;
+    grid-template-columns: repeat(3, 400px);
+    grid-gap: 16px;
+    margin: 64px auto 0;
+}
+
+.news-card__list-title {
+    font-family: 'Roboto Slab';
+    font-size: 40px;
+    line-height: 46px;
+    text-align: left;
+    margin: 80px 0 0 104px;
+}
+
+.news-card__list-button {
+    width: 288px;
+    height: 64px;
+    background-color: #FFF;
+    border: 0;
+    color: #1A1B22;
+    border-radius: 80px;
+    margin: 0 auto 80px;
+}

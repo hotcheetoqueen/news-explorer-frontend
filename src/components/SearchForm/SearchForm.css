@@ -20,6 +20,7 @@
 
 .search-form__title {
     font-family: 'Roboto Slab';
+    font-weight: 400;
     margin-top: 0;
     width: 605px;
     font-size: 60px;

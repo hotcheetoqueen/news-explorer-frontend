@@ -9,6 +9,20 @@
     margin-right: 42px;
 }
 
+.navigation__list-item_primary {
+    width: 176px;
+    height: 24px;
+    border: 1px solid #FFF;
+    border-radius: 100px;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    margin-top: -11px;
+}
+
+.navigation__list-item_primary-icon {
+    padding-left: 20px;
+}
+
 .navigation__list-link {
     text-decoration: none;
 }

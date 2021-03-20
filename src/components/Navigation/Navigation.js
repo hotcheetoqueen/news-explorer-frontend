@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
+import LogoutIcon from '../../images/nav__logout-icon.png';
 
 export default function Navigation({ loggedIn, userEmail, handleLogout }) {
     return(
@@ -8,7 +9,7 @@ export default function Navigation({ loggedIn, userEmail, handleLogout }) {
             <ul className='navigation__list'>
                 <li className='navigation__list-item'><a className='navigation__list-link' href='/'>Home</a></li>
                 <li className='navigation__list-item'><a className='navigation__list-link' href='/saved-news'>Saved articles</a></li>
-                <li className='navigation__list-item'>
+                <li className='navigation__list-item navigation__list-item_primary'><a className='navigation__list-link' href='/signin'>Sign in <img className='navigation__list-item_primary-icon' src={LogoutIcon} /></a>
                     <Link className='navigation__email' onClick={handleLogout} to='/'>{userEmail}</Link>
                 </li>
             </ul>

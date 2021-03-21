@@ -5,11 +5,17 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './Main.css';
 
-export default function Main(props) {
+export default function Main({ cards }) {
     return(
         <>
             <SearchForm />
-            <NewsCardList />
+            {/* {(cards.length > 0 || isLoading || notFound) && ( */}
+                <NewsCardList cards={cards}
+                    // isLoading={isLoading}
+                    // notFound={notFound}
+                />
+            {/* )} */}
+
             <About />
             <Footer />
         </>

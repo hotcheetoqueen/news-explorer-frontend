@@ -12,7 +12,7 @@ export default function About() {
                 Hey 👋 Jessica here! I'm a Los Angeles based Product Manager with a keen interest in web development, user experience, and music 🥁
             </p>
             <p className='author__content_body'>
-                💻 You've landed on a project I built solo as the finale to my 10 month Practicum web development bootcamp. 👀 Have a look around! I hooked up the React frontend you see to a News API service, as well as setup the ability to create an account, so you can search and save 📰 articles you find interesting.
+                💻 You've landed on a project I built solo as the finale to my 10 month Practicum web development bootcamp. 👀 Have a look around! I hooked up the React frontend you see to a News API service, as well as set up the ability to create an account so you can search and save 📰 articles you find interesting.
             </p>
             <p className='author__content_body'>
                 You can check out my full portfolio and learn more about me using the footer links below 🕵️‍♀️

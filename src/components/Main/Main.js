@@ -15,7 +15,6 @@ export default function Main({ cards }) {
                     // notFound={notFound}
                 />
             {/* )} */}
-
             <About />
             <Footer />
         </>

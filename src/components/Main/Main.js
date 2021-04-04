@@ -5,7 +5,7 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './Main.css';
 
-export default function Main({ cards, isSaved, handleSaveClick }) {
+export default function Main({ cards, openModal, loggedIn, handleLogin, handleLoginClick, handleLogOut,isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isSavedResults }) {
     return(
         <>
             <SearchForm />
@@ -13,6 +13,7 @@ export default function Main({ cards, isSaved, handleSaveClick }) {
                 <NewsCardList cards={cards}
                     isSaved={isSaved}
                     handleSaveClick={handleSaveClick}
+                    isSavedResults={isSavedResults}
                     // isLoading={isLoading}
                     // notFound={notFound}
                 />

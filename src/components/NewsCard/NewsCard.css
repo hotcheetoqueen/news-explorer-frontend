@@ -40,6 +40,10 @@
     fill: #1A1B22;
 }
 
+.news-card__save-icon_saved {
+    background: #2F71E5;
+}
+
 .news-card__info-container {
     text-align: left;
     background-color: #FFF;

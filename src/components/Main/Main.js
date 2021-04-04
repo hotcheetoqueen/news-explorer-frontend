@@ -5,12 +5,14 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './Main.css';
 
-export default function Main({ cards }) {
+export default function Main({ cards, isSaved, handleSaveClick }) {
     return(
         <>
             <SearchForm />
             {/* {(cards.length > 0 || isLoading || notFound) && ( */}
                 <NewsCardList cards={cards}
+                    isSaved={isSaved}
+                    handleSaveClick={handleSaveClick}
                     // isLoading={isLoading}
                     // notFound={notFound}
                 />

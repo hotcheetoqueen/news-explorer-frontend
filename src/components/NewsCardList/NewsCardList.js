@@ -4,7 +4,7 @@ import './NewsCardList.css';
 // import EmptyIcon from '../../images/search-empty.png';
 // import LoadingIcon from '../../images/search-loading.png';
 
-export default function NewsCardList({ cards }) {
+export default function NewsCardList({ cards, isSaved, handleSaveClick }) {
     return(
         <>
             <section className='news-card__list'>
@@ -28,7 +28,10 @@ export default function NewsCardList({ cards }) {
                                     {/* {cards && cards.map((card) => {
                                         <NewsCard key={card.id} card={card} />
                                      })} */}
-                                    <NewsCard />
+                                    <NewsCard
+                                        isSaved={isSaved}
+                                        handleSaveClick={handleSaveClick}
+                                    />
                                 </ul>
                                 <button className='news-card__list-button'>Show more</button>
                             </div>   

@@ -1,5 +1,5 @@
-import { React, useEffect, useState } from 'react';
-import { Route, useHistory } from 'react-router-dom';
+import { React, useState } from 'react';
+import { Route } from 'react-router-dom';
 import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import SavedNews from '../SavedNews/SavedNews';

@@ -30,3 +30,8 @@
 .footer__navigation-item:last-child {
     margin-left: 20px;
 }
+
+.footer__navigation-item-button {
+    background: transparent;
+    border: none;
+}

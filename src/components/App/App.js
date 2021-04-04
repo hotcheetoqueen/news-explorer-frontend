@@ -8,11 +8,35 @@ import { seedData, seedDataSaved } from '../../seedData/seedData';
 import './App.css';
 
 function App() {
+  const [allCards, setAllCards] = useState(false);
   const [cards, setCards] = useState(seedData);
+  const [loggedIn, setLoggedIn] = useState(true);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalVersion, setModalVersion] = useState('');
   const [savedCards, setSavedCards] = useState(seedDataSaved);
+  const [navLinks, setNavLinks] = useState(false);
+  const [user, setUser] = useState('Tester');
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
 
   let isSaved;
 
+  const handleLogInClick = () => {
+    setModalOpen(true);
+    if (windowWidth <= 767) {
+      setNavLinks(true);
+    }
+    setModalVersion('signin');
+  };
+
+  const handleLogIn = () => {
+    setLoggedIn(true);
+  };
+
+  const handleLogOut = () => {
+    setLoggedIn(false);
+  };
+  
   const handleSaveClick = (card) => {
     if (!card.isSaved) {
       card.isSaved = true;
@@ -23,20 +47,60 @@ function App() {
     }
   };
 
+  const handleDeleteClick = (card) => {
+    setSavedCards(
+      savedCards.filter((c) => c.id !== card.id),
+    );
+    card.isSaved = false;
+    const newCards = cards.map((c) => (c.id === card.id ? card : c));
+    savedCards.push(card);
+    setCards(newCards);
+  };
+
+  const openModal = () => {
+    setModalOpen(true);
+    setModalVersion('signup');
+  };
+
+  const closeModal = (e) => {
+    if (!e.key || e.key === 'Escape') {
+      setModalOpen(false);
+    }
+  };
+
+  const showMoreCards = () => {
+    setAllCards(true);
+  };
+
   return (
     <div className="App">
       <Route exact path="/" component={Main} 
         cards={cards}
+        openModal={openModal}
+        loggedIn={loggedIn}
+        handleLogIn={handleLogIn}
+        handleLogInClick={handleLogInClick}
+        handleLogOut={handleLogOut}
         isSaved={isSaved}
         handleSaveClick={handleSaveClick}
-        cards={savedCards} >
+        handleDeleteClick={handleDeleteClick}
+        showMoreCards={showMoreCards}
+        isSavedResults={false}
+      >
         {/* <Preloader path='/preloader' /> */}
       </Route>
       <Route exact path='/saved-news'>
-        <SavedNews handleSaveClick={handleSaveClick} cards={savedCards} />
+        <SavedNews
+          cards={savedCards}
+          loggedIn={loggedIn} 
+          isSaved={isSaved}
+          handleSaveClick={handleSaveClick}
+          handleDeleteClick={handleDeleteClick}
+          isSavedResults={true}
+        />
       </Route>
       <Route exact path='/popup'>
-        <PopupWithForm />
+        <PopupWithForm openModal={openModal} onClose={closeModal} />
       </Route>
     </div>
   );

@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { Route } from 'react-router-dom';
+import EmptyState from '../EmptyState/EmptyState';
 import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import SavedNews from '../SavedNews/SavedNews';
@@ -108,8 +109,12 @@ function App() {
           handleLogOutClick={handleLogOutClick}
         />
       </Route>
+      {/* Test Routes!! */}
       <Route exact path='/popup'>
         <PopupWithForm openModal={openModal} onClose={closeModal} />
+      </Route>
+      <Route exact path='/emptystate'>
+        <EmptyState />
       </Route>
     </div>
   );

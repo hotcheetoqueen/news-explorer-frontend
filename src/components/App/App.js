@@ -15,7 +15,7 @@ function App() {
   const [modalVersion, setModalVersion] = useState('');
   const [savedCards, setSavedCards] = useState(seedDataSaved);
   const [navLinks, setNavLinks] = useState(false);
-  const [user, setUser] = useState('Tester');
+  const [userName, setUserName] = useState('Tester');
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 
@@ -32,6 +32,11 @@ function App() {
   const handleLogIn = () => {
     setLoggedIn(true);
   };
+
+  const handleLogOutClick = () => {
+    handleLogOut();
+    console.log(loggedIn);
+  }
 
   const handleLogOut = () => {
     setLoggedIn(false);
@@ -81,11 +86,13 @@ function App() {
         handleLogIn={handleLogIn}
         handleLogInClick={handleLogInClick}
         handleLogOut={handleLogOut}
+        handleLogOutClick={handleLogOutClick}
         isSaved={isSaved}
         handleSaveClick={handleSaveClick}
         handleDeleteClick={handleDeleteClick}
         showMoreCards={showMoreCards}
         isSavedResults={false}
+        userName={userName}
       >
         {/* <Preloader path='/preloader' /> */}
       </Route>
@@ -97,6 +104,8 @@ function App() {
           handleSaveClick={handleSaveClick}
           handleDeleteClick={handleDeleteClick}
           isSavedResults={true}
+          userName={userName}
+          handleLogOutClick={handleLogOutClick}
         />
       </Route>
       <Route exact path='/popup'>

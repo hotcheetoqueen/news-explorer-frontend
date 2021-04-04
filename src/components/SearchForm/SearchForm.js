@@ -6,7 +6,7 @@ import './SearchForm.css';
 export default function SearchForm() {
     return(
         <>
-            <section className='search-form' title='Image of a human hand holding a white smartphone showing activity data aand charts'>
+            <section className='search-form' title='Image of a human hand holding a white smartphone showing activity data and charts'>
                 <Header />
                 <div className='search-form__content'>
                     <h2 className='search-form__title'>What's going on in the world?</h2>

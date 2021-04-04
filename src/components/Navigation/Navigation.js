@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Navigation.css';
 import LogoutIcon from '../../images/nav__logout-icon.png';
+import './Navigation.css';
 
 export default function Navigation({ loggedIn, userEmail, handleLogout }) {
     return(

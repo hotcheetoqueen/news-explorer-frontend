@@ -1,12 +1,14 @@
 import React from 'react';
-import './Preloader'
+import LoadingIcon from '../../images/search-loading.png';
+import './Preloader.css';
 
 export default function Preloader() {
     return(
         <>
-        <div className='preloader__container'>
-            <p className="preloader"></p>
-        </div>
+            <section className='preloader'>
+                <img className='preloader__icon' src={LoadingIcon} />
+                <p className='preloader__text'>Searching for news...</p>
+            </section>
         </>
     )
 }

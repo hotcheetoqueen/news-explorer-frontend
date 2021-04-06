@@ -1,5 +1,5 @@
-import { React, useState } from 'react';
-import { Route } from 'react-router-dom';
+import { React, useState, useCallback } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import EmptyState from '../EmptyState/EmptyState';
 import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
@@ -20,11 +20,34 @@ function App() {
   const [userName, setUserName] = useState('Tester');
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  const [values, setValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsValid] = useState(false);
+
+  const resetForm = useCallback(
+    (newValues = { email: '', password: '', username: '' }, newErrors = {}, newIsValid = false) => {
+      setValues(newValues);
+      setErrors(newErrors);
+      setIsValid(newIsValid);
+    },
+    [setValues, setErrors, setIsValid],
+  );
 
   let isSaved;
 
-  const handleLogInClick = () => {
+  const openModal = () => {
     setModalOpen(true);
+  };
+
+  const closeModal = (e) => {
+    if (!e.key || e.key === 'Escape') {
+      resetForm();
+      setModalOpen(false);
+    }
+  };
+
+  const handleLogInClick = () => {
+    openModal();
     if (windowWidth <= 767) {
       setNavLinks(true);
     }
@@ -34,6 +57,11 @@ function App() {
   const handleLogIn = () => {
     setLoggedIn(true);
   };
+
+
+  const handleSignUpClick = () => {
+    setModalVersion('signup');
+  }
 
   const handleLogOutClick = () => {
     handleLogOut();
@@ -64,39 +92,30 @@ function App() {
     setCards(newCards);
   };
 
-  const openModal = () => {
-    setModalOpen(true);
-    setModalVersion('signup');
-  };
-
-  const closeModal = (e) => {
-    if (!e.key || e.key === 'Escape') {
-      setModalOpen(false);
-    }
-  };
-
   const showMoreCards = () => {
     setAllCards(true);
-  };
+  };      
 
   return (
     <div className="App">
-      <Route exact path="/" component={Main} 
-        cards={cards}
-        openModal={openModal}
-        loggedIn={loggedIn}
-        handleLogIn={handleLogIn}
-        handleLogInClick={handleLogInClick}
-        handleLogOut={handleLogOut}
-        handleLogOutClick={handleLogOutClick}
-        isSaved={isSaved}
-        handleSaveClick={handleSaveClick}
-        handleDeleteClick={handleDeleteClick}
-        showMoreCards={showMoreCards}
-        isSavedResults={false}
-        userName={userName}
-      >
-        {/* <Preloader path='/preloader' /> */}
+      <Router>
+      <Route exact path="/">
+        <Main 
+          cards={cards}
+          openModal={openModal}
+          loggedIn={loggedIn}
+          handleLogIn={handleLogIn}
+          handleLogInClick={handleLogInClick}
+          handleLogOut={handleLogOut}
+          handleLogOutClick={handleLogOutClick}
+          isSaved={isSaved} 
+          handleSaveClick={handleSaveClick}
+          handleDeleteClick={handleDeleteClick}
+          showMoreCards={showMoreCards}
+          isSavedResults={false}
+          userName={userName}
+        />
+        <PopupWithForm openModal={openModal} onClose={closeModal} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} />
       </Route>
       <Route exact path='/saved-news'>
         <SavedNews
@@ -111,15 +130,16 @@ function App() {
         />
       </Route>
       {/* Test Routes!! */}
-      <Route exact path='/popup'>
-        <PopupWithForm openModal={openModal} onClose={closeModal} />
-      </Route>
+      {/* <Route exact path='/popup'>
+        <PopupWithForm openModal={openModal} onClose={closeModal} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} />
+      </Route> */}
       <Route exact path='/emptystate'>
         <EmptyState />
       </Route>
       <Route exact path ='/preloader'>
         <Preloader />
       </Route>
+      </Router>
     </div>
   );
 }

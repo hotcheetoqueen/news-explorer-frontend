@@ -91,6 +91,8 @@
 .popup__switch-type-link {
     color: #2F71E5;
     text-decoration: none;
+    background: transparent;
+    border: none;
 }
 
 .popup__submit_active {

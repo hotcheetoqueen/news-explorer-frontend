@@ -8,10 +8,10 @@ export default function Navigation({ loggedIn, userName, isSavedResults, handleL
         <>
             <ul className='navigation__list'>
                 <li className='navigation__list-item'><a className='navigation__list-link' href='/'>Home</a></li>
-                {/* Comment out initial statement to see other state (logged out) */}
-                {loggedIn ? (
+                {/* Add/remove ! before logged in to test opposite state */}
+                {!loggedIn ? (
                     <li className='navigation__list-item navigation__list-item_primary'>
-                        <Link className='navigation__name navigation__list-link' to='/signin' onClick={handleLogInClick}>Sign in</Link>
+                        <Link className='navigation__name navigation__list-link' to='/' onClick={handleLogInClick}>Sign in</Link>
                         <img className='navigation__list-item_primary-icon' src={LogInOutIcon} alt='Sign in' />
                     </li>
                 ) : (

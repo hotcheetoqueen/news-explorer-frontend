@@ -19,3 +19,15 @@
     color: white;
     width: 200px;
 }
+
+@media screen and (max-width: 320px) {
+    .header {
+        height: 56px;
+    }
+
+    .header__logo {
+        margin: 16px 0 16px 16px;
+        border: 0;
+        font-size: 16px;
+    }
+}

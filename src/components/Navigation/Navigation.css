@@ -41,9 +41,20 @@
     color: white;
 }
 
+.navigation__mobile-hamburger {
+    display: none;
+}
+
 @media screen and (max-width: 320px) {
     .navigation__list {
         padding: 0;
         display: none;
+    }
+
+    .navigation__mobile-hamburger {
+        width: 24px;
+        height: 24px;
+        margin: 16px 16px 0 0;
+        display: block;
     }
 }

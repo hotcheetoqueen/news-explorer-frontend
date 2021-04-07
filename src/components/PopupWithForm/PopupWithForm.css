@@ -103,3 +103,32 @@
 .popup__overlay_hidden {
     opacity: 0;
 }
+
+@media screen and (max-width: 320px) {
+.popup__container {
+        bottom: 0;
+        width: 90vw;
+        min-height: 520px;
+        box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+        border-radius: 16px;
+        padding: 16px 16px 0;
+        position: fixed;
+        margin-top: -220px;
+        margin-left: -50vw;
+        /* display: none; */
+    }
+
+    .popup__form {
+        justify-content: center;
+        margin: 0 auto;
+    }
+
+    .popup__submit {
+        width: 288px;
+        margin-top: 0;
+    }
+
+    .popup__overlay {
+        /* display: none; */
+    }
+}

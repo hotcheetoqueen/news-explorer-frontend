@@ -15,19 +15,25 @@
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
+    width: 200px;
+}
+
+.header__logo-link {
     text-decoration: none;
     color: white;
-    width: 200px;
 }
 
 @media screen and (max-width: 320px) {
     .header {
         height: 56px;
+        align-items: center;
+        margin: 0;
+        padding: 0;
     }
 
     .header__logo {
-        margin: 16px 0 16px 16px;
-        border: 0;
+        margin: 0 0 0 16px;
         font-size: 16px;
+        text-align: left;
     }
-}
+  }

@@ -54,7 +54,7 @@
     .navigation__mobile-hamburger {
         width: 24px;
         height: 24px;
-        margin: 16px 16px 0 0;
+        margin: 0 16px 0 0;
         display: block;
     }
 }

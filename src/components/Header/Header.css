@@ -29,7 +29,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 600px) {
     .header {
         height: 56px;
         align-items: center;

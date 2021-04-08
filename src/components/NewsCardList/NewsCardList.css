@@ -4,6 +4,11 @@
     margin: 0 auto;
 }
 
+.news-card__list-container {
+    max-width: 100%;
+    padding: 0;
+}
+
 .news-card__grid {
     display: inline-grid;
     list-style: none;
@@ -19,6 +24,7 @@
     line-height: 46px;
     text-align: left;
     margin: 80px 0 0 104px;
+    padding: 0;
 }
 
 .news-card__list-button {
@@ -35,7 +41,7 @@
     TO DO: FIX BUTTON SWINGS RIGHT
 } */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
     .news-card__list-title {
         font-size: 30px;
         line-height: 34px;
@@ -53,7 +59,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 520px) {
     .news-card__list {
         display: flex;
         flex-direction: column;
@@ -67,7 +73,7 @@
     .news-card__list-title {
         font-size: 30px;
         line-height: 34px;
-        margin: 32px 0 58px;
+        margin: 32px 0 58px 16px;
     }
 
     .news-card__list-button {

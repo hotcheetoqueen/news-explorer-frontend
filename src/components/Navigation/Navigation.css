@@ -45,18 +45,30 @@
     display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
     .navigation__list {
         padding-left: 256px;
     }
 
     .navigation__list-item {
         padding-left: 0;
-
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 800px) {
+    .navigation__list {
+        padding-left: 20px;
+        padding-right: 60px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .navigation__list {
+        padding-right: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
     .navigation__list {
         padding: 0;
         display: none;

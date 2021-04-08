@@ -36,7 +36,13 @@
     font-weight: bold;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 740px) {
+    .saved-news-header__content {
+        padding-right: 40px;
+    }
+}
+
+@media screen and (max-width: 470px) {
     .saved-news-header {
         height: 302px;
     }

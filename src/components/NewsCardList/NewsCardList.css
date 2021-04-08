@@ -35,6 +35,24 @@
     TO DO: FIX BUTTON SWINGS RIGHT
 } */
 
+@media screen and (max-width: 768px) {
+    .news-card__list-title {
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    .news-card__grid {
+        grid-template-columns: repeat(3, 224px);
+        grid-gap: 8px;
+        margin: 64px auto 0;
+    }
+    
+    .news-card__list-button {
+        width: 240px;
+        height: 56px;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .news-card__list {
         display: flex;

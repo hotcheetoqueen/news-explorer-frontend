@@ -22,7 +22,7 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                     <h3 className='news-card__list-title'>Search results</h3>
                                 )}
                                 <ul className='news-card__grid'>
-                                    {cards && seedData.slice(0, 3).map((card) => {
+                                    {cards && seedData.slice(0, 3).map((card) => (
                                         <NewsCard key={card.id} card={card}
                                             loggedIn={loggedIn}
                                             isSavedResults={isSavedResults}
@@ -31,7 +31,7 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                             handleSaveClick={handleSaveClick}
                                             handleDeleteClick={handleDeleteClick}
                                         />
-                                     })}
+                                ))}
                                     <NewsCard
                                     />
                                 </ul>
@@ -40,8 +40,8 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                 ) : (
                                     <ul className="news-cards-list__grid">
                                         {cards
-                                        && cards
-                                            .slice(3)
+                                        && 
+                                            seedData.slice(3)
                                             .map((card) => (
                                             <NewsCard key={card.id} card={card}
                                                 loggedIn={loggedIn}

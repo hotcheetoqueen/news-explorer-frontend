@@ -8,7 +8,7 @@ export default function SavedNews({ cards, loggedIn }) {
     return(
         <>
             <SavedNewsHeader />
-            <NewsCardList />
+            <NewsCardList cards={cards} />
             <Footer />
         </>
     )

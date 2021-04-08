@@ -51,11 +51,15 @@
     border: none;
 }
 
+.footer__navigation-item-button:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1200px) {
     .footer {
         margin: 24px 40px 21px;
         padding: 0;
-        /* width: 640px; */
     }
     
     .footer__navigation {

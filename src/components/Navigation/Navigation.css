@@ -9,6 +9,11 @@
     margin-right: 42px;
 }
 
+.navigation__list-item:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
 .navigation__list-item_primary {
     width: 176px;
     height: 24px;
@@ -32,10 +37,6 @@
     color: white;
 }
 
-.navigation__list-link:hover {
-    cursor: pointer;
-}
-
 .navigation__list-link:active {
     border-bottom: 3px;
     color: white;
@@ -43,6 +44,10 @@
 
 .navigation__mobile-hamburger {
     display: none;
+}
+
+.navigation__mobile-hamburger:hover {
+    opacity: .8;
 }
 
 @media screen and (max-width: 1200px) {

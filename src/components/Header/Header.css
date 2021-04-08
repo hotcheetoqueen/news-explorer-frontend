@@ -18,6 +18,10 @@
     width: 200px;
 }
 
+.header__logo:hover {
+    opacity: .8;
+}
+
 .header__logo-link {
     text-decoration: none;
     color: white;

@@ -9,13 +9,12 @@ export default function Main({ cards, openModal, loggedIn, handleLogin, handleLo
     return(
         <>
             <SearchForm />
-            {/* {(cards.length > 0 || isLoading || notFound) && ( */}
+            {/* {(cards.length > 0 || isLoading ) && ( */}
                 <NewsCardList cards={cards}
                     isSaved={isSaved}
                     handleSaveClick={handleSaveClick}
                     isSavedResults={isSavedResults}
                     // isLoading={isLoading}
-                    // notFound={notFound}
                 />
             {/* )} */}
             <About />

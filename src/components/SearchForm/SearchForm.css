@@ -131,16 +131,17 @@
     
     .search-form__title {
         width: 285px;
+        margin-top: 0;
     }
     
     .search-form__body {
         width: 288px;
         margin-top: 16px;
+        margin-bottom: 120px;
     }
     
     .search-form__search {
         width: 288px;
-        margin-top: 8px;
     }
     
     .search-form__search_input {
@@ -148,6 +149,7 @@
         text-align: left;
         padding-left: 16px;
         position: absolute;
+        margin-top: -8px;
     }
     
     .search-form__search_button {
@@ -155,7 +157,7 @@
         margin-left: 0;
         margin-bottom: 0;
         position: absolute;
-        top: 324px;
+        top: 352px;
     }
     
 }

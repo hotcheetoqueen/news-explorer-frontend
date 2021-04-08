@@ -40,6 +40,11 @@
         display: flex;
         flex-direction: column;
     }
+    
+    .news-card__grid {
+        max-width: 100%;
+        padding: 0;
+    }
 
     .news-card__list-title {
         font-size: 30px;

@@ -31,16 +31,38 @@
     line-height: 24px;
 }
 
+@media screen and (max-width: 768px) {
+    .author {
+        margin: 0;
+    }
+
+    .author__image {
+        height: 272px;
+        width: 272px;
+        margin: 61px 40px;
+    }
+
+    .author__content {
+        width: 424px;
+        padding: 0;
+        margin-top: 40px;
+    }
+
+    .author__content_title {
+        margin: 0;
+    }
+
+    .author__content_body {
+        margin-top: 16px;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .author {
         flex-direction: column;
-        margin: 0;
     }
     
     .author__image {
-        border-radius: 50%;
-        height: 272px;
-        width: 272px;
         margin: 32px auto 0;
     }
 
@@ -48,6 +70,5 @@
         width: 288px;
         margin: 16px auto 128px;
         text-align: left;
-        padding-left: 0;
     }
 }

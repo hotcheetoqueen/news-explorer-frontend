@@ -8,7 +8,7 @@ export default function SavedNewsHeader({ userName, cards }) {
 
     return(
         <>
-            <section className='saved-news-header'>
+            <section className='saved-news-header' style={{color:"#1A1B22", backgroundColor:"white"}}>
                 <Header />
                 <div className='saved-news-header__content'>
                     <h2 className="saved-news-header__title">Saved articles</h2>

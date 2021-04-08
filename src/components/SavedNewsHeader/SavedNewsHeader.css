@@ -3,16 +3,13 @@
     width: 100%;
     border: 0;
     position: relative;
-    background-color: black;
 }
 
 .saved-news-header__content {
     text-align: left;
-    color: white;
     position: absolute;
     margin-top: 120px;
     margin-left: 104px;
-        /* color: #1A1B22;; */
 }
 
 .saved-news-header__title {

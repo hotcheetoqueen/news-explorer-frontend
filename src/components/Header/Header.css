@@ -23,6 +23,12 @@
     color: white;
 }
 
+@media screen and (max-width: 768px) {
+    .header__logo {
+        margin-left: 40px;
+    }
+}
+
 @media screen and (max-width: 320px) {
     .header {
         height: 56px;

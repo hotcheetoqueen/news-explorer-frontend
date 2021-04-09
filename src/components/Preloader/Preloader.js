@@ -1,5 +1,5 @@
 import React from 'react';
-import LoadingIcon from '../../images/search-loading.png';
+import LoadingIcon from '../../images/states/search-loading.png';
 import './Preloader.css';
 
 export default function Preloader() {

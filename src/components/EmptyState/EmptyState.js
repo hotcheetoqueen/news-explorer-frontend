@@ -1,5 +1,5 @@
 import React from 'react';
-import EmptyIcon from '../../images/search-empty.png';
+import EmptyIcon from '../../images/states/search-empty.png';
 import './EmptyState.css';
 
 export default function EmptyState() {

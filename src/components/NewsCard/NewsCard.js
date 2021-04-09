@@ -1,11 +1,7 @@
 import React from 'react';
+import NewsCardSaveIcon from '../../images/bookmarks/news-card__save-icon.svg';
+import NewsCardDeleteIcon from '../../images/bookmarks/news-card__delete-icon.svg';
 import './NewsCard.css';
-
-// TODO: DECIDE PNG OR SVG FOR HOVER AND REMOVE OTHER
-// import NewsCardSaveIcon from '../../images/news-card__save-icon.png';
-import NewsCardSaveIcon from '../../images/news-card__save-icon.svg';
-import NewsCardDeleteIcon from '../../images/news-card__delete-icon.svg';
-
 
 export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveClick, handleDeleteClick }) {
     return(

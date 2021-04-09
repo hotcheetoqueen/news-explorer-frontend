@@ -35,13 +35,24 @@
     padding-bottom: 11px;
 }
 
-/* TODO: SORT OUT ICON HOVER */
+.news-card__save-icon {
+    background-image: url('../../images/bookmarks/news-card__save-icon.svg');
+    background-repeat: no-repeat;
+}
+
 .news-card__save-icon:hover {
-    fill: #1A1B22;
+    background-image: url('../../images/bookmarks/news-card__save-icon_hover.svg');
+    cursor: pointer;
 }
 
 .news-card__save-icon_saved {
-    background: #2F71E5;
+    background-image: url('../../images/bookmarks/news-card__save-icon_saved.svg');
+}
+
+.news-card__save-icon_saved:hover {
+    background-image: url('../../images/bookmarks/news-card__save-icon_saved.svg');
+    opacity: .8;
+    cursor: pointer;
 }
 
 .news-card__info-container {

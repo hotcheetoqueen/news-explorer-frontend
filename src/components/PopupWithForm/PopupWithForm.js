@@ -38,9 +38,9 @@ export default function PopupWithForm(props) {
 
     return(
         <>
-            <div className='popup__overlay'>
+            <div className={'popup__overlay' + (props.openModal ? ' popup__overlay_visible' : '')}>
             </div>
-            <section className='popup__container'>
+            <section className={`popup__container` + (props.openModal ? ' popup__container_visible' : '')}>
                 <button className='popup__close'></button>
                 <form className='popup__form'>
                     <h3 className='popup__title'>Sign in</h3>

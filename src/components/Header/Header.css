@@ -8,6 +8,10 @@
     box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
 }
 
+.header .header_theme_dark {
+    border-bottom: #1A1B22;
+}
+
 .header__logo {
     margin-top: 30px;
     margin-left: 104px;
@@ -18,7 +22,7 @@
     width: 200px;
 }
 
-.header__logo_theme_dark {
+.header__logo .header__logo_theme_dark {
     color: #1A1B22;
 }
 

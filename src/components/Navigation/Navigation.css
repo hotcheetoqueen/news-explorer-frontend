@@ -28,6 +28,10 @@
     margin-top: -11px;
 }
 
+.navigation__list-item_primary .navigation__list-item_primary_theme_dark {
+    color: #1A1B22;
+}
+
 .navigation__list-item_primary-icon {
     padding-left: 20px;
 }

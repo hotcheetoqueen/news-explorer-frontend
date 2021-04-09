@@ -28,7 +28,6 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                             isSavedResults={isSavedResults}
                                             handleSaveClick={handleSaveClick}
                                             isSaved={isSaved}
-                                            handleSaveClick={handleSaveClick}
                                             handleDeleteClick={handleDeleteClick}
                                         />
                                 ))}
@@ -48,7 +47,6 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                                 isSavedResults={isSavedResults}
                                                 handleSaveClick={handleSaveClick}
                                                 isSaved={isSaved}
-                                                handleSaveClick={handleSaveClick}
                                                 handleDeleteClick={handleDeleteClick}
                                             />
                                         ))}

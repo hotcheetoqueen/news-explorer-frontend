@@ -201,6 +201,10 @@
         height: 196px;
     }
 
+    .news-card__save-helper-text {
+        display: none;
+    }
+
     .news-card__title {
         height: 48px;
         margin-top: 10px;

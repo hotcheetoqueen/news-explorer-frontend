@@ -119,6 +119,8 @@
 
     .footer__navigation {
         padding-left: 16px;
+        padding-right: 0;
+        max-width: 100%;
     }
 
     .footer__navigation-item {
@@ -146,8 +148,9 @@
     }
 
     .footer__navigation-item:nth-child(3) {
-        margin-right: 0px;
+        margin: 0;
         padding-top: 10px;
+        width: 20px;
     }
 
     .footer__navigation-item:last-child {
@@ -156,7 +159,7 @@
 
     .footer__copyright {
         margin: 0 auto 22px;
-        padding: 0 16px;
+        padding: 0 auto;
         width: 300px;
     }
 }

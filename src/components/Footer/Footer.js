@@ -11,7 +11,7 @@ export default function Footer() {
             <ul className='footer__navigation'>
                 <div className='footer__navigation_stacked'>
                     <li className='footer__navigation-item footer__navigation-item_text'><a className='footer__navigation-item-link' href='/'>Home</a></li>
-                    <li className='footer__navigation-item footer__navigation-item_text'><a className='footer__navigation-item-link' href='https://practicum.yandex.com/' target='_blank'>Practicum by Yandex</a></li>
+                    <li className='footer__navigation-item footer__navigation-item_text'><a className='footer__navigation-item-link' href='https://practicum.yandex.com/' target='_blank' rel='noreferrer'>Practicum by Yandex</a></li>
                 </div>
                 <li className='footer__navigation-item'><button className='footer__navigation-item-button' onClick={()=> window.open('https://github.com/hotcheetoqueen', '_blank')}><img src={iconGithub} alt='Github' /></button></li>
                 <li className='footer__navigation-item'><button className='footer__navigation-item-button' onClick={()=> window.open('https://www.linkedin.com/in/jessicaperelman/', '_blank')}><img src={iconLinkedIn} alt='LinkedIn' /></button></li>

@@ -44,6 +44,12 @@
 }
 
 @media screen and (min-width: 1560px) {
+    .news-card__grid {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+    }
+    
     .news-card__list-button {
         margin: 0 auto 80px;
     }
@@ -76,6 +82,8 @@
     .news-card__grid {
         max-width: 100%;
         padding: 0;
+        display: block;
+
     }
 
     .news-card__list-title {
@@ -86,5 +94,9 @@
 
     .news-card__list-button {
         margin: 0 16px 32px;
+    }
+
+    .news-card__list-button_scroll {
+        display: none;
     }
 }

@@ -4,6 +4,10 @@
     padding-left: 625px;
 }
 
+.navigation__list_dark {
+    color: #1A1B22;
+}
+
 .navigation__list-item {
     list-style-type: none;
     margin-right: 42px;
@@ -40,6 +44,10 @@
 .navigation__list-link:active {
     border-bottom: 3px;
     color: white;
+}
+
+.navigation__mobile-menu_dark {
+    color: #1A1B22;
 }
 
 .navigation__mobile-hamburger {
@@ -84,5 +92,9 @@
         height: 24px;
         margin: 0 16px 0 0;
         display: block;
+    }
+
+    .navigation__mobile-hamburger_dark {
+        color: black;
     }
 }

@@ -44,7 +44,7 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                             .map((card) => (
                                             <NewsCard key={card.id} card={card}
                                                 loggedIn={loggedIn}
-                                                isSavedResults={isSavedResults}
+                                                isSavedResults={false}
                                                 handleSaveClick={handleSaveClick}
                                                 isSaved={isSaved}
                                                 handleDeleteClick={handleDeleteClick}

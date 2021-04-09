@@ -9,7 +9,7 @@ export default function SavedNewsHeader({ userName, handleLogOut }) {
     return(
         <>
             <section className='saved-news-header' style={{color:"#1A1B22", backgroundColor:"white"}}>
-                <Header handleLogOut={handleLogOut} />
+                <Header handleLogOut={handleLogOut} isSavedResults={true} />
                 <div className='saved-news-header__content'>
                     <h2 className="saved-news-header__title">Saved articles</h2>
                     <p className="saved-news-header__greeting">Reviewer, you have # saved articles.</p>

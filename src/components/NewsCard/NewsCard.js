@@ -17,7 +17,10 @@ export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveCli
                             {card.keyword.slice(1)}
                         </p>
                     )}
-                    {!isSavedResults ? (
+                    <div className='news-card__image-container'>
+                        <div className='news-card__save-container'>
+                            <div className='news-card__save-helper-text'></div>
+                            {!isSavedResults ? (
                         <button className='news-card__save'
                             onClick={() => {
                                 handleSaveClick(card);
@@ -34,17 +37,8 @@ export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveCli
                             <img className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_delete' : '' }`} src={NewsCardDeleteIcon} alt='Delete article' />
                         </button>
                     )}
-                    <div className='news-card__image-container'>
-                        <div className='news-card__save-container'>
-                            <div className='news-card__save-helper-text'></div>
-                            <button className='news-card__save'
-                                onClick={() => {
-                                    handleSaveClick(card);
-                            }}>
-                                <img className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_saved' : '' }`} src={NewsCardSaveIcon} alt='Save article' />
-                            </button>
-                        </div>
-                        <img className='news-card__photo' src='https://images.unsplash.com/photo-1612392062631-94dd858cba88?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' alt='News article subject' />
+                    </div>
+                    <img className='news-card__photo' src='https://images.unsplash.com/photo-1612392062631-94dd858cba88?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' alt='News article subject' />
                     </div>
                     <div className='news-card__info-container'>
                         <p className='news-card__date'>{card.date}</p>

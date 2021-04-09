@@ -41,15 +41,22 @@ export default function PopupWithForm(props) {
             <div className={'popup__overlay' + (props.openModal ? ' popup__overlay_visible' : '')}>
             </div>
             <section className={`popup__container` + (props.openModal ? ' popup__container_visible' : '')}>
-                <button className='popup__close'></button>
+                <button className='popup__close' onClick={props.onClose} onKeyDown={ (e) => {if (e.key === 'Enter') { onclose(); }} }></button>
                 <form className='popup__form'>
-                    <h3 className='popup__title'>Sign in</h3>
+                    <h3 className='popup__title'>{props.modalVersion === 'success' ? 'Registration successfully completed!': `Sign ${props.modalVersion === 'signin' ? 'in' : 'up'}`}</h3>
                     <label className='popup__input-label'>Email</label>
-                    <input className='popup__input popup__input_email' placeholder='Enter email'>{props.email}</input>
+                    <input className='popup__input popup__input_email' placeholder='Enter email' id='email' name='email' required>{props.email}</input>
                     <label className='popup__input-label'>Password</label>
-                    <input className='popup__input popup__input_password' placeholder='Enter password'>{props.password}</input>
-                    <button className='popup__submit' type='submit'>Sign in</button>
-                    <p className='popup__switch-type'>or <button className='popup__switch-type-link' onClick={props.handleSignUpClick}>Sign up</button></p>
+                    <input className='popup__input popup__input_password' placeholder='Enter password' id='password' name='passsword' required>{props.password}</input>
+                  {props.modalVersion === 'signup' && (
+                    <>
+                      <label className='popup__input-label'>Username</label>
+                      <input className='popup__input popup__input_username' placeholder='Enter username' id='username' name='username' required>{props.username}</input>
+                    </>
+                  )}
+                    <button className='popup__submit' type='submit'>Sign {props.modalVersion === 'signin' ? ' in' : ' up'}</button>
+                    <p className={`popup__switch-type ${props.modalVersion === 'success' ? 'popup__switch-type_success' : ''}`}>{props.modalVersion !== 'success' ? 'or ' : ''}<button className='popup__switch-type-link' onClick={props.modalVersion === 'signin' ? props.handleSignUpClick : props.handleSignInClick}>
+                      Sign {props.modalVersion === 'signin' ? ' up' : ' in'}</button></p>
                 </form>
             </section>
         </>

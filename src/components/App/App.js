@@ -48,9 +48,9 @@ function App() {
 
   const handleLogInClick = () => {
     openModal();
-    if (windowWidth <= 767) {
-      setNavLinks(true);
-    }
+    // if (windowWidth <= 767) {
+    //   setNavLinks(true);
+    // }
     setModalVersion('signin');
   };
 
@@ -60,12 +60,16 @@ function App() {
 
 
   const handleSignUpClick = () => {
+    openModal();
     setModalVersion('signup');
+  }
+
+  const handleSignUp = () => {
+    setModalVersion('success');
   }
 
   const handleLogOutClick = () => {
     handleLogOut();
-    console.log(loggedIn);
   }
 
   const handleLogOut = () => {
@@ -103,6 +107,7 @@ function App() {
         <Main 
           cards={cards}
           openModal={openModal}
+          handleSignUp={handleSignUp}
           loggedIn={loggedIn}
           handleLogIn={handleLogIn}
           handleLogInClick={handleLogInClick}
@@ -115,7 +120,7 @@ function App() {
           isSavedResults={false}
           userName={userName}
         />
-        <PopupWithForm openModal={openModal} onClose={closeModal} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} />
+        <PopupWithForm openModal={openModal} onClose={closeModal} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} modalVersion={modalVersion} />
       </Route>
       <Route exact path='/saved-news'>
         <SavedNews

@@ -89,6 +89,11 @@
     text-align: center;
 }
 
+.popup__switch-type_success {
+    align-self: flex-start;
+    margin: 14px 0 0;
+}
+
 .popup__switch-type-link {
     color: #2F71E5;
     text-decoration: none;
@@ -132,9 +137,5 @@
     .popup__submit {
         width: 288px;
         margin-top: 0;
-    }
-
-    .popup__overlay {
-        /* display: none; */
     }
 }

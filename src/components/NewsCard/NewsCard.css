@@ -154,6 +154,10 @@
         height: 420px;
     }
 
+    .news-card__save-helper-text {
+        display: none;
+    }
+
     .news-card__title {
         height: 72px;
         font-size: 22px;
@@ -199,10 +203,6 @@
 
     .news-card__image-container {
         height: 196px;
-    }
-
-    .news-card__save-helper-text {
-        display: none;
     }
 
     .news-card__title {

@@ -18,6 +18,10 @@
     width: 200px;
 }
 
+.header__logo_theme_dark {
+    color: #1A1B22;
+}
+
 .header__logo:hover {
     opacity: .8;
 }

@@ -43,7 +43,7 @@ export default function PopupWithForm(props) {
             <section className={`popup__container` + (props.openModal ? ' popup__container_visible' : '')}>
                 <button className='popup__close' onClick={props.onClose} onKeyDown={ (e) => {if (e.key === 'Enter') { onclose(); }} }></button>
                 <form className='popup__form'>
-                    <h3 className='popup__title'>{props.modalVersion === 'success' ? 'Registration successfully completed!': `Sign ${props.modalVersion === 'signin' ? 'in' : 'up'}`}</h3>
+                    <h3 className='popup__title'>{props.modalVersion === 'success' ? 'Registration successfully completed!': `Sign ${props.modalVersion === 'signin' ? 'up' : 'in'}`}</h3>
                     <label className='popup__input-label'>Email</label>
                     <input className='popup__input popup__input_email' placeholder='Enter email' id='email' name='email'>{props.email}</input>
                     <label className='popup__input-label'>Password</label>
@@ -54,9 +54,9 @@ export default function PopupWithForm(props) {
                       <input className='popup__input popup__input_username' placeholder='Enter username' id='username' name='username'>{props.username}</input>
                     </>
                   )}
-                    <button className='popup__submit' type='submit'>Sign {props.modalVersion === 'signin' ? ' in' : ' up'}</button>
+                    <button className='popup__submit' type='submit'>Sign {props.modalVersion === 'signin' ? ' up' : ' in'}</button>
                     <p className={`popup__switch-type ${props.modalVersion === 'success' ? 'popup__switch-type_success' : ''}`}>{props.modalVersion !== 'success' ? 'or ' : ''}<button className='popup__switch-type-link' onClick={props.modalVersion === 'signin' ? props.handleSignUpClick : props.handleSignInClick}>
-                      Sign {props.modalVersion === 'signin' ? ' up' : ' in'}</button></p>
+                      Sign {props.modalVersion === 'signin' ? ' in' : ' up'}</button></p>
                 </form>
             </section>
         </>

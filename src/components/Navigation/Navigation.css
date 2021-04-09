@@ -46,7 +46,11 @@
     color: white;
 }
 
-.navigation__mobile-menu_dark {
+.navigation__mobile-menu_theme_dark {
+    color: #1A1B22;
+}
+
+.navigation_theme_dark .navigation__list-link {
     color: #1A1B22;
 }
 

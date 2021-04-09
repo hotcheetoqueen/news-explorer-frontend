@@ -4,7 +4,7 @@ import Hamburger from '../../images/icons/hamburger-menu.svg';
 import LogInOutIcon from '../../images/nav__logout-icon.png';
 import './Navigation.css';
 
-export default function Navigation({ loggedIn, userName, isSavedResults, handleLogOut, handleLogIn, handleLogInClick, handleLogOutClick, modalOpen }) {
+export default function Navigation({ loggedIn, openModal, userName, isSavedResults, handleLogOut, handleLogIn, handleLogInClick, handleLogOutClick, modalOpen }) {
     return(
         <section className='navigation'>
             <Link className={`navigation__mobile-menu ${isSavedResults ? ' navigation__mobile-menu_dark' : ''}`} onClick={handleLogOutClick} to='/'>
@@ -15,7 +15,7 @@ export default function Navigation({ loggedIn, userName, isSavedResults, handleL
                 {/* Add/remove ! before logged in to test opposite state */}
                 {!loggedIn ? (
                     <li className='navigation__list-item navigation__list-item_primary'>
-                        <Link className='navigation__name navigation__list-link' to='/' onClick={handleLogInClick}>Sign in</Link>
+                        <Link className='navigation__name navigation__list-link' to='/' onClick={openModal}>Sign in</Link>
                     </li>
                 ) : (
                     <>

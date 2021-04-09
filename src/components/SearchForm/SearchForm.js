@@ -1,13 +1,12 @@
 import React from 'react';
 import Header from '../Header/Header';
 import './SearchForm.css';
-// import mainBackground from '../../images/main__background.svg';
 
-export default function SearchForm() {
+export default function SearchForm({ openModal }) {
     return(
         <>
             <section className='search-form' title='A hand holding a white smartphone showing activity data'>
-                <Header />
+                <Header openModal={openModal} />
                 <div className='search-form__content'>
                     <h2 className='search-form__title'>What's going on in the world?</h2>
                     <p className='search-form__body'>Find the latest news on any topic and save them in your personal account.</p>

@@ -107,6 +107,7 @@ function App() {
         <Main 
           cards={cards}
           openModal={openModal}
+          modalOpen={modalOpen}
           handleSignUp={handleSignUp}
           loggedIn={loggedIn}
           handleLogIn={handleLogIn}
@@ -120,7 +121,7 @@ function App() {
           isSavedResults={false}
           userName={userName}
         />
-        {/* <PopupWithForm openModal={openModal} onClose={closeModal} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} modalVersion={modalVersion} /> */}
+        <PopupWithForm openModal={modalOpen} onClose={closeModal} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} modalVersion={modalVersion} />
       </Route>
       <Route exact path='/saved-news'>
         <SavedNews
@@ -135,9 +136,6 @@ function App() {
         />
       </Route>
       {/* Test Routes!! */}
-      <Route exact path='/popup'>
-        <PopupWithForm openModal={openModal} onClose={closeModal} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} />
-      </Route>
       <Route exact path='/emptystate'>
         <EmptyState />
       </Route>

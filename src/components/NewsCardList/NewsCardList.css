@@ -34,7 +34,7 @@
     border: 0;
     color: #1A1B22;
     border-radius: 80px;
-    margin: 0 auto 80px;
+    margin: 64px auto 80px;
 }
 
 .news-card__list-button:hover {
@@ -70,6 +70,7 @@
     .news-card__list-button {
         width: 240px;
         height: 56px;
+        margin-top: 32px;
     }
 }
 

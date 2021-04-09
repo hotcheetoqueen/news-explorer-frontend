@@ -56,6 +56,9 @@
 .news-card__save-icon {
     background-image: url('../../images/bookmarks/news-card__save-icon.svg');
     background-repeat: no-repeat;
+    width: 14px;
+    height: 19px;
+    margin: auto;
 }
 
 .news-card__save-icon:hover {
@@ -64,7 +67,7 @@
 }
 
 .news-card__save-icon_saved {
-    background-image: url('../../images/bookmarks/news-card__save-icon_saved.svg');    
+    background-image: url('../../images/bookmarks/news-card__save-icon_saved.svg');
 }
 
 .news-card__save-icon_saved:hover {

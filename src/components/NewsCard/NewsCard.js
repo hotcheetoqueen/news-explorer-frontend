@@ -14,8 +14,9 @@ export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveCli
                         </p>
                     )}
                     <div className='news-card__image-container'>
+                        <div className='news-card__keyword'>Keyword</div>
                         <div className='news-card__save-container'>
-                            <div className='news-card__save-helper-text'></div>
+                            <div className='news-card__save-helper-text'>Remove from saved</div>
                             {!isSavedResults ? (
                         <button className='news-card__save'
                             onClick={() => {

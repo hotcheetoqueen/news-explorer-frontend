@@ -11,6 +11,20 @@
     position: relative;
 }
 
+.news-card__keyword {
+    max-height: 40px;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    border-radius: 10px;
+    padding: 8px 22px;
+    background-color: #FFF;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: 'Roboto';
+}
+
 .news-card__save {
     position: absolute;
     top: 24px;
@@ -33,6 +47,10 @@
     border-radius: 10px;
     padding-top: 11px;
     padding-bottom: 11px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    font-family: 'Roboto';
 }
 
 .news-card__save-icon {
@@ -46,7 +64,7 @@
 }
 
 .news-card__save-icon_saved {
-    background-image: url('../../images/bookmarks/news-card__save-icon_saved.svg');
+    background-image: url('../../images/bookmarks/news-card__save-icon_saved.svg');    
 }
 
 .news-card__save-icon_saved:hover {

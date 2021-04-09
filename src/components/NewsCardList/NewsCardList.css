@@ -58,8 +58,6 @@
 @media screen and (max-width: 1400px) {
     .news-card__grid {
         grid-template-columns: repeat(2, 400px);
-        /* display: flex;
-        justify-content: center; */
         margin: 64px auto 0;
         gap: 64px;
     }
@@ -95,8 +93,6 @@
         gap: 8px;
         margin: 32px auto;
     }
-
-
 }
 
 @media screen and (max-width: 520px) {

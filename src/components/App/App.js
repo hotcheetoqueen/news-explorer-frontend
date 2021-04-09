@@ -135,9 +135,9 @@ function App() {
         />
       </Route>
       {/* Test Routes!! */}
-      {/* <Route exact path='/popup'>
+      <Route exact path='/popup'>
         <PopupWithForm openModal={openModal} onClose={closeModal} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} />
-      </Route> */}
+      </Route>
       <Route exact path='/emptystate'>
         <EmptyState />
       </Route>

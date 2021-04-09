@@ -16,7 +16,6 @@ export default function Navigation({ loggedIn, userName, isSavedResults, handleL
                 {!loggedIn ? (
                     <li className='navigation__list-item navigation__list-item_primary'>
                         <Link className='navigation__name navigation__list-link' to='/' onClick={handleLogInClick}>Sign in</Link>
-                        <img className='navigation__list-item navigation__list-item_primary-icon' src={LogInOutIcon} alt='Sign in' />
                     </li>
                 ) : (
                     <>

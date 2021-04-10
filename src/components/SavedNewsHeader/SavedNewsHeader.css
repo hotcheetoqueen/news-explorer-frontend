@@ -45,14 +45,23 @@
 }
 
 @media screen and (max-width: 740px) {
+    .saved-news-header {
+        margin: 0 auto 32px;
+    }
+
     .saved-news-header__content {
         padding-right: 40px;
+    }
+
+    .saved-news-header__greeting {
+        width: 336px;
     }
 }
 
 @media screen and (max-width: 470px) {
     .saved-news-header {
         height: 302px;
+        margin: 0;
     }
     
     .saved-news-header__content {
@@ -70,5 +79,6 @@
     .saved-news-header__greeting {
         font-size: 30px;
         line-height: 34px;
+        width: 288px;
     }
 }

@@ -19,7 +19,7 @@
 }
 
 .search-form__title {
-    font-family: 'Roboto Slab';
+    font-family: 'Roboto Slab', serif;
     font-weight: 400;
     margin-top: 0;
     width: 605px;
@@ -29,7 +29,6 @@
 }
 
 .search-form__body {
-    font-family: 'Roboto';
     width: 608px;
     font-size: 18px;
     line-height: 24px;
@@ -50,9 +49,9 @@
     position: absolute;
     text-align: left;
     padding-left: 24px;
-    font-size: 16px;
     border-radius: 100px;
     box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+    font-size: 16px;
 }
 
 .search-form__search_button {
@@ -65,6 +64,7 @@
     margin-left: 465px;
     text-align: center;
     font-size: 18px;
+    font-weight: 500;
     border-radius: 100px;
     box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
 }

@@ -56,6 +56,21 @@
     cursor: pointer;
 }
 
+@media screen and (min-width: 1440px) {
+    .footer {
+        width: 1280px;
+        margin: 0 auto;
+    }
+
+    .footer__copyright {
+        width: 433px;
+    }
+
+    .footer__navigation {
+        padding-left: 320px;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     .footer {
         margin: 24px 40px 21px;

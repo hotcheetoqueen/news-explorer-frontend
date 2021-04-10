@@ -48,6 +48,12 @@
         display: flex;
         justify-content: center;
         gap: 32px;
+        width: 1280px;
+    }
+
+    .news-card__list-title {
+        width: 1280px;
+        margin: 80px auto 0;
     }
     
     .news-card__list-button {

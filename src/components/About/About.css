@@ -20,10 +20,10 @@
 }
 
 .author__content_title {
-    font-family: 'Roboto Slab';
+    font-family: 'Roboto Slab', serif;
+    font-size: 40px;
+    line-height: 46px;
     font-weight: 400;
-    font-size: 30px;
-    line-height: 40px;
 }
 
 .author__content_body {
@@ -54,6 +54,13 @@
 
     .author__content_body {
         margin-top: 16px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .author__content_title {
+        font-size: 30px;
+        line-height: 40px;
     }
 }
 

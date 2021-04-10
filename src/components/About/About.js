@@ -7,7 +7,7 @@ export default function About() {
     <section className='author'>
         <img className='author__image' alt='Headshot of the author' src={authorImage} />
         <div className='author__content'>
-            <h3 className='author__content_title'>About the Author</h3>
+            <h3 className='author__content_title'>About the author</h3>
             <p className='author__content_body'>
                 Hey 👋 Jessica here! I'm a Los Angeles based Product Manager with a keen interest in web development, user experience, and music 🥁
             </p>

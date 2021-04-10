@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Hamburger from '../../images/icons/hamburger-menu.svg';
-import LogInOutIcon from '../../images/nav__logout-icon.png';
+import LogInOutIcon from '../../images/icons/nav__logout-icon.png';
 import './Navigation.css';
 
 export default function Navigation({ loggedIn, theme, openModal, userName, isSavedResults, handleLogOut, handleLogIn, handleLogInClick, handleLogOutClick, modalOpen }) {

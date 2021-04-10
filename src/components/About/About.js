@@ -1,6 +1,6 @@
 import React from 'react';
 import './About.css';
-import authorImage from '../../images/main__author.png';
+import authorImage from '../../images/photos/main__author.png';
 
 export default function About() {
     return (

@@ -3,7 +3,7 @@
     width: 100%;
     border: 0;
     position: relative;
-    background-image: url('../../images/main__background.svg');
+    background-image: url('../../images/photos/main__backgroung.png');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -121,7 +121,7 @@
         height: 536px;
         width: 100%;
         position: relative;
-        background-image: url('../../images/main__background_mobile.png');
+        background-image: url('../../images/photos/main__background_mobile.png');
     }
 
     .search-form__content {

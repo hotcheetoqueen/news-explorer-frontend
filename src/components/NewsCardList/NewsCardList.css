@@ -99,18 +99,7 @@
     }
 }
 
-@media screen and (max-width: 800px) {
-    .news-card__grid {
-        grid-template-columns: repeat(2, 224px);
-        gap: 16px;
-        /* margin: 64px auto 0; */
-        display: flex;
-        flex-wrap: wrap;
-        width: 550px;
-    }
-}
-
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 700px) {
     .news-card__list {
         display: flex;
         flex-direction: column;

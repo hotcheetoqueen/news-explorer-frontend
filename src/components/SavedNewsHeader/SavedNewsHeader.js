@@ -12,7 +12,7 @@ export default function SavedNewsHeader({ userName, handleLogOut }) {
                 <Header handleLogOut={handleLogOut} theme='dark' />
                 <div className='saved-news-header__content'>
                     <h2 className="saved-news-header__title">Saved articles</h2>
-                    <p className="saved-news-header__greeting">Reviewer, you have # saved articles.</p>
+                    <p className="saved-news-header__greeting">Reviewer, you have # saved articles</p>
                     {/* <p className="saved-news-header__greeting">{userName}, you have # saved articles.</p> */}
                     <p className="saved-news-header__keywords">By keywords:
                         <span className="saved-news-header__keywords saved-news-header__keywords_emphasized"> key, words, are, cool</span>

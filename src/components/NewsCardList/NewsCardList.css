@@ -35,6 +35,8 @@
     color: #1A1B22;
     border-radius: 80px;
     margin: 64px auto 80px;
+    font-weight: 500;
+    font-size: 18px;
 }
 
 .news-card__list-button:hover {

@@ -7,7 +7,6 @@
 
 .news-card__image-container {
     height: 272px;
-    background-color: black;
     position: relative;
 }
 
@@ -22,7 +21,6 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
-    font-family: 'Roboto';
 }
 
 .news-card__save {
@@ -50,7 +48,6 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
-    font-family: 'Roboto';
 }
 
 .news-card__save-icon {
@@ -88,7 +85,8 @@
 
 .news-card__date {
     color: #B6BCBF;
-    font-family: 'Source Sans Pro';
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
     font-size: 18px;
     line-height: 24px;
     margin: 0;
@@ -96,7 +94,7 @@
 
 .news-card__title  {
     color: #1A1B22;
-    font-family: 'Roboto Slab';
+    font-family: 'Roboto Slab', serif;
     font-weight: 400;
     font-size: 26px;
     line-height: 30px;
@@ -107,7 +105,6 @@
 
 .news-card__description {
     color: #1A1B22;
-    font-family: 'Roboto';
     font-size: 16px;
     line-height: 18px;
     overflow: hidden; 
@@ -134,7 +131,7 @@
 .news-card__source {
     text-transform: uppercase;
     color: #B6BCBF;
-    font-family: 'Roboto Slab';
+    font-family: 'Roboto Slab', serif;
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;

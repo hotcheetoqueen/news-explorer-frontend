@@ -1,11 +1,11 @@
 import { React, useState, useCallback } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import EmptyState from '../EmptyState/EmptyState';
+import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import Preloader from '../Preloader/Preloader';
 import SavedNews from '../SavedNews/SavedNews';
-// import Preloader from '../Preloader/Preloader';
 import { seedData, seedDataSaved } from '../../seedData/seedData';
 import './App.css';
 
@@ -141,6 +141,9 @@ function App() {
       </Route>
       <Route exact path ='/preloader'>
         <Preloader />
+      </Route>
+      <Route exact path ='/hamburgermenu'>
+        <HamburgerMenu />
       </Route>
       </Router>
     </div>

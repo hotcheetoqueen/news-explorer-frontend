@@ -42,10 +42,11 @@
     flex-direction: column;
     text-align: left;
     padding: 34px 36px 28px 36px;
+    font-size: 14px;
+    line-height: 17px;
 }
 
 .popup__title {
-    font-family: Roboto;
     font-weight: 900;
     font-size: 24px;
     line-height: 28px;
@@ -63,13 +64,20 @@
     border-style: none;
     padding: 0 0 10px;
     border-bottom: 1px solid rgba(0, 0, 0, .5);
-    font-size: 14px;
-    line-height: 17px;
     color: #000;
     opacity: .5;
-    margin-top: 8px;
     margin-bottom: 31px;
+    padding-top: 10px;
+    padding-bottom: 11px;
 }
+
+.popup__input-error {
+    color: #FF0000;
+    font-size: 12px;
+    line-height: 15px;
+    height: 26px;
+    padding-top: 5px;
+  }
 
 .popup__submit {
     width: 360px;
@@ -92,6 +100,7 @@
 .popup__switch-type_success {
     align-self: flex-start;
     margin: 14px 0 0;
+    font-size: 18px;
 }
 
 .popup__switch-type-link {
@@ -126,7 +135,6 @@
         position: fixed;
         margin-top: -220px;
         margin-left: -50vw;
-        /* display: none; */
     }
 
     .popup__form {

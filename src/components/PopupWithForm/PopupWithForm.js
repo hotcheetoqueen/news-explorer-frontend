@@ -45,17 +45,17 @@ export default function PopupWithForm(props) {
                 <form className='popup__form'>
                     <h3 className='popup__title'>{props.modalVersion === 'success' ? 'Registration successfully completed!': `Sign ${props.modalVersion === 'signin' ? 'up' : 'in'}`}</h3>
                     <label className='popup__input-label'>Email</label>
-                    <input className='popup__input popup__input_email' placeholder='Enter email' id='email' name='email'>{props.email}</input>
+                    <input className='popup__input popup__input_email' placeholder='Enter email' id='email' name='email' required>{props.email}</input>
                     <label className='popup__input-label'>Password</label>
-                    <input className='popup__input popup__input_password' placeholder='Enter password' id='password' name='password'>{props.password}</input>
+                    <input className='popup__input popup__input_password' placeholder='Enter password' id='password' name='password' required>{props.password}</input>
                   {props.modalVersion === 'signup' && (
                     <>
                       <label className='popup__input-label'>Username</label>
-                      <input className='popup__input popup__input_username' placeholder='Enter username' id='username' name='username'>{props.username}</input>
+                      <input className='popup__input popup__input_username' placeholder='Enter username' id='username' name='username' required>{props.username}</input>
                     </>
                   )}
                     <button className='popup__submit' type='submit'>Sign {props.modalVersion === 'signin' ? ' up' : ' in'}</button>
-                    <p className={`popup__switch-type ${props.modalVersion === 'success' ? 'popup__switch-type_success' : ''}`}>{props.modalVersion !== 'success' ? 'or ' : ''}<button className='popup__switch-type-link' onClick={props.modalVersion === 'signin' ? props.handleSignUpClick : props.handleSignInClick}>
+                    <p className={`popup__switch-type ${props.modalVersion === 'success' ? 'popup__switch-type_success' : ''}`}>{props.modalVersion !== 'success' ? 'or ' : ''}<button className='popup__switch-type-link' onClick={props.modalVersion === 'signin' ? props.handleSignUpClick : props.handleLogInClick} >
                       Sign {props.modalVersion === 'signin' ? ' in' : ' up'}</button></p>
                 </form>
             </section>

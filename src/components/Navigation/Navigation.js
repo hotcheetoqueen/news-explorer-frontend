@@ -11,7 +11,7 @@ export default function Navigation({ loggedIn, theme, openModal, userName, isSav
                 <img className='navigation__mobile-hamburger' src={Hamburger} alt='menu' />
             </Link>
             <ul className={`navigation navigation__list ${theme ? `navigation_theme_${theme}` : ''}`}>
-                <li className='navigation__list-item'><a className='navigation__list-link' href='/'>Home</a></li>
+                <li className='navigation__list-item navigation__list-item_basic'><a className='navigation__list-link' href='/'>Home</a></li>
                 {/* Add/remove ! before logged in to test opposite state */}
                 {!loggedIn ? (
                     <li className={`navigation__list-item navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
@@ -19,7 +19,7 @@ export default function Navigation({ loggedIn, theme, openModal, userName, isSav
                     </li>
                 ) : (
                     <>
-                        <li className='navigation__list-item'><a className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} href='/saved-news'>Saved articles</a></li>
+                        <li className='navigation__list-item navigation__list-item_basic'><a className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} href='/saved-news'>Saved articles</a></li>
                         <li className={`navigation__list-item navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
                             <Link className='navigation__name navigation__list-link' onClick={handleLogOutClick} to='/'>Tester
                                 <img className='navigation__list-item navigation__list-item_primary-icon' src={LogInOutIcon} alt='Logout'></img>

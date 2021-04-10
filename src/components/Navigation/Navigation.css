@@ -20,6 +20,12 @@
     cursor: pointer;
 }
 
+.navigation__list-item_basic {
+    border-bottom: 3px solid #FFF;
+    padding-top: 3px;
+    padding-bottom: 23px; 
+}
+
 .navigation__list-item_primary {
     width: 176px;
     height: 24px;

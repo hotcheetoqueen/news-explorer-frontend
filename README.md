@@ -1,14 +1,17 @@
 # About this project
 
-This React frontend will be connected with the MongoDB & Express api repo found (here)[https://github.com/hotcheetoqueen/news-explorer-api].
+This React frontend will be connected with the MongoDB & Express api repo found [here](https://github.com/hotcheetoqueen/news-explorer-api).
 
-## How to test states & logic that will not be implemented until Stage-3
+<br />
+
+## How to test component states before Stage-3
 You will find a "Test Routes" comment in `App.js` with routes for the preloader, empty state, and popups.
-You can test loggedIn in `Header.js` by removing/adding the `!` before the `loggedIn` statement.
+You can test loggedIn in `Navigation.js` by removing/adding the `!` before the `loggedIn` statement.
 
+<br />
+<br />
 
-
---------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
 
 # Getting Started with Create React App
 

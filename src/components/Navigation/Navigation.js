@@ -6,9 +6,9 @@ import './Navigation.css';
 
 export default function Navigation({ loggedIn, theme, openModal, userName, isSavedResults, handleLogOut, handleLogIn, handleLogInClick, handleLogOutClick, modalOpen }) {
     return(
-        <section className='navigation'>
-            <Link className={`navigation__mobile-menu ${theme ? `navigation_theme_${theme}` : ''}`} onClick={handleLogOutClick} to='/'>
-                <img className='navigation__mobile-hamburger' src={Hamburger} alt='menu' />
+        <section className={`navigation ${theme ? `navigation_theme_${theme}` : ''}`}>
+            <Link className={`navigation navigation__mobile-menu ${theme ? `navigation_theme_${theme}` : ''}`} to='/'>
+                <img className={`navtigation navigation__mobile-hamburger ${theme ? `navigation_theme_${theme}` : ''}`} src={Hamburger} alt='menu' />
             </Link>
             <ul className={`navigation navigation__list ${theme ? `navigation_theme_${theme}` : ''}`}>
                 <li className='navigation__list-item navigation__list-item_basic'><a className='navigation__list-link' href='/'>Home</a></li>
@@ -21,7 +21,7 @@ export default function Navigation({ loggedIn, theme, openModal, userName, isSav
                     <>
                         <li className='navigation__list-item navigation__list-item_basic'><a className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} href='/saved-news'>Saved articles</a></li>
                         <li className={`navigation__list-item navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
-                            <Link className='navigation__name navigation__list-link' onClick={handleLogOutClick} to='/'>Tester
+                            <Link className={`navigation__name navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} onClick={handleLogOutClick} to='/'>Tester
                                 <img className='navigation__list-item navigation__list-item_primary-icon' src={LogInOutIcon} alt='Logout'></img>
                             </Link>
                         </li>

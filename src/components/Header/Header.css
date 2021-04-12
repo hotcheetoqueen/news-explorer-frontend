@@ -9,7 +9,7 @@
     height: 80px;
 }
 
-.header .header_theme_dark {
+.header_theme_dark .header {
     border-bottom: #1A1B22;
 }
 
@@ -23,7 +23,7 @@
     width: 200px;
 }
 
-.header__logo .header__logo_theme_dark {
+.header_theme_dark .header__logo {
     color: #1A1B22;
 }
 
@@ -31,7 +31,7 @@
     opacity: .8;
 }
 
-.header__logo-link {
+.header_theme_dark .header__logo-link {
     text-decoration: none;
     color: white;
 }

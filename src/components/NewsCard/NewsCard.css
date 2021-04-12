@@ -48,6 +48,12 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
+    display: none;
+}
+
+.news-card__save-helper-text:hover + .news-card__save {
+    display: block;
+    color: red;
 }
 
 .news-card__save-icon {

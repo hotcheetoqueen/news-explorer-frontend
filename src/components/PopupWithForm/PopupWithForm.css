@@ -24,7 +24,7 @@
 
 .popup__container {
     width: 430px;
-    height: 380px;
+    /* height: 380px; */
     background: #FFF;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
     border-radius: 16px;
@@ -35,6 +35,10 @@
     position: absolute;
     z-index: 2;
     display: none;
+}
+
+.popup__container_signup {
+    height: 458px;
 }
 
 .popup__form {
@@ -70,14 +74,6 @@
     padding-top: 10px;
     padding-bottom: 11px;
 }
-
-.popup__input-error {
-    color: #FF0000;
-    font-size: 12px;
-    line-height: 15px;
-    height: 26px;
-    padding-top: 5px;
-  }
 
 .popup__submit {
     width: 360px;

@@ -121,7 +121,7 @@ function App() {
           isSavedResults={false}
           userName={userName}
         />
-        <PopupWithForm openModal={modalOpen} onClose={closeModal} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} modalVersion={modalVersion} />
+        <PopupWithForm openModal={modalOpen} onClose={closeModal} errors={errors} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} modalVersion={modalVersion} />
       </Route>
       <Route exact path='/saved-news'>
         <SavedNews

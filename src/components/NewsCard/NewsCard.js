@@ -16,23 +16,14 @@ export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveCli
                     )}
                     <div className='news-card__image-container'>
                         <div className='news-card__save-container'>
-                            {!isSavedResults ? (
-                                <button className='news-card__save'
-                                    onClick={() => {
-                                        handleSaveClick(card);
-                                    }}
-                                >
-                                <div className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_saved' : '' }`} src={NewsCardSaveIcon} alt='Save article'></div>
-                            </button>
-                            ) : (
-                            <button className='news-card__save'
-                                onClick={() => {
-                                    handleDeleteClick(card);
-                                }}
-                            >
-                                <img className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_delete' : '' }`} src={NewsCardDeleteIcon} alt='Delete article' />
-                            </button>
-                            )}
+                            {!isSavedResults ?
+                        <button className='news-card__save' onClick={() => handleSaveClick(card)}>
+                            <div className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_saved' : ''}`} src={NewsCardSaveIcon} alt='Save article' />
+                        </button> :
+                        <button className='news-card__save' onClick={() => handleDeleteClick(card)}>
+                            <img className={`${card.isSaved ? ' news-card__save-icon_delete' : ''}`} src={NewsCardDeleteIcon} alt='Delete article' />
+                        </button>
+                            }
                             {isSavedResults && (
                                 <div className='news-card__save-helper-text'>{loggedIn ? 'Remove from saved' : 'Sign in to save articles'}</div>
                             )}

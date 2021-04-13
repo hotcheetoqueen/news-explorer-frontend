@@ -5,10 +5,10 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import SearchForm from '../SearchForm/SearchForm';
 import './Main.css';
 
-export default function Main({ cards, openModal, loggedIn, handleLogin, handleLoginClick, handleLogOut,isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isSavedResults }) {
+export default function Main({ cards, openModal, loggedIn, handleLogin, handleLoginClick, handleLogOut,isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isSavedResults, handleHamburgerClick }) {
     return(
         <>
-            <SearchForm openModal={openModal} />
+            <SearchForm openModal={openModal} isSavedResults={isSavedResults} handleHamburgerClick={handleHamburgerClick} />
             {/* {(cards.length > 0 || isLoading ) && ( */}
                 <NewsCardList cards={cards}
                     isSaved={isSaved}

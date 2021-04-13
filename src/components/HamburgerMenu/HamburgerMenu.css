@@ -74,3 +74,10 @@
     color: #FFF;
     text-decoration: none;
 }
+
+.hamburger-menu_open {
+    display: block;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}

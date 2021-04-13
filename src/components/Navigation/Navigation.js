@@ -5,17 +5,31 @@ import HamburgerDark from '../../images/icons/hamburger-menu_dark.svg';
 import LogInOutIcon from '../../images/icons/nav__logout-icon.png';
 import './Navigation.css';
 
-export default function Navigation({ loggedIn, theme, openModal, userName, isSavedResults, handleLogOut, handleLogIn, handleLogInClick, handleLogOutClick, modalOpen, hamburgerMenuOpen,
-    handleHamburgerClick }) {
+export default function Navigation(props) {
+    const {
+        loggedIn,
+        theme,
+        openModal,
+        userName,
+        isSavedResults,
+        handleLogOut,
+        handleLogIn,
+        handleLogInClick,
+        handleLogOutClick,
+        modalOpen,
+        hamburgerMenuOpen,
+        handleHamburgerClick
+    } = props
+    
     return(
         <section className={`navigation ${theme ? `navigation_theme_${theme}` : ''}`}>
-            <Link className='navigation navigation__mobile-menu' onClick={handleHamburgerClick} hamburgerMenuOpen={true} to='/hamburgermenu'>
+            <div className='navigation navigation__mobile-menu' onClick={handleHamburgerClick} >
                 {!isSavedResults ?
                     <img className='navigation navigation__mobile-hamburger' src={Hamburger} alt='menu' />
                         :
                     <img className='navigation__mobile-hamburger' src={HamburgerDark} alt='menu' />
                 }
-            </Link>
+            </div>
             <ul className={`navigation navigation__list ${theme ? `navigation_theme_${theme}` : ''}`}>
                 <li className='navigation__list-item navigation__list-item_basic'><a className='navigation__list-link' href='/'>Home</a></li>
                 {/* Add/remove ! before logged in to test opposite state */}

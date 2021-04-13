@@ -116,22 +116,13 @@ function App() {
           handleLogOut={handleLogOut}
           handleLogOutClick={handleLogOutClick}
           isSaved={isSaved} 
+          isSavedResults={false}
           handleSaveClick={handleSaveClick}
           handleDeleteClick={handleDeleteClick}
           showMoreCards={showMoreCards}
           userName={userName}
           handleHamburgerClick={handleHamburgerClick}
         />
-        {/* <HamburgerMenu
-          userName={userName}
-          handleSignUp={handleSignUp}
-          loggedIn={loggedIn}
-          handleLogIn={handleLogIn}
-          handleLogInClick={handleLogInClick}
-          handleLogOut={handleLogOut}
-          hamburgerMenuOpen={false}
-          handleHamburgerClick={handleHamburgerClick}
-        /> */}
         <PopupWithForm openModal={modalOpen} onClose={closeModal} errors={errors} handleSignUp={handleSignUp} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} modalVersion={modalVersion} />
       </Route>
       <Route exact path='/saved-news'>
@@ -143,6 +134,8 @@ function App() {
           handleDeleteClick={handleDeleteClick}
           userName={userName}
           handleLogOutClick={handleLogOutClick}
+          isSavedResults={true}
+          handleHamburgerClick={handleHamburgerClick}
         />
       </Route>
       {/* Test Routes!! */}
@@ -152,20 +145,17 @@ function App() {
       <Route exact path='/preloader'>
         <Preloader />
       </Route>
-      <Route exact path='/hamburgermenu'>
         <HamburgerMenu
-          // openModal={modalOpen}
           userName={userName}
-          // modalOpen={modalOpen}
           handleSignUp={handleSignUp}
           loggedIn={loggedIn}
           handleLogIn={handleLogIn}
           handleLogInClick={handleLogInClick}
           handleLogOut={handleLogOut}
           hamburgerMenuOpen={false}
+          hamburgerMenuOpen={hamburgerMenuOpen}
           handleHamburgerClick={handleHamburgerClick}
         />
-      </Route>
       </Router>
     </div>
   );

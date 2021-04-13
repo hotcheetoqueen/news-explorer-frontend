@@ -3,7 +3,7 @@ import validator from 'validator';
 import './PopupWithForm.css';
 
 export default function PopupWithForm(props) {
-
+  const { handleSignUpClick, handleLogInClick, handleSignUp, handleLogIn, modalVersion } = props
 
   function validateForm(email, password, username = null) {
     const errors = {};
@@ -36,13 +36,21 @@ export default function PopupWithForm(props) {
         };
       });
 
+    const getSubmitHandler = useCallback(function () {
+      console.log('modalVersion', props.modalVersion, handleSignUp)
+      const version = props.modalVersion
+      if (version == 'signup') return handleSignUp
+      if (version == 'signin') return handleLogIn
+      if (version == 'success') return () => { }
+    }, [handleSignUp, handleLogIn, modalVersion])
+
     return(
         <>
             <div className={'popup__overlay' + (props.openModal ? ' popup__overlay_visible' : '')}>
             </div>
             <section className={`popup__container` + (props.openModal ? ' popup__container_visible' : '')} >
                 <button className='popup__close' onClick={props.onClose} onKeyDown={ (e) => {if (e.key === 'Enter') { onclose(); }} }></button>
-                <form className='popup__form'>
+                <form className='popup__form' onSubmit={e => { e.preventDefault(); getSubmitHandler()(e) }}>
                     <h3 className='popup__title'>{props.modalVersion === 'success' ? 'Registration successfully completed!': `Sign ${props.modalVersion === 'signup' ? 'up' : 'in'}`}</h3>
                     {props.modalVersion !== 'success' && (
                       <>
@@ -68,10 +76,18 @@ export default function PopupWithForm(props) {
                     </>
                   )}
                     {props.modalVersion !== 'success' && (
-                      <button className='popup__submit' type='submit' handleSignUp={props.handleSignUp}>Sign {props.modalVersion === 'signup' ? ' up' : ' in'}</button>
+                      <>
+                        <button className='popup__submit' type='submit' handleSignUp={props.handleSignUp}>Sign {props.modalVersion === 'signup' ? ' up' : ' in'}</button>
+                        <p className={`popup__switch-type ${props.modalVersion === 'success' ? 'popup__switch-type_success' : ''}`}>or<button className='popup__switch-type-link' onClick={props.modalVersion === 'signin' ? props.handleLogInClick : props.handleSignUpClick} >
+                          Sign {props.modalVersion === 'signup' ? ' in' : ' up'}</button>
+                        </p>
+                      </>
                     )}
-                    <p className={`popup__switch-type ${props.modalVersion === 'success' ? 'popup__switch-type_success' : ''}`}>{props.modalVersion !== 'success' ? 'or ' : ''}<button className='popup__switch-type-link' onClick={props.modalVersion === 'signin' ? props.handleLogInClick : props.handleSignUpClick} >
-                      Sign {props.modalVersion === 'signup' ? ' in' : ' up'}</button></p>
+                    {props.modalVersion === 'success' && (
+                      <p className='popup__switch-type popup__switch-type_success'>
+                        <button className='popup__switch-type-link' onClick={props.handleLogInClick}>Sign in</button>
+                      </p>
+                    )}
                 </form>
             </section>
         </>

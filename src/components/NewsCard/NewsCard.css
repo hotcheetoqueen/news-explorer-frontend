@@ -55,7 +55,6 @@
 
 .news-card__save:hover + .news-card__save-helper-text {
     display: block;
-    color: red;
     z-index: 2;
 }
 

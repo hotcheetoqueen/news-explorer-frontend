@@ -78,14 +78,16 @@ export default function PopupWithForm(props) {
                     {props.modalVersion !== 'success' && (
                       <>
                         <button className='popup__submit' type='submit' handleSignUp={props.handleSignUp}>Sign {props.modalVersion === 'signup' ? ' up' : ' in'}</button>
-                        <p className={`popup__switch-type ${props.modalVersion === 'success' ? 'popup__switch-type_success' : ''}`}>or<button className='popup__switch-type-link' onClick={props.modalVersion === 'signin' ? props.handleLogInClick : props.handleSignUpClick} >
-                          Sign {props.modalVersion === 'signup' ? ' in' : ' up'}</button>
+                        <p className={`popup__switch-type ${props.modalVersion === 'success' ? 'popup__switch-type_success' : ''}`}>or
+                          <button className='popup__switch-type-link' type='text'  onClick={props.modalVersion === 'signin' ? props.handleSignUpClick : props.handleLogInClick} >
+                            Sign {props.modalVersion === 'signup' ? ' in' : ' up'}
+                          </button>
                         </p>
                       </>
                     )}
                     {props.modalVersion === 'success' && (
                       <p className='popup__switch-type popup__switch-type_success'>
-                        <button className='popup__switch-type-link' onClick={props.handleLogInClick}>Sign in</button>
+                        <button className='popup__switch-type-link' type='text' onClick={props.handleLogInClick}>Sign in</button>
                       </p>
                     )}
                 </form>

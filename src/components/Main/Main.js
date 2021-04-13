@@ -14,6 +14,8 @@ export default function Main({ cards, openModal, loggedIn, handleLogin, handleLo
                     isSaved={isSaved}
                     handleSaveClick={handleSaveClick}
                     isSavedResults={isSavedResults}
+                    handleDeleteClick={handleDeleteClick}
+                    isSavedResults={false}
                     // isLoading={isLoading}
                 />
             {/* )} */}

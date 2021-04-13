@@ -3,6 +3,7 @@
     height: 576px;
     border-radius: 8px;
     overflow: hidden;
+    position: relative;
 }
 
 .news-card__image-container {
@@ -21,6 +22,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 24px;
+    z-index: 2;
 }
 
 .news-card__save {
@@ -51,9 +53,10 @@
     display: none;
 }
 
-.news-card__save-helper-text:hover + .news-card__save {
+.news-card__save:hover + .news-card__save-helper-text {
     display: block;
     color: red;
+    z-index: 2;
 }
 
 .news-card__save-icon {

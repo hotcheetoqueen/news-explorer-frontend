@@ -3,8 +3,8 @@ import NewsCardSaveIcon from '../../images/bookmarks/news-card__save-icon.svg';
 import NewsCardDeleteIcon from '../../images/bookmarks/news-card__delete-icon.svg';
 import './NewsCard.css';
 
-export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveClick, handleDeleteClick }) {
-    return(
+export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveClick = () => { }, handleDeleteClick = () => { } }) {
+    return (
         <>
             {card && (
                 <li className='news-card'>

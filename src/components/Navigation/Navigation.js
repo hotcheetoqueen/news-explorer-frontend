@@ -9,7 +9,7 @@ export default function Navigation({ loggedIn, theme, openModal, userName, isSav
     handleHamburgerClick }) {
     return(
         <section className={`navigation ${theme ? `navigation_theme_${theme}` : ''}`}>
-            <Link className='navigation navigation__mobile-menu' onClick={handleHamburgerClick} hamburgerMenuOpen={true}  to='/hamburgermenu'>
+            <Link className='navigation navigation__mobile-menu' onClick={handleHamburgerClick} hamburgerMenuOpen={true} to='/hamburgermenu'>
                 {!isSavedResults ?
                     <img className='navigation navigation__mobile-hamburger' src={Hamburger} alt='menu' />
                         :

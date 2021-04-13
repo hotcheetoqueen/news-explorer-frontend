@@ -35,11 +35,17 @@
 
 .navigation__list-item_primary {
     max-width: 176px;
-    height: 24px;
+    height: 40px;
     border: 1px solid #FFF;
     border-radius: 100px;
-    padding: 12px 12px 8px 12px;
+    padding-top: 0;
+    padding-bottom: 0;
     margin-top: -11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 20px;
+    padding-left: 20px;
 }
 
 .navigation_theme_dark .navigation__list-item_primary {

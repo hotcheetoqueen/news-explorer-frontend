@@ -16,9 +16,8 @@ function App() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalVersion, setModalVersion] = useState('');
   const [savedCards, setSavedCards] = useState(seedDataSaved);
-  const [navLinks, setNavLinks] = useState(false);
+  const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
   const [userName, setUserName] = useState('Tester');
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
@@ -46,16 +45,18 @@ function App() {
     }
   };
 
+  const handleHamburgerClick = () => {
+    setHamburgerMenuOpen(true);
+  }
+
   const handleLogInClick = () => {
     openModal();
-    // if (windowWidth <= 767) {
-    //   setNavLinks(true);
-    // }
     setModalVersion('signin');
   };
 
   const handleLogIn = () => {
     setLoggedIn(true);
+    setModalOpen(false);
   };
 
 
@@ -118,10 +119,20 @@ function App() {
           handleSaveClick={handleSaveClick}
           handleDeleteClick={handleDeleteClick}
           showMoreCards={showMoreCards}
-          isSavedResults={false}
           userName={userName}
+          handleHamburgerClick={handleHamburgerClick}
         />
-        <PopupWithForm openModal={modalOpen} onClose={closeModal} errors={errors} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} modalVersion={modalVersion} />
+        {/* <HamburgerMenu
+          userName={userName}
+          handleSignUp={handleSignUp}
+          loggedIn={loggedIn}
+          handleLogIn={handleLogIn}
+          handleLogInClick={handleLogInClick}
+          handleLogOut={handleLogOut}
+          hamburgerMenuOpen={false}
+          handleHamburgerClick={handleHamburgerClick}
+        /> */}
+        <PopupWithForm openModal={modalOpen} onClose={closeModal} errors={errors} handleSignUp={handleSignUp} handleSignUpClick={handleSignUpClick} handleLogInClick={handleLogInClick} handleLogIn={handleLogIn} modalVersion={modalVersion} />
       </Route>
       <Route exact path='/saved-news'>
         <SavedNews
@@ -130,7 +141,6 @@ function App() {
           isSaved={isSaved}
           handleSaveClick={handleSaveClick}
           handleDeleteClick={handleDeleteClick}
-          isSavedResults={true}
           userName={userName}
           handleLogOutClick={handleLogOutClick}
         />
@@ -139,11 +149,22 @@ function App() {
       <Route exact path='/emptystate'>
         <EmptyState />
       </Route>
-      <Route exact path ='/preloader'>
+      <Route exact path='/preloader'>
         <Preloader />
       </Route>
-      <Route exact path ='/hamburgermenu'>
-        <HamburgerMenu />
+      <Route exact path='/hamburgermenu'>
+        <HamburgerMenu
+          // openModal={modalOpen}
+          userName={userName}
+          // modalOpen={modalOpen}
+          handleSignUp={handleSignUp}
+          loggedIn={loggedIn}
+          handleLogIn={handleLogIn}
+          handleLogInClick={handleLogInClick}
+          handleLogOut={handleLogOut}
+          hamburgerMenuOpen={false}
+          handleHamburgerClick={handleHamburgerClick}
+        />
       </Route>
       </Router>
     </div>

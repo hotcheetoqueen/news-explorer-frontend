@@ -22,8 +22,7 @@
 
 .navigation__list-item_basic {
     border-bottom: 3px solid #FFF;
-    padding-top: 3px;
-    padding-bottom: 23px;
+    padding: 3px 12px 23px;
     /* width: 68px; */
 }
 
@@ -35,12 +34,11 @@
 }
 
 .navigation__list-item_primary {
-    width: 176px;
+    max-width: 176px;
     height: 24px;
     border: 1px solid #FFF;
     border-radius: 100px;
-    padding-top: 12px;
-    padding-bottom: 8px;
+    padding: 12px 12px 8px 12px;
     margin-top: -11px;
 }
 
@@ -83,7 +81,7 @@
     opacity: .8;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1460px) {
     .navigation__list {
         padding-left: 256px;
     }

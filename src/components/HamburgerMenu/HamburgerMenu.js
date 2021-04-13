@@ -12,7 +12,7 @@ export default function HamburgerMenu(props) {
         };
     });
 
-    return(
+    return (
         <section className='hamburger-menu'>
             <div className='hamburger-menu__nav'>
                 <h1 className='hamburger-menu__logo'>NewsExplorer</h1>

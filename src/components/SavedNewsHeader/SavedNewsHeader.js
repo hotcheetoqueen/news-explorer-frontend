@@ -2,14 +2,14 @@ import React from 'react';
 import Header from '../Header/Header';
 import './SavedNewsHeader.css';
 
-export default function SavedNewsHeader({ userName, handleLogOut, handleHamburgerClick }) {
+export default function SavedNewsHeader({ userName, handleLogOut, handleHamburgerClick, isSavedResults }) {
     // keyword lists/ranking and number of saved articles, as well as loggedIn variables such as userName to implemented in step 3
     // const keywords = listKeywords(cards);
 
     return(
         <>
             <section className='saved-news-header' style={{color:"#1A1B22", backgroundColor:"white"}}>
-                <Header handleLogOut={handleLogOut} theme='dark' handleHamburgerClick={handleHamburgerClick} />
+                <Header handleLogOut={handleLogOut} theme='dark' handleHamburgerClick={handleHamburgerClick} isSavedResults={isSavedResults} />
                 <div className='saved-news-header__content'>
                     <h2 className="saved-news-header__title">Saved articles</h2>
                     <p className="saved-news-header__greeting">Reviewer, you have # saved articles</p>

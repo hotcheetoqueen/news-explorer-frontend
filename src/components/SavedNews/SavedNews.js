@@ -8,7 +8,7 @@ export default function SavedNews({ cards, loggedIn, handleDeleteClick, handleHa
     return(
         <>
             <SavedNewsHeader handleHamburgerClick={handleHamburgerClick} />
-            <NewsCardList cards={cards} isSavedResults={true} handleDeleteClick={handleDeleteClick} />
+            <NewsCardList cards={cards} isSavedResults={true} handleDeleteClick={handleDeleteClick} isSavedResults={true} />
             <Footer />
         </>
     )

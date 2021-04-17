@@ -53,6 +53,10 @@
     display: none;
 }
 
+.news-card__save-helper-text_hidden {
+    display: none;
+}
+
 .news-card__save:hover + .news-card__save-helper-text {
     display: block;
     z-index: 2;

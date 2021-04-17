@@ -6,7 +6,7 @@ This React frontend will be connected with the MongoDB & Express api repo found 
 
 ## How to test component states before Stage-3
 You will find a "Test Routes" comment in `App.js` with routes for the preloader, empty state, and popups.
-You can test loggedIn in `Navigation.js` by removing/adding the `!` before the `loggedIn` statement.
+You can test loggedIn in `Navigation.js` as well as in `NewsCard.js` by removing/adding the `!` before the `loggedIn` statement. See comment in each for exact spot in code.
 
 <br />
 <br />

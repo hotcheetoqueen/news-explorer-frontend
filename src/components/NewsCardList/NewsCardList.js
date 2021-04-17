@@ -31,8 +31,6 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                             handleDeleteClick={handleDeleteClick}
                                         />
                                 ))}
-                                    <NewsCard
-                                    />
                                 </ul>
                                 {!allCards ? (
                                     <button className='news-card__list-button' onClick={showMoreCards}>Show more</button>

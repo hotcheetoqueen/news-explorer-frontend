@@ -49,6 +49,10 @@ function App() {
     setHamburgerMenuOpen(true);
   }
 
+  const handleHamburgerClose = () => {
+    setHamburgerMenuOpen(false);
+  }
+
   const handleLogInClick = () => {
     openModal();
     setModalVersion('signin');
@@ -152,9 +156,9 @@ function App() {
           handleLogIn={handleLogIn}
           handleLogInClick={handleLogInClick}
           handleLogOut={handleLogOut}
-          hamburgerMenuOpen={false}
           hamburgerMenuOpen={hamburgerMenuOpen}
           handleHamburgerClick={handleHamburgerClick}
+          onClose={handleHamburgerClose}
         />
       </Router>
     </div>

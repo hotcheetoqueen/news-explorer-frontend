@@ -5,8 +5,6 @@ import LogInOutIcon from '../../images/icons/nav__logout-icon.png';
 import './HamburgerMenu.css';
 
 export default function HamburgerMenu(props) {
-    const {hamburgerMenuOpen} = props;
-
     useEffect(() => {
         document.addEventListener('keydown', props.onClose);
         return () => {
@@ -15,7 +13,7 @@ export default function HamburgerMenu(props) {
     });
 
     return (
-        <section className={`hamburger-menu ${hamburgerMenuOpen ? 'hamburger-menu_open' : ""}`}>
+        <section className={`hamburger-menu ${props.hamburgerMenuOpen ? 'hamburger-menu_open' : ""}`}>
             <div className='hamburger-menu__nav'>
                 <h1 className='hamburger-menu__logo'>NewsExplorer</h1>
                 <button className='hamburger-menu__button' onClick={props.onClose} >

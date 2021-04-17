@@ -36,6 +36,7 @@ function App() {
 
   const openModal = () => {
     setModalOpen(true);
+    setHamburgerMenuOpen(false);
   };
 
   const closeModal = (e) => {
@@ -158,6 +159,8 @@ function App() {
             handleLogIn={handleLogIn}
             handleLogInClick={handleLogInClick}
             handleLogOut={handleLogOut}
+            openModal={openModal}
+            modalOpen={modalOpen}
             hamburgerMenuOpen={hamburgerMenuOpen}
             handleHamburgerClick={handleHamburgerClick}
             onClose={handleHamburgerClose}

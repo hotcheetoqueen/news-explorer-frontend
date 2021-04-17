@@ -38,7 +38,7 @@ export default function Navigation(props) {
                         <li className={`navigation__list-item navigation__list-item_large ${isSavedResults && `navigation__list-item_current`}`}><a className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} href='/saved-news'>Saved articles</a></li>
                         <li className={`navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
                             <Link className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} onClick={handleLogOutClick} to='/'>Tester
-                                <img className='navigation__list-item navigation__list-item_primary-icon' src={LogInOutIcon} alt='Logout'></img>
+                                <img className='navigation__list-item_primary-icon' src={LogInOutIcon} alt='Logout'></img>
                             </Link>
                         </li>
                     </>

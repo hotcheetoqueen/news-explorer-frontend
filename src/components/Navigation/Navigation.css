@@ -44,6 +44,7 @@
     margin-right: 42px;
     padding: 0 18px;
     width: 100%;
+    min-width: 100px;
 }
 
 .navigation_theme_dark .navigation__list-item_primary {
@@ -53,6 +54,7 @@
 
 .navigation__list-item_primary-icon {
     margin: 0 0 0 20px;
+    padding: 0;
 }
 
 .navigation__list-link {
@@ -87,7 +89,7 @@
     }
 
     .navigation__list-item {
-        padding-left: 0;
+        padding-left: 20px;
     }
 }
 

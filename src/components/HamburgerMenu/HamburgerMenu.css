@@ -6,6 +6,7 @@
     width: 100%;
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
+    display: none;
 }
 
 .hamburger-menu__nav {

@@ -1,6 +1,6 @@
 import React from 'react';
 import NewsCard from '../NewsCard/NewsCard';
-import { seedData, seedDataSaved } from '../../seedData/seedData';
+import { seedData } from '../../seedData/seedData';
 import './NewsCardList.css';
 
 export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards }) {

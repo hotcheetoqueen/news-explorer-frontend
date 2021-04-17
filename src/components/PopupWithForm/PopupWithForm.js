@@ -1,9 +1,9 @@
-import { React, useEffect, useState, useRef, useCallback } from 'react';
+import { React, useEffect, useCallback } from 'react';
 import validator from 'validator';
 import './PopupWithForm.css';
 
 export default function PopupWithForm(props) {
-  const { handleSignUpClick, handleLogInClick, handleSignUp, handleLogIn, modalVersion } = props
+  const { handleSignUp, handleLogIn, modalVersion } = props
 
   function validateForm(email, password, username = null) {
     const errors = {};
@@ -39,10 +39,10 @@ export default function PopupWithForm(props) {
     const getSubmitHandler = useCallback(function () {
       console.log('modalVersion', props.modalVersion, handleSignUp)
       const version = props.modalVersion
-      if (version == 'signup') return handleSignUp
-      if (version == 'signin') return handleLogIn
-      if (version == 'success') return () => { }
-    }, [handleSignUp, handleLogIn, modalVersion])
+      if (version === 'signup') return handleSignUp
+      if (version === 'signin') return handleLogIn
+      if (version === 'success') return () => { }
+    }, [handleSignUp, handleLogIn, props.modalVersion])
 
     return(
         <>

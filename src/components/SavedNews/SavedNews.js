@@ -7,8 +7,8 @@ import './SavedNews.css';
 export default function SavedNews({ cards, loggedIn, handleDeleteClick, handleHamburgerClick }) {
     return(
         <>
-            <SavedNewsHeader handleHamburgerClick={handleHamburgerClick} />
-            <NewsCardList cards={cards} isSavedResults={true} handleDeleteClick={handleDeleteClick} isSavedResults={true} />
+            <SavedNewsHeader handleHamburgerClick={handleHamburgerClick} loggedIn={loggedIn} />
+            <NewsCardList cards={cards} isSavedResults={true} handleDeleteClick={handleDeleteClick} />
             <Footer />
         </>
     )

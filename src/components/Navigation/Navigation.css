@@ -32,18 +32,15 @@
 }
 
 .navigation__list-item_primary {
-    max-width: 176px;
     height: 40px;
     border: 1px solid #FFF;
     border-radius: 100px;
-    padding-top: 0;
-    padding-bottom: 0;
     margin-top: -11px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-right: 20px;
-    padding-left: 20px;
+    margin-right: 42px;
+    padding: 0 18px;
 }
 
 .navigation_theme_dark .navigation__list-item_primary {
@@ -52,7 +49,7 @@
 }
 
 .navigation__list-item_primary-icon {
-    margin-left: 20px;
+    margin: 0 0 0 20px;
 }
 
 .navigation__list-link {

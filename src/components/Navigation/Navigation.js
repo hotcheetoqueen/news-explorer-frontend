@@ -27,7 +27,7 @@ export default function Navigation(props) {
                 <img className='navigation navigation__mobile-hamburger' src={isSavedResults ? HamburgerDark : Hamburger} alt='menu' />
             </div>
             <ul className={`navigation navigation__list ${theme ? `navigation_theme_${theme}` : ''}`}>
-                <li className='navigation__list-item navigation__list-item_basic'><a className='navigation__list-link' href='/'>Home</a></li>
+                <li className={`navigation__list-item ${!isSavedResults && `navigation__list-item_current`}`}><a className='navigation__list-link' href='/'>Home</a></li>
                 {/* Add/remove ! before logged in to test opposite state */}
                 {loggedIn ? (
                     <li className={`navigation__list-item navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
@@ -35,7 +35,7 @@ export default function Navigation(props) {
                     </li>
                 ) : (
                     <>
-                        <li className='navigation__list-item navigation__list-item_basic'><a className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} href='/saved-news'>Saved articles</a></li>
+                        <li className={`navigation__list-item ${isSavedResults && `navigation__list-item_current`}`}><a className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} href='/saved-news'>Saved articles</a></li>
                         <li className={`navigation__list-item navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
                             <Link className={`navigation__name navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} onClick={handleLogOutClick} to='/'>Tester
                                 <img className='navigation__list-item navigation__list-item_primary-icon' src={LogInOutIcon} alt='Logout'></img>

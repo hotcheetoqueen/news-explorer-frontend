@@ -20,17 +20,15 @@
     cursor: pointer;
 }
 
-.navigation__list-item_basic {
+.navigation__list-item_current {
     border-bottom: 3px solid #FFF;
     padding: 3px 12px 23px;
-    /* width: 68px; */
 }
 
-.navigation_theme_dark .navigation__list-item_basic {
+.navigation_theme_dark .navigation__list-item_current {
     border-bottom: 3px solid #1A1B22;
     padding-top: 3px;
     padding-bottom: 23px;
-    /* width: 178px; (Make responsive if you add) */
 }
 
 .navigation__list-item_primary {

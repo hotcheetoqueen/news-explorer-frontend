@@ -71,10 +71,6 @@
     color: white;
 }
 
-.navigation_theme_dark .navigation__mobile-menu {
-    color: #1A1B22;
-}
-
 .navigation_theme_dark .navigation__list-link {
     color: #1A1B22;
 }
@@ -121,9 +117,5 @@
         height: 24px;
         margin: 0 16px 0 0;
         display: block;
-    }
-
-    .navigation_theme_dark .navigation__mobile-hamburger {
-        color: #1A1B22;
     }
 }

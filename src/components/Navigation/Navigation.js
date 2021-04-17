@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import Hamburger from '../../images/icons/hamburger-menu.svg';
 import HamburgerDark from '../../images/icons/hamburger-menu_dark.svg';
@@ -20,15 +20,11 @@ export default function Navigation(props) {
         hamburgerMenuOpen,
         handleHamburgerClick
     } = props
-    
+
     return(
         <section className={`navigation ${theme ? `navigation_theme_${theme}` : ''}`}>
             <div className='navigation navigation__mobile-menu' onClick={handleHamburgerClick} >
-                {!isSavedResults ?
-                    <img className='navigation navigation__mobile-hamburger' src={Hamburger} alt='menu' />
-                        :
-                    <img className='navigation__mobile-hamburger' src={HamburgerDark} alt='menu' />
-                }
+                <img className='navigation navigation__mobile-hamburger' src={isSavedResults ? HamburgerDark : Hamburger} alt='menu' />
             </div>
             <ul className={`navigation navigation__list ${theme ? `navigation_theme_${theme}` : ''}`}>
                 <li className='navigation__list-item navigation__list-item_basic'><a className='navigation__list-link' href='/'>Home</a></li>

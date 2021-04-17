@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CloseIcon from '../../images/icons/popup-close.png'
-import LogInOutIcon from '../../images/icons/nav__logout-icon.png';
+import LogOutIcon from '../../images/icons/nav__logout-icon.png';
 import './HamburgerMenu.css';
 
 export default function HamburgerMenu(props) {
@@ -32,7 +32,7 @@ export default function HamburgerMenu(props) {
                         <li className='hamburger-menu__list-item hamburger-menu__list-item_basic'><a className='hamburger-menu__list-link' href='/saved-news'>Saved articles</a></li>
                         <li className='hamburger-menu__list-item hamburger-menu__list-item_primary'>
                             <Link className='hamburger-menu__list-link' onClick={props.handleLogOutClick} to='/'>Tester
-                                <img className='hamburger-menu__list-item hamburger-menu__list-item_primary-icon' src={LogInOutIcon} alt='Logout'></img>
+                                <img className='hamburger-menu__list-item hamburger-menu__list-item_primary-icon' src={LogOutIcon} alt='Logout'></img>
                             </Link>
                         </li>
                     </>

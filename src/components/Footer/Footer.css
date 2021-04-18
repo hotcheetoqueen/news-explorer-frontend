@@ -19,15 +19,16 @@
 
 .footer__navigation-item {
     font-size: 18px;
-    margin-left: 45px;
+    margin-left: 0;
 }
 
 .footer__navigation_stacked {
     display: flex;
+    width: 300px;
 }
 
-.footer__navigation-item:nth-child(2) {
-    width: 192px;
+.footer__navigation-item-link:nth-child(1) {
+    width: 400px;
 }
 
 .footer__navigation-item:last-child {
@@ -136,6 +137,7 @@
         padding-left: 16px;
         padding-right: 0;
         max-width: 100%;
+        margin: 0 auto;
     }
 
     .footer__navigation-item {

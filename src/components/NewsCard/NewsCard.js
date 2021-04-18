@@ -29,7 +29,7 @@ export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveCli
                             )}
                         {/* Add/remove ! before logged in to test opposite state */}
                             {!isSavedResults && (
-                                <div className={`${!loggedIn ? 'news-card__save-helper-text' : 'news-card__save-helper-text_hidden'}`} >Sign in to save articles</div>
+                                <div className={`${loggedIn ? 'news-card__save-helper-text' : 'news-card__save-helper-text_hidden'}`} >Sign in to save articles</div>
                             )}
                         </div>
                         <img className='news-card__photo' src='https://images.unsplash.com/photo-1612392062631-94dd858cba88?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' alt='News article subject' />

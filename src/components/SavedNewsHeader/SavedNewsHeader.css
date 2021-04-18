@@ -58,7 +58,7 @@
     }
 }
 
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 480px) {
     .saved-news-header {
         height: 302px;
         margin: 0;

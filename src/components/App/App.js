@@ -1,13 +1,18 @@
 import { React, useState, useCallback } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import EmptyState from '../EmptyState/EmptyState';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import Preloader from '../Preloader/Preloader';
 import SavedNews from '../SavedNews/SavedNews';
+
 import UserContext from '../../contexts/UserContext';
+import mainApi from '../../utils/MainApi';
+import newsApi from '../../utils/NewsApi';
 import { seedData, seedDataSaved } from '../../seedData/seedData';
+
 import './App.css';
 
 function App() {
@@ -18,6 +23,7 @@ function App() {
   const [modalVersion, setModalVersion] = useState('');
   const [savedCards, setSavedCards] = useState(seedDataSaved);
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
+  const [user, setUser] = useState({});
   const [userName, setUserName] = useState('Tester');
 
   const [values, setValues] = useState({});
@@ -60,9 +66,14 @@ function App() {
     setModalVersion('signin');
   };
 
-  const handleLogIn = () => {
-    setLoggedIn(true);
-    setModalOpen(false);
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    mainApi.signin(values.email, values.password)
+      .then((data) => {
+        setLoggedIn(true);
+        setModalOpen(false);
+      })
+      .catch();
   };
 
 
@@ -71,8 +82,13 @@ function App() {
     setModalVersion('signup');
   }
 
-  const handleSignUp = () => {
-    setModalVersion('success');
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    mainApi.signup(values.email, values.password, values.username)
+      .then((data) => {
+        setModalVersion('success');
+      })
+      .catch();
   }
 
   const handleLogOutClick = () => {

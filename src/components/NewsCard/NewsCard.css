@@ -1,0 +1,314 @@
+.news-card {
+    width: 400px;
+    height: 576px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.news-card__image-container {
+    height: 272px;
+    position: relative;
+}
+
+.news-card__keyword {
+    max-height: 40px;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    border-radius: 10px;
+    padding: 8px 22px;
+    background-color: #FFF;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    z-index: 2;
+}
+
+.news-card__save {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 0;
+    background-color: #FFF;
+}
+
+.news-card__save-helper-text {
+    width: 182px;
+    max-height: 40px;
+    position: absolute;
+    top: 24px;
+    left: 149px;
+    background-color: #FFF;
+    box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
+    border-radius: 10px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 24px;
+    display: none;
+}
+
+.news-card__save-helper-text_hidden {
+    display: none;
+}
+
+.news-card__save:hover + .news-card__save-helper-text {
+    display: block;
+    z-index: 2;
+}
+
+.news-card__save-icon {
+    background-image: url('../../images/bookmarks/news-card__save-icon.svg');
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 19px;
+    margin: auto;
+}
+
+.news-card__save-icon:hover {
+    background-image: url('../../images/bookmarks/news-card__save-icon_hover.svg');
+    cursor: pointer;
+}
+
+.news-card__save-icon_saved {
+    background-image: url('../../images/bookmarks/news-card__save-icon_saved.svg');
+}
+
+.news-card__save-icon_saved:hover {
+    background-image: url('../../images/bookmarks/news-card__save-icon_saved.svg');
+    opacity: .8;
+    cursor: pointer;
+}
+
+.news-card__info-container {
+    text-align: left;
+    background-color: #FFF;
+    padding: 20px 24px 24px 22px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    overflow: hidden;
+    height: 304px;
+}
+
+.news-card__date {
+    color: #B6BCBF;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+}
+
+.news-card__title  {
+    color: #1A1B22;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+    margin-top: 12px;
+    margin-bottom: 16px;
+    height: 60px;
+}
+
+.news-card__description {
+    color: #1A1B22;
+    font-size: 16px;
+    line-height: 22px;
+    overflow: hidden; 
+    position: relative;
+}
+
+.news-card__description:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.news-card__description:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: white;
+}
+
+.news-card__source {
+    text-transform: uppercase;
+    color: #B6BCBF;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.news-card__photo {
+    height: 272px;
+}
+
+@media screen and (max-width: 1399px) {
+    .news-card {
+        width: 340px;
+    }
+
+    .news-card__title {
+        height: 72px;
+        font-size: 22px;
+        line-height: 24px;
+        margin-bottom: 0;
+    }
+
+    .news-card__description {
+        margin-top: 4px;
+    }
+}
+
+@media screen and (max-width: 1270px) {
+    .news-card {
+        width: 280px;
+        height: 500px;
+        margin: 0 auto;
+    }
+
+    .news-card__description {
+        height: 110px;
+        line-height: 22px;
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+
+    .news-card__image-container {
+        height: 170px;
+    }
+
+    .news-card__photo {
+        width: 280px;
+        height: 170px; 
+    }
+
+    .news-card__save-helper-text {
+        width: 120px;
+        max-height: 20px;
+        left: 90px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 14px;
+    } 
+}
+
+@media screen and (max-width: 950px) {
+    .news-card {
+        width: 224px;
+        height: 420px;
+    }
+
+    .news-card__title {
+        height: 72px;
+        font-size: 22px;
+        line-height: 24px;
+        margin-bottom: 0;
+    }
+
+    .news-card__description {
+        height: 88px;
+        line-height: 22px;
+        margin-top: 8px;
+        margin-bottom: 0;
+    }
+
+    .news-card__info-container {
+        height: 270px;
+        padding: 16px 16px 16px 12px;
+    }
+
+    .news-card__image-container {
+        height: 150px;
+    }
+
+    .news-card__photo {
+        width: 224px;
+        height: 150px; 
+    }
+
+    .news-card__source {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-top: 12px;
+    }
+
+    .news-card__save-helper-text {
+        left: 30px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .news-card {
+        width: 288px;
+        margin: 0 auto 10px;
+        height: 446px;
+    }
+
+    .news-card__title {
+        height: 48px;
+        margin-top: 10px;
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .news-card__title:before {
+        content: '...';
+        position: absolute;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .news-card__title:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        width: 1em;
+        height: 1em;
+        margin-top: 0.2em;
+        background: white;
+    }
+
+    .news-card__image-container {
+        height: 196px;
+    }
+
+    .news-card__photo {
+        width: 288px;
+        height: 196px;
+        margin: 0;
+    }
+
+    .news-card__info-container {
+        height: 270px;
+        padding: 16px 16px;
+    }
+
+    .news-card__source {
+        margin-top: 8px;
+    }
+
+    .news-card__save-helper-text {
+        width: 120px;
+        max-height: 20px;
+        left: 90px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 14px;
+    } 
+}

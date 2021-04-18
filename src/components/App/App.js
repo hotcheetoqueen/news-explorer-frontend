@@ -1,5 +1,5 @@
-import { React, useState, useCallback } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { React, useEffect, useCallback, useState } from 'react';
+import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
 
 import EmptyState from '../EmptyState/EmptyState';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
@@ -18,17 +18,22 @@ import './App.css';
 function App() {
   const [allCards, setAllCards] = useState(false);
   const [cards, setCards] = useState(seedData);
+  const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalVersion, setModalVersion] = useState('');
-  const [savedCards, setSavedCards] = useState(seedDataSaved);
-  const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
+  const [savedCards, setSavedCards] = useState([]);
+  const [searchValue, setSearchValue] = useState('');
   const [user, setUser] = useState({});
   const [userName, setUserName] = useState('Tester');
+
+  // VALIDATION
 
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
+
+  // FORMS
 
   const resetForm = useCallback(
     (newValues = { email: '', password: '', username: '' }, newErrors = {}, newIsValid = false) => {
@@ -39,7 +44,7 @@ function App() {
     [setValues, setErrors, setIsValid],
   );
 
-  let isSaved;
+// POPUPS
 
   const openModal = () => {
     setModalOpen(true);
@@ -61,6 +66,8 @@ function App() {
     setHamburgerMenuOpen(false);
   }
 
+  // AUTH
+
   const handleLogInClick = () => {
     openModal();
     setModalVersion('signin');
@@ -75,7 +82,6 @@ function App() {
       })
       .catch();
   };
-
 
   const handleSignUpClick = () => {
     openModal();
@@ -98,7 +104,46 @@ function App() {
   const handleLogOut = () => {
     setLoggedIn(false);
   };
-  
+
+  const history = useHistory();
+
+  useEffect(() => {
+    if (!loggedIn) {
+      history.push('/');
+    }
+  });
+
+  // SEARCH
+
+  const handleSearchValue = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    newsApi.getArticles(searchValue)
+      .then((data) => {
+        data.forEach((c) => {
+          c.keyword = searchValue;
+          c.source = c.source.name;
+          console.log('then', data);
+
+          if (loggedIn) {
+            const [isSaved, id] = articleSaved(c, savedCards);
+            if (isSaved) {
+              c.isSaved = true;
+              c.id = id;
+            }
+          }
+        });
+        setCards(data);
+        console.log(setCards);
+      })
+      .catch();
+  };
+
+  // BOOKMARKS
+
   const handleSaveClick = (card) => {
     if (!card.isSaved) {
       card.isSaved = true;
@@ -119,6 +164,51 @@ function App() {
     setCards(newCards);
   };
 
+  // ARTICLES
+
+  const articleInfo = ['keyword', 'title', 'description', 'publishedAt', 'source', 'url', 'urlToImage'];
+
+  const matchArticle = (article, savedArticle) => {
+    return articleInfo.every((key) => article[key] === savedArticle[key]);
+  };
+  
+
+  const articleSaved = (article, savedArticles) => {
+    let isSaved = false;
+    let id;
+
+    savedArticles.forEach((a) => {
+      if (matchArticle(article, a)) {
+        isSaved = true;
+        id = a._id;
+      }
+    });
+
+    return [isSaved, id];
+  };
+
+  useEffect(() => {
+    let token;
+
+    // TO DO pass token as prop
+    mainApi.getArticles()
+      .then((data) => {
+        const userCards = data.filter((card) => card.user === user.id);
+        setCards(userCards);
+
+        cards.forEach((c) => {
+          const [isSaved, id] = articleSaved(c, savedCards);
+          if (isSaved) {
+            c.isSaved = true;
+            c._id = id;
+          }
+        });
+      })
+      .catch();
+  }, [loggedIn]);
+
+  // DISPLAY CARDS
+
   const showMoreCards = () => {
     setAllCards(true);
   };      
@@ -138,13 +228,15 @@ function App() {
               handleLogInClick={handleLogInClick}
               handleLogOut={handleLogOut}
               handleLogOutClick={handleLogOutClick}
-              isSaved={isSaved} 
               isSavedResults={false}
               handleSaveClick={handleSaveClick}
               handleDeleteClick={handleDeleteClick}
               showMoreCards={showMoreCards}
               userName={userName}
               handleHamburgerClick={handleHamburgerClick}
+              handleSearch={handleSearch}
+              searchValue={searchValue}
+              handleSearchValue = {handleSearchValue}
             />
             <PopupWithForm 
               openModal={modalOpen}
@@ -161,7 +253,6 @@ function App() {
             <SavedNews
               cards={savedCards}
               loggedIn={loggedIn} 
-              isSaved={isSaved}
               handleSaveClick={handleSaveClick}
               handleDeleteClick={handleDeleteClick}
               userName={userName}

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../Header/Header';
 import './SearchForm.css';
 
-export default function SearchForm({ openModal, isSavedResults, handleHamburgerClick }) {
+export default function SearchForm({ openModal, isSavedResults, handleHamburgerClick, handleSearch, searchValue }) {
     return(
         <>
             <section className='search-form' title='A hand holding a white smartphone showing activity data'>
@@ -11,8 +11,8 @@ export default function SearchForm({ openModal, isSavedResults, handleHamburgerC
                     <h2 className='search-form__title'>What's going on in the world?</h2>
                     <p className='search-form__body'>Find the latest news on any topic and save them in your personal account.</p>
                     <div className='search-form__search'>
-                        <input className='search-form__search search-form__search_input' placeholder='Enter topic'></input>
-                        <button className='search-form__search search-form__search_button'>Search</button>
+                        <input className='search-form__search search-form__search_input' placeholder='Enter topic' value={searchValue}></input>
+                        <button className='search-form__search search-form__search_button' type='submit' onClick={handleSearch}>Search</button>
                     </div>
                 </div>
             </section>

@@ -30,10 +30,10 @@ class NewsApi {
 
 const newsApi = new NewsApi({
     newsApiUrl: NEWS_API_URL,
-    apiKey: API_KEY,
+    apiKey: NEWS_API_KEY,
     today: new Date(),
-    lastWeek: new Date(Date.now() - (days * 24 * 60 * 60 * 1000)),
-    mainApiUrl: PROXY_URL,
+    lastWeek: new Date(Date.now() - (7 * 24 * 60 * 60 * 1000)),
+    mainApiUrl: PROXY_NEWS_API_URL,
 });
 
 export default newsApi;

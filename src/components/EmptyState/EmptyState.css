@@ -1,0 +1,27 @@
+.empty-state {
+    max-height: 374px;
+    text-align: center;
+    background: #F5F6F7;
+}
+
+.empty-state__icon {
+    width: 96px;
+    height: 96px;
+    padding-top: 86px;
+}
+
+.empty-state__title {
+    font-size: 26px;
+    line-height: 30px;
+    font-family: 'Roboto Slab', serif;
+    font-weight: normal;
+}
+
+.empty-state__text {
+    width: 256px;
+    font-size: 18px;
+    line-height: 24px;
+    color: #B6BCBF;
+    margin: 0 auto;
+    padding-bottom: 80px;
+}

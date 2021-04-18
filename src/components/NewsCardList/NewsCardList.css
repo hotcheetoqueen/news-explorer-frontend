@@ -1,0 +1,129 @@
+.news-card__list {
+    background-color: #F5F6F7;
+    display: grid;
+    margin: 0 auto;
+}
+
+.news-card__list-container {
+    max-width: 100%;
+    padding: 0;
+}
+
+.news-card__grid {
+    display: inline-grid;
+    list-style: none;
+    grid-template-columns: repeat(3, 400px);
+    grid-gap: 16px;
+    margin: 64px auto 0;
+}
+
+.news-card__list-title {
+    font-family: 'Roboto Slab', serif;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 46px;
+    text-align: left;
+    margin: 80px 0 0 104px;
+    padding: 0;
+}
+
+.news-card__list-button {
+    width: 288px;
+    height: 64px;
+    background-color: #FFF;
+    border: 0;
+    color: #1A1B22;
+    border-radius: 80px;
+    margin: 64px auto 80px;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.news-card__list-button:hover {
+    background: #E8E8E8;
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 1560px) {
+    .news-card__grid {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        width: 1280px;
+    }
+
+    .news-card__list-title {
+        width: 1280px;
+        margin: 80px auto 0;
+    }
+    
+    .news-card__list-button {
+        margin: 64px auto 80px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .news-card__grid {
+        margin: 64px auto 0;
+    }
+
+    .news-card__list-button {
+        margin: 32px auto 80px;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1270px) {
+    .news-card__grid {
+        gap: 12px;
+        padding: 0;
+        grid-template-columns: repeat(3, 300px);
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .news-card__list-title {
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    .news-card__grid {
+        grid-template-columns: repeat(3, 224px);
+        gap: 8px;
+        margin: 32px auto;
+    }
+    
+    .news-card__list-button {
+        width: 240px;
+        height: 56px;
+        margin-top: 32px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .news-card__list {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .news-card__grid {
+        max-width: 100%;
+        padding: 0;
+        display: block;
+    }
+
+    .news-card__list-title {
+        font-size: 30px;
+        line-height: 34px;
+        margin: 32px 0 58px 16px;
+    }
+
+    .news-card__list-button {
+        margin: 0 auto 32px;
+    }
+
+    .news-card__list-button_scroll {
+        display: none;
+    }
+}

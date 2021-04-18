@@ -1,10 +1,13 @@
 import React from 'react';
 import Header from '../Header/Header';
+import UserContext from '../../contexts/UserContext';
 import './SavedNewsHeader.css';
 
 export default function SavedNewsHeader({ userName, handleLogOut, handleHamburgerClick, isSavedResults }) {
     // keyword lists/ranking and number of saved articles, as well as loggedIn variables such as userName to implemented in step 3
     // const keywords = listKeywords(cards);
+
+    const User = React.useContext(UserContext);
 
     return(
         <>

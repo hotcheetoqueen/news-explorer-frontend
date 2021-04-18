@@ -6,6 +6,7 @@ import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import Preloader from '../Preloader/Preloader';
 import SavedNews from '../SavedNews/SavedNews';
+import UserContext from '../../contexts/UserContext';
 import { seedData, seedDataSaved } from '../../seedData/seedData';
 import './App.css';
 
@@ -108,71 +109,73 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Route exact path="/">
-          <Main 
-            cards={cards}
-            openModal={openModal}
-            modalOpen={modalOpen}
-            handleSignUp={handleSignUp}
-            loggedIn={loggedIn}
-            handleLogIn={handleLogIn}
-            handleLogInClick={handleLogInClick}
-            handleLogOut={handleLogOut}
-            handleLogOutClick={handleLogOutClick}
-            isSaved={isSaved} 
-            isSavedResults={false}
-            handleSaveClick={handleSaveClick}
-            handleDeleteClick={handleDeleteClick}
-            showMoreCards={showMoreCards}
-            userName={userName}
-            handleHamburgerClick={handleHamburgerClick}
-          />
-          <PopupWithForm 
-            openModal={modalOpen}
-            onClose={closeModal}
-            errors={errors}
-            handleSignUp={handleSignUp}
-            handleSignUpClick={handleSignUpClick}
-            handleLogInClick={handleLogInClick}
-            handleLogIn={handleLogIn}
-            modalVersion={modalVersion}
-          />
-        </Route>
-        <Route exact path='/saved-news'>
-          <SavedNews
-            cards={savedCards}
-            loggedIn={loggedIn} 
-            isSaved={isSaved}
-            handleSaveClick={handleSaveClick}
-            handleDeleteClick={handleDeleteClick}
-            userName={userName}
-            handleLogOutClick={handleLogOutClick}
-            isSavedResults={true}
-            handleHamburgerClick={handleHamburgerClick}
-          />
-        </Route>
-        <HamburgerMenu
-            userName={userName}
-            handleSignUp={handleSignUp}
-            loggedIn={loggedIn}
-            handleLogIn={handleLogIn}
-            handleLogInClick={handleLogInClick}
-            handleLogOut={handleLogOut}
-            openModal={openModal}
-            modalOpen={modalOpen}
-            hamburgerMenuOpen={hamburgerMenuOpen}
-            handleHamburgerClick={handleHamburgerClick}
-            onClose={handleHamburgerClose}
-          />
-        {/* Test Routes!! */}
-        <Route exact path='/emptystate'>
-          <EmptyState />
-        </Route>
-        <Route exact path='/preloader'>
-          <Preloader />
-        </Route>
-      </Router>
+      <UserContext.Provider value={user}>
+        <Router>
+          <Route exact path="/">
+            <Main 
+              cards={cards}
+              openModal={openModal}
+              modalOpen={modalOpen}
+              handleSignUp={handleSignUp}
+              loggedIn={loggedIn}
+              handleLogIn={handleLogIn}
+              handleLogInClick={handleLogInClick}
+              handleLogOut={handleLogOut}
+              handleLogOutClick={handleLogOutClick}
+              isSaved={isSaved} 
+              isSavedResults={false}
+              handleSaveClick={handleSaveClick}
+              handleDeleteClick={handleDeleteClick}
+              showMoreCards={showMoreCards}
+              userName={userName}
+              handleHamburgerClick={handleHamburgerClick}
+            />
+            <PopupWithForm 
+              openModal={modalOpen}
+              onClose={closeModal}
+              errors={errors}
+              handleSignUp={handleSignUp}
+              handleSignUpClick={handleSignUpClick}
+              handleLogInClick={handleLogInClick}
+              handleLogIn={handleLogIn}
+              modalVersion={modalVersion}
+            />
+          </Route>
+          <Route exact path='/saved-news'>
+            <SavedNews
+              cards={savedCards}
+              loggedIn={loggedIn} 
+              isSaved={isSaved}
+              handleSaveClick={handleSaveClick}
+              handleDeleteClick={handleDeleteClick}
+              userName={userName}
+              handleLogOutClick={handleLogOutClick}
+              isSavedResults={true}
+              handleHamburgerClick={handleHamburgerClick}
+            />
+          </Route>
+          <HamburgerMenu
+              userName={userName}
+              handleSignUp={handleSignUp}
+              loggedIn={loggedIn}
+              handleLogIn={handleLogIn}
+              handleLogInClick={handleLogInClick}
+              handleLogOut={handleLogOut}
+              openModal={openModal}
+              modalOpen={modalOpen}
+              hamburgerMenuOpen={hamburgerMenuOpen}
+              handleHamburgerClick={handleHamburgerClick}
+              onClose={handleHamburgerClose}
+            />
+          {/* Test Routes!! */}
+          <Route exact path='/emptystate'>
+            <EmptyState />
+          </Route>
+          <Route exact path='/preloader'>
+            <Preloader />
+          </Route>
+        </Router>
+      </UserContext.Provider>
     </div>
   );
 }

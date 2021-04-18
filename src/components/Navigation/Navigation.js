@@ -4,6 +4,7 @@ import Hamburger from '../../images/icons/hamburger-menu.svg';
 import HamburgerDark from '../../images/icons/hamburger-menu_dark.svg';
 import LogOutIcon from '../../images/icons/nav__logout-icon.png';
 import LogOutIconDark from '../../images/icons/nav__logout-icon_dark.svg';
+import UserContext from '../../contexts/UserContext';
 import './Navigation.css';
 
 export default function Navigation(props) {
@@ -21,6 +22,8 @@ export default function Navigation(props) {
         hamburgerMenuOpen,
         handleHamburgerClick
     } = props
+
+    const User = React.useContext(UserContext);
 
     return(
         <section className={`navigation ${theme ? `navigation_theme_${theme}` : ''}`}>

@@ -8,7 +8,7 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import Preloader from '../Preloader/Preloader';
 import SavedNews from '../SavedNews/SavedNews';
 
-import UserContext from '../../contexts/UserContext';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 import mainApi from '../../utils/MainApi';
 import newsApi from '../../utils/NewsApi';
 import { seedData, seedDataSaved } from '../../seedData/seedData';
@@ -18,6 +18,7 @@ import './App.css';
 function App() {
   const [allCards, setAllCards] = useState(false);
   const [cards, setCards] = useState(seedData);
+  const [currentUser, setCurrentUser] = useState({});
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
@@ -77,6 +78,7 @@ function App() {
     e.preventDefault();
     mainApi.signin(values.email, values.password)
       .then((data) => {
+        setCurrentUser({ email: values.email, username: data.username, id: data.id });
         setLoggedIn(true);
         setModalOpen(false);
       })
@@ -193,7 +195,7 @@ function App() {
     // TO DO pass token as prop
     mainApi.getArticles()
       .then((data) => {
-        const userCards = data.filter((card) => card.user === user.id);
+        const userCards = data.filter((card) => card.user === currentUser.id);
         setCards(userCards);
 
         cards.forEach((c) => {
@@ -215,7 +217,7 @@ function App() {
 
   return (
     <div className="App">
-      <UserContext.Provider value={user}>
+      <CurrentUserContext.Provider value={user}>
         <Router>
           <Route exact path="/">
             <Main 
@@ -282,7 +284,7 @@ function App() {
             <Preloader />
           </Route>
         </Router>
-      </UserContext.Provider>
+      </CurrentUserContext.Provider>
     </div>
   );
 }

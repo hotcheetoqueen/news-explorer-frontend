@@ -47,6 +47,12 @@
     }
 }
 
+@media screen and (max-width: 1440px) {
+    .header__logo {
+        margin-left: 0;
+    }
+}
+
 @media screen and (max-width: 920px) {
     .header__logo {
         margin-left: 40px;

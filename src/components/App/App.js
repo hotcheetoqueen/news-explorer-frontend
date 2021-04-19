@@ -281,9 +281,6 @@ function App() {
               onClose={handleHamburgerClose}
             />
           {/* Test Routes!! */}
-          <Route exact path='/emptystate'>
-            <EmptyState />
-          </Route>
           <Route exact path='/preloader'>
             <Preloader />
           </Route>

@@ -20,11 +20,13 @@ function App() {
   const [cards, setCards] = useState(seedData);
   const [currentUser, setCurrentUser] = useState({});
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalVersion, setModalVersion] = useState('');
   const [savedCards, setSavedCards] = useState([]);
   const [searchValue, setSearchValue] = useState('');
+  const [token, setToken] = useState(localStorage.getItem('token'));
   const [user, setUser] = useState({});
   const [userName, setUserName] = useState('Tester');
 
@@ -190,10 +192,9 @@ function App() {
   };
 
   useEffect(() => {
-    let token;
-
-    // TO DO pass token as prop
-    mainApi.getArticles()
+    // if (token && !localStorage.getItem('savedCards')) {
+    //   mainApi.getArticles(token)
+      mainApi.getArticles()
       .then((data) => {
         const userCards = data.filter((card) => card.user === currentUser.id);
         setCards(userCards);
@@ -207,6 +208,7 @@ function App() {
         });
       })
       .catch();
+    // }
   }, [loggedIn]);
 
   // DISPLAY CARDS
@@ -239,6 +241,7 @@ function App() {
               handleSearch={handleSearch}
               searchValue={searchValue}
               handleSearchValue = {handleSearchValue}
+              isLoading={isLoading}
             />
             <PopupWithForm 
               openModal={modalOpen}
@@ -261,6 +264,7 @@ function App() {
               handleLogOutClick={handleLogOutClick}
               isSavedResults={true}
               handleHamburgerClick={handleHamburgerClick}
+              isLoading={isLoading}
             />
           </Route>
           <HamburgerMenu

@@ -1,17 +1,17 @@
 import { NEWS_API_KEY, NEWS_API_URL, PROXY_NEWS_API_URL } from './constants';
 
 class NewsApi {
-    constructor({ baseUrl, headers, apiKey, newsApiUrl, mainApiUrl })  {
+    constructor({ baseUrl, headers, apiKey, newsApiUrl, proxyApiUrl })  {
         this.baseUrl = baseUrl;
         this.headers = headers;
         this.apiKey = apiKey;
         this.newsApiUrl = newsApiUrl;
-        this.mainApiUrl = mainApiUrl;
+        this.proxyApiUrl = proxyApiUrl;
     }
 
     getArticles(keyword) {
         return fetch(
-            `${this.mainApiUrl}/v2/everything?q=${keyword}`
+            `${this.proxyApiUrl}/v2/everything?q=${keyword}`
                 + `&from=${this.lastWeek.toISOString()}`
                 + `&to=${this.today.toISOString()}`
                 + `&sortBy=popularity&pageSize=100&apiKey=${this.apiKey}`,
@@ -33,7 +33,7 @@ const newsApi = new NewsApi({
     apiKey: NEWS_API_KEY,
     today: new Date(),
     lastWeek: new Date(Date.now() - (7 * 24 * 60 * 60 * 1000)),
-    mainApiUrl: PROXY_NEWS_API_URL,
+    proxyApiUrl: PROXY_NEWS_API_URL,
 });
 
 export default newsApi;

@@ -122,7 +122,7 @@
 @media screen and (max-width: 500px) {
 .popup__container {
         bottom: 0;
-        max-width: 100%;
+        max-width: 92%;
         min-height: 520px;
         box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
         border-bottom-right-radius: 0;
@@ -141,5 +141,12 @@
     .popup__submit {
         width: 288px;
         margin-top: 0;
+    }
+
+    .popup__close {
+        width: 24px;
+        height: 24px;
+        top: -35px;
+        right: 16px;
     }
 }

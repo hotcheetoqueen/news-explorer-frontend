@@ -197,16 +197,16 @@ function App() {
     //   mainApi.getArticles(token)
       mainApi.getArticles()
       .then((data) => {
-        const userCards = data.filter((card) => card.user === currentUser.id);
-        setCards(userCards);
+        // const userCards = data.filter((card) => card.user === currentUser.id);
+        setCards(cards);
 
-        cards.forEach((c) => {
-          const [isSaved, id] = articleSaved(c, savedCards);
-          if (isSaved) {
-            c.isSaved = true;
-            c._id = id;
-          }
-        });
+        // cards.forEach((c) => {
+        //   const [isSaved, id] = articleSaved(c, savedCards);
+        //   if (isSaved) {
+        //     c.isSaved = true;
+        //     c._id = id;
+        //   }
+        // });
       })
       .catch();
     // }

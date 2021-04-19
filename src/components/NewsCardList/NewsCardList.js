@@ -6,19 +6,19 @@ import { seedData } from '../../seedData/seedData';
 import './NewsCardList.css';
 
 export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isLoading }) {
-    return(
+    return (
         <>
-            <section className='news-card__list'>
-                {isLoading ? (
-                    <Preloader />
-                ) : (
+            {loggedIn && (
+                <section className='news-card__list'>
+                    {isLoading ? (
+                        <Preloader />
+                    ) : (
                     <>
                         {cards.length > 0 && (
                             <div className='news-card__list-container'>
                                 {!isSavedResults && (
                                     <h3 className='news-card__list-title'>Search results</h3>
                                 )}
-                                {loggedIn && (
                                     <ul className='news-card__grid'>
                                         {cards && seedData.slice(0, 3).map((card) => (
                                             <NewsCard
@@ -32,7 +32,6 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                             />
                                         ))}
                                     </ul>
-                                )}
                                 {!isSavedResults && (
                                     <button className='news-card__list-button' onClick={showMoreCards}>Show more</button>
                                 )}
@@ -43,7 +42,8 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                             )}
                         </>
                     )}
-            </section>
+                </section>
+            )}
         </>
     )
 }

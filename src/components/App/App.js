@@ -125,6 +125,7 @@ function App() {
 
   const handleSearch = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     newsApi.getArticles(searchValue)
       .then((data) => {
         data.forEach((c) => {
@@ -141,6 +142,7 @@ function App() {
           }
         });
         setCards(data);
+        setIsLoading(false);
         console.log(setCards);
       })
       .catch();

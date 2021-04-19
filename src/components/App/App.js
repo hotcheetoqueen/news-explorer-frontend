@@ -1,7 +1,6 @@
 import { React, useEffect, useCallback, useState } from 'react';
 import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
 
-import EmptyState from '../EmptyState/EmptyState';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';

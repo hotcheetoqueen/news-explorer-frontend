@@ -195,7 +195,8 @@ function App() {
   useEffect(() => {
     // if (token && !localStorage.getItem('savedCards')) {
     //   mainApi.getArticles(token)
-      mainApi.getArticles()
+    if (token) {
+      mainApi.getArticles(token)
       .then((data) => {
         // const userCards = data.filter((card) => card.user === currentUser.id);
         setCards(cards);
@@ -209,6 +210,8 @@ function App() {
         // });
       })
       .catch();
+    }
+
     // }
   }, [loggedIn]);
 

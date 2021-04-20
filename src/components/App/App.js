@@ -60,7 +60,7 @@ function App() {
   // FORMS
 
   const resetForm = useCallback(
-    (newValues = { email: '', password: '', username: '' }, newErrors = {}, newIsValid = false) => {
+    (newValues = { email: '', password: '', name: '' }, newErrors = {}, newIsValid = false) => {
       setValues(newValues);
       setErrors(newErrors);
       setIsValid(newIsValid);
@@ -101,7 +101,7 @@ function App() {
     e.preventDefault();
     mainApi.signin(values.email, values.password)
       .then((data) => {
-        setCurrentUser({ email: values.email, username: data.username, id: data.id });
+        setCurrentUser({ email: values.email, name: data.name, id: data.id });
         setLoggedIn(true);
         setModalOpen(false);
       })
@@ -115,13 +115,13 @@ function App() {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    mainApi.signup(values.email, values.password, values.username)
+    mainApi.signup(values.email, values.password, values.name)
       .then((data) => {
-        if (data.message) {
-          throw new Error(data.message);
-        } else {
+        // if (data.message) {
+        //   throw new Error(data.message);
+        // } else {
           setModalVersion('success');
-        }
+        // }
       })
       .catch();
   }

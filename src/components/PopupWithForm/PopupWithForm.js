@@ -44,9 +44,9 @@ export default function PopupWithForm(props) {
                   {modalVersion === 'signup' && (
                     <>
                       <label className='popup__input-label'>Username</label>
-                      <input className='popup__input popup__input_username' placeholder='Enter username' id='username' name='username' minLength={2} onChange={handleValidation} required>{props.username}</input>
+                      <input className='popup__input popup__input_username' placeholder='Enter username' id='username' name='username' minLength={2} onChange={handleValidation} required>{props.name}</input>
                       <span className='popup__input-error' id='popup-username-error'>
-                        {props.errors.username}
+                        {props.errors.name}
                       </span>
                     </>
                   )}

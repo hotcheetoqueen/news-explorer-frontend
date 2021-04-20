@@ -1,14 +1,14 @@
 import { MAIN_API_URL } from './constants';
 
 class MainApi {
-    signup(email, password, username) {
+    signup(email, password, name) {
         return fetch(`${MAIN_API_URL}/signup`, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password, username }),
+            body: JSON.stringify({ email, password, name }),
         })
         .then((res) => res.json());
     }

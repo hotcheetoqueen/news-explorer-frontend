@@ -35,7 +35,7 @@ export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveCli
                         <img className='news-card__photo' src='https://images.unsplash.com/photo-1612392062631-94dd858cba88?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' alt='News article subject' />
                     </div>
                     <div className='news-card__info-container'>
-                        <p className='news-card__date'>{card.date}</p>
+                        <p className='news-card__date'>{formatDate(card.publishedAt)}</p>
                         <h3 className='news-card__title'>{card.title}</h3>
                         <p className='news-card__description'>{card.description}</p>
                         <p className='news-card__source'>{card.source}</p>

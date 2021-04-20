@@ -29,11 +29,33 @@ function App() {
   const [user, setUser] = useState({});
   const [userName, setUserName] = useState('Tester');
 
+  const history = useHistory();
+
+  // LOCAL STORAGE
+
+  useEffect(() => {
+    if (localStorage.getItem('searchResults')) {
+      setCards(JSON.parse(localStorage.getItem('searchResults')));
+    }
+    if (localStorage.getItem('savedCards')) {
+      setSavedCards(JSON.parse(localStorage.getItem('savedCards')));
+    }
+  }, []);
+  
   // VALIDATION
 
-  const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(false);
+  const [values, setValues] = useState({});
+
+  const handleValidation = (e) => {
+    const { target } = e;
+    const { name } = target;
+    const { value } = target;
+    setValues({ ...values, [name]: value });
+    setErrors({ ...errors, [name]: target.validationMessage });
+    setIsValid(target.closest('form').checkValidity());
+  };
 
   // FORMS
 
@@ -95,7 +117,11 @@ function App() {
     e.preventDefault();
     mainApi.signup(values.email, values.password, values.username)
       .then((data) => {
-        setModalVersion('success');
+        if (data.message) {
+          throw new Error(data.message);
+        } else {
+          setModalVersion('success');
+        }
       })
       .catch();
   }
@@ -107,8 +133,6 @@ function App() {
   const handleLogOut = () => {
     setLoggedIn(false);
   };
-
-  const history = useHistory();
 
   useEffect(() => {
     if (!loggedIn) {
@@ -250,7 +274,10 @@ function App() {
             <PopupWithForm 
               openModal={modalOpen}
               onClose={closeModal}
+              values={values}
               errors={errors}
+              handleValidation={handleValidation}
+              isValid={isValid}
               handleSignUp={handleSignUp}
               handleSignUpClick={handleSignUpClick}
               handleLogInClick={handleLogInClick}
@@ -261,6 +288,7 @@ function App() {
           <Route exact path='/saved-news'>
             <SavedNews
               cards={savedCards}
+              // cards={cards}
               loggedIn={loggedIn} 
               handleSaveClick={handleSaveClick}
               handleDeleteClick={handleDeleteClick}

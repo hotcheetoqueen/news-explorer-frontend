@@ -3,31 +3,7 @@ import validator from 'validator';
 import './PopupWithForm.css';
 
 export default function PopupWithForm(props) {
-  const { handleSignUp, handleLogIn, modalVersion } = props
-
-  function validateForm(email, password, username = null) {
-    const errors = {};
-
-    if (!email || !validator.isValidEmail(email)) {
-      errors.email = 'Something is wrong with that email address';
-    }
-
-    if (!password) {
-      errors.password = 'Password is a required field';
-    } else if (!validator.isValidPassword(password, { minSymbols: 0 })) {
-      errors.password =
-        'Make your password a bit stronger';
-    }
-
-    if (username === null) {
-    } else if (!username) {
-      errors.username = 'How will we know what to refer to you as?';
-    } else if (username.length < 4) {
-      errors.username = 'Your username should be at least 4 letters';
-    }
-
-    return errors;
-  }
+              const { handleSignUp, handleLogIn, modalVersion, handleValidation, isValid, values } = props
 
     useEffect(() => {
         document.addEventListener('keydown', props.onClose);
@@ -54,22 +30,22 @@ export default function PopupWithForm(props) {
                     {props.modalVersion !== 'success' && (
                       <>
                       <label className='popup__input-label'>Email</label>
-                      <input className='popup__input popup__input_email' placeholder='Enter email' id='email' name='email' required>{props.email}</input>
-                      <span className='popup__input-error'>
+                      <input className='popup__input popup__input_email' placeholder='Enter email' id='email' name='email' onChange={handleValidation} required>{props.email}</input>
+                      <span className='popup__input-error' id='popup-email-error'>
                         {props.errors.email}
                       </span>
                       <label className='popup__input-label'>Password</label>
-                      <input className='popup__input popup__input_password' placeholder='Enter password' id='password' name='password' required>{props.password}</input>
-                      <span className='popup__input-error'>
+                      <input className='popup__input popup__input_password' placeholder='Enter password' id='password' name='password' minLength={8} onChange={handleValidation} required>{props.password}</input>
+                      <span className='popup__input-error' id='popup-password-error'>
                         {props.errors.password}
                       </span>
                       </>
                     )}
-                  {props.modalVersion === 'signup' && (
+                  {modalVersion === 'signup' && (
                     <>
                       <label className='popup__input-label'>Username</label>
-                      <input className='popup__input popup__input_username' placeholder='Enter username' id='username' name='username' required>{props.username}</input>
-                      <span className='popup__input-error'>
+                      <input className='popup__input popup__input_username' placeholder='Enter username' id='username' name='username' minLength={2} onChange={handleValidation} required>{props.username}</input>
+                      <span className='popup__input-error' id='popup-username-error'>
                         {props.errors.username}
                       </span>
                     </>

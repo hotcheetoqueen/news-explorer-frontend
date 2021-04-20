@@ -20,7 +20,7 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                     <h3 className='news-card__list-title'>Search results</h3>
                                 )}
                                     <ul className='news-card__grid'>
-                                        {cards && seedData.slice(0, 3).map((card) => (
+                                        {cards && cards.slice(0, 3).map((card) => (
                                             <NewsCard
                                                 key={card.id}
                                                 card={card}

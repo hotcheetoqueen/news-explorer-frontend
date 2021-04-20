@@ -119,6 +119,19 @@
     display: block;
 }
 
+.popup__input-error {
+    color: #FF0000;
+    font-size: 12px;
+    line-height: 15px;
+    height: 26px;
+    padding-top: 5px;
+    /* display: none; */
+}
+
+.popup__input-error_active {
+    display: block;
+}
+
 @media screen and (max-width: 500px) {
 .popup__container {
         bottom: 0;

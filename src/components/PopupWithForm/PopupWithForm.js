@@ -30,7 +30,7 @@ export default function PopupWithForm(props) {
                     {props.modalVersion !== 'success' && (
                       <>
                       <label className='popup__input-label'>Email</label>
-                      <input className='popup__input popup__input_email' placeholder='Enter email' id='email' name='email' onChange={handleValidation} required>{props.email}</input>
+                      <input className='popup__input popup__input_email' placeholder='Enter email' id='email' name='email' onChange={handleValidation} type='email' required>{props.email}</input>
                       <span className='popup__input-error' id='popup-email-error'>
                         {props.errors.email}
                       </span>

@@ -1,4 +1,4 @@
-import { NEWS_API_KEY, NEWS_API_URL, PROXY_NEWS_API_URL } from './constants';
+import { NEWS_API_KEY, NEWS_API_URL, PROXY_NEWS_API_URL, NEWS_TIMEFRAME } from './constants';
 
 class NewsApi {
     constructor({ baseUrl, headers, apiKey, newsApiUrl, proxyApiUrl })  {
@@ -32,7 +32,7 @@ const newsApi = new NewsApi({
     newsApiUrl: NEWS_API_URL,
     apiKey: NEWS_API_KEY,
     today: new Date(),
-    lastWeek: new Date(Date.now() - (7 * 24 * 60 * 60 * 1000)),
+    lastWeek: new Date(Date.now() - NEWS_TIMEFRAME),
     proxyApiUrl: PROXY_NEWS_API_URL,
 });
 

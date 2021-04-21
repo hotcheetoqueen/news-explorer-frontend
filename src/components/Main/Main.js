@@ -8,7 +8,7 @@ import './Main.css';
 export default function Main({ cards, openModal, loggedIn, handleLogin, handleLoginClick, handleLogOut, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isSavedResults, handleHamburgerClick, isLoading }) {
     return(
         <>
-            <SearchForm openModal={openModal} isSavedResults={isSavedResults} handleHamburgerClick={handleHamburgerClick} />
+            <SearchForm openModal={openModal} isSavedResults={isSavedResults} handleHamburgerClick={handleHamburgerClick} loggedIn={loggedIn} />
             <NewsCardList
                 cards={cards}
                 isSaved={isSaved}

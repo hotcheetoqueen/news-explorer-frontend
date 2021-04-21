@@ -23,7 +23,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalVersion, setModalVersion] = useState('');
   const [savedCards, setSavedCards] = useState([]);

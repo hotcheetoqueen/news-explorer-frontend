@@ -118,13 +118,10 @@ function App() {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    mainApi.signup(values.email, values.password, values.name)
+    mainApi.signup(values.name, values.email, values.password)
       .then((data) => {
-        // if (data.message) {
-        //   throw new Error(data.message);
-        // } else {
+          setLoggedIn(true);
           setModalVersion('success');
-        // }
       })
       .catch();
   }
@@ -133,8 +130,11 @@ function App() {
     handleLogOut();
   }
 
-  const handleLogOut = () => {
+  function handleLogOut() {
     setLoggedIn(false);
+
+    localStorage.removeItem('jwt');
+    history.push('/');
   };
 
   useEffect(() => {

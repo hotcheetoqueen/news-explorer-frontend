@@ -118,7 +118,7 @@ function App() {
 
   const handleSignUp = (e) => {
     e.preventDefault();
-    mainApi.signup(values.name, values.email, values.password)
+    mainApi.signup(values.username, values.email, values.password)
       .then((data) => {
           setLoggedIn(true);
           setModalVersion('success');

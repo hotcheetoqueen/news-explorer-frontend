@@ -8,8 +8,11 @@ import Preloader from '../Preloader/Preloader';
 import SavedNews from '../SavedNews/SavedNews';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+
 import mainApi from '../../utils/MainApi';
 import newsApi from '../../utils/NewsApi';
+
 import { seedData, seedDataSaved } from '../../seedData/seedData';
 
 import './App.css';
@@ -285,8 +288,7 @@ function App() {
               modalVersion={modalVersion}
             />
           </Route>
-          <Route exact path='/saved-news'>
-            <SavedNews
+          <ProtectedRoute path='/saved-news' component={SavedNews}
               cards={savedCards}
               // cards={cards}
               loggedIn={loggedIn} 
@@ -297,8 +299,7 @@ function App() {
               isSavedResults={true}
               handleHamburgerClick={handleHamburgerClick}
               isLoading={isLoading}
-            />
-          </Route>
+          />
           <HamburgerMenu
               userName={userName}
               handleSignUp={handleSignUp}

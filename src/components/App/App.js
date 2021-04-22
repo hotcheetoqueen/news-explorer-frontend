@@ -37,8 +37,8 @@ function App() {
   // LOCAL STORAGE
 
   useEffect(() => {
-    if (localStorage.getItem('searchResults')) {
-      setCards(JSON.parse(localStorage.getItem('searchResults')));
+    if (localStorage.getItem('searchResponse')) {
+      setCards(JSON.parse(localStorage.getItem('searchResponse')));
     }
     if (localStorage.getItem('savedCards')) {
       setSavedCards(JSON.parse(localStorage.getItem('savedCards')));
@@ -129,6 +129,7 @@ function App() {
     setLoggedIn(false);
 
     localStorage.removeItem('jwt');
+    
     history.push('/');
   };
 
@@ -147,6 +148,8 @@ function App() {
   const handleSearch = (e) => {
     e.preventDefault();
     setIsLoading(true);
+    console.log('newsapi', newsApi);
+
     newsApi.getArticles(searchValue)
       .then((data) => {
         data.forEach((c) => {
@@ -162,8 +165,10 @@ function App() {
             }
           }
         });
+
         setCards(data);
         setIsLoading(false);
+        localStorage.setItem('searchResponse', JSON.stringify(data));
         console.log(setCards);
       })
       .catch();

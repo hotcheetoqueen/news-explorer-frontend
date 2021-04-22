@@ -120,14 +120,9 @@ function App() {
     e.preventDefault();
     mainApi.signup(values.username, values.email, values.password)
       .then((data) => {
-          setLoggedIn(true);
           setModalVersion('success');
       })
       .catch();
-  }
-
-  const handleLogOutClick = () => {
-    handleLogOut();
   }
 
   function handleLogOut() {
@@ -262,7 +257,7 @@ function App() {
               handleLogIn={handleLogIn}
               handleLogInClick={handleLogInClick}
               handleLogOut={handleLogOut}
-              handleLogOutClick={handleLogOutClick}
+              handleLogOut={handleLogOut}
               isSavedResults={false}
               handleSaveClick={handleSaveClick}
               handleDeleteClick={handleDeleteClick}
@@ -295,7 +290,7 @@ function App() {
               handleSaveClick={handleSaveClick}
               handleDeleteClick={handleDeleteClick}
               userName={userName}
-              handleLogOutClick={handleLogOutClick}
+              handleLogOut={handleLogOut}
               isSavedResults={true}
               handleHamburgerClick={handleHamburgerClick}
               isLoading={isLoading}

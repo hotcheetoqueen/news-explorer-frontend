@@ -3,12 +3,16 @@ import About from '../About/About';
 import Footer from '../Footer/Footer';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import SearchForm from '../SearchForm/SearchForm';
+
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 import './Main.css';
 
 export default function Main({ cards, openModal, loggedIn, handleLogin, handleLoginClick, handleLogOut, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isSavedResults, handleHamburgerClick, isLoading }) {
+    const currentUser = React.useContext(CurrentUserContext);
+
     return(
         <>
-            <SearchForm openModal={openModal} isSavedResults={isSavedResults} handleHamburgerClick={handleHamburgerClick} loggedIn={loggedIn} />
+            <SearchForm openModal={openModal} isSavedResults={isSavedResults} handleHamburgerClick={handleHamburgerClick} loggedIn={loggedIn} handleLogOut={handleLogOut} />
             <NewsCardList
                 cards={cards}
                 isSaved={isSaved}
@@ -17,6 +21,7 @@ export default function Main({ cards, openModal, loggedIn, handleLogin, handleLo
                 isSavedResults={false}
                 loggedIn={loggedIn}
                 isLoading={isLoading}
+                currentUser={currentUser}
             />
             <About />
             <Footer />

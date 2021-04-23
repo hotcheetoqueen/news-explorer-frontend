@@ -21,7 +21,7 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                     <ul className='news-card__grid'>
                                         {cards && cards.slice(0, 3).map((card) => (
                                             <NewsCard
-                                                key={card.id}
+                                                key={cards.indexOf(card)}
                                                 card={card}
                                                 loggedIn={loggedIn}
                                                 isSavedResults={isSavedResults}

@@ -33,7 +33,7 @@ export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveCli
                                 <div className={`${loggedIn ? 'news-card__save-helper-text' : 'news-card__save-helper-text_hidden'}`} >Sign in to save articles</div>
                             )}
                         </div>
-                        <img className='news-card__photo' src='https://images.unsplash.com/photo-1612392062631-94dd858cba88?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' alt='News article subject' />
+                        <img className='news-card__photo' src={card.image} alt='News article subject' />
                     </div>
                     <div className='news-card__info-container' href={card.link} rel='noreferrer' target='_blank'>
                         {/* <p className='news-card__date'>{formatDate(card.publishedAt)}</p> */}

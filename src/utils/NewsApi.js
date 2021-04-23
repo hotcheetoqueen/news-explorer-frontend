@@ -1,14 +1,12 @@
 import { NEWS_API_KEY, NEWS_API_URL, PROXY_NEWS_API_URL, NEWS_TIMEFRAME } from './constants';
 
 class NewsApi {
-    constructor({ baseUrl, headers, apiKey, newsApiUrl, proxyApiUrl, now, pastWeek })  {
-        this.baseUrl = baseUrl;
-        this.headers = headers;
-        this.apiKey = apiKey;
-        this.newsApiUrl = newsApiUrl;
-        this.proxyApiUrl = proxyApiUrl;
-        this.now = now;
-        this.pastWeek = pastWeek;
+    constructor(article)  {
+        this.apiKey = article.apiKey;
+        this.newsApiUrl = article.newsApiUrl;
+        this.proxyApiUrl = article.proxyApiUrl;
+        this.now = article.now;
+        this.pastWeek = article.pastWeek;
     }
 
     getArticles(keyword) {
@@ -16,8 +14,7 @@ class NewsApi {
             `${this.proxyApiUrl}/v2/everything?q=${keyword}`
                 + `&from=${this.pastWeek.toISOString()}`
                 + `&to=${this.now.toISOString()}`
-                + `&sortBy=popularity&pageSize=100&apiKey=${this.apiKey}`
-                ,
+                + `&sortBy=popularity&pageSize=100&apiKey=${this.apiKey}`,
             {
                 headers: {
                     'Content-Type': 'application/json',

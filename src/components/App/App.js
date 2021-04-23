@@ -148,20 +148,18 @@ function App() {
   const handleSearch = (e) => {
     e.preventDefault();
     setIsLoading(true);
-    console.log('newsapi', newsApi);
 
     newsApi.getArticles(searchValue)
       .then((data) => {
-        data.forEach((c) => {
-          c.keyword = searchValue;
-          c.source = c.source.name;
-          console.log('then', data);
+        data.forEach((res) => {
+          res.keyword = searchValue;
+          res.source = res.source.name;
 
           if (loggedIn) {
-            const [isSaved, id] = articleSaved(c, savedCards);
+            const [isSaved, id] = articleSaved(res, savedCards);
             if (isSaved) {
-              c.isSaved = true;
-              c.id = id;
+              res.isSaved = true;
+              res.id = id;
             }
           }
         });
@@ -169,7 +167,6 @@ function App() {
         setCards(data);
         setIsLoading(false);
         localStorage.setItem('searchResponse', JSON.stringify(data));
-        console.log(setCards);
       })
       .catch();
   };
@@ -179,7 +176,7 @@ function App() {
   const handleSaveClick = (card) => {
     if (!card.isSaved) {
       card.isSaved = true;
-      const newCards = cards.map((c) => (c.id === card.id ? card : c));
+      const newCards = cards.map((res) => (res.id === card.id ? card : res));
       savedCards.push(card);
       setCards(newCards);
       setSavedCards(savedCards);
@@ -188,10 +185,10 @@ function App() {
 
   const handleDeleteClick = (card) => {
     setSavedCards(
-      savedCards.filter((c) => c.id !== card.id),
+      savedCards.filter((res) => res.id !== card.id),
     );
     card.isSaved = false;
-    const newCards = cards.map((c) => (c.id === card.id ? card : c));
+    const newCards = cards.map((res) => (res.id === card.id ? card : res));
     savedCards.push(card);
     setCards(newCards);
   };
@@ -229,10 +226,10 @@ function App() {
         setCards(cards);
 
         // cards.forEach((c) => {
-        //   const [isSaved, id] = articleSaved(c, savedCards);
+        //   const [isSaved, id] = articleSaved(res, savedCards);
         //   if (isSaved) {
-        //     c.isSaved = true;
-        //     c._id = id;
+        //     res.isSaved = true;
+        //     res.id = id;
         //   }
         // });
       })

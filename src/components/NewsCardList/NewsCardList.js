@@ -2,7 +2,6 @@ import React from 'react';
 import EmptyState from '../EmptyState/EmptyState';
 import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
-import { seedData } from '../../seedData/seedData';
 import './NewsCardList.css';
 
 export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isLoading }) {

@@ -13,13 +13,11 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import mainApi from '../../utils/MainApi';
 import newsApi from '../../utils/NewsApi';
 
-import { seedData, seedDataSaved } from '../../seedData/seedData';
-
 import './App.css';
 
 function App() {
   const [allCards, setAllCards] = useState(false);
-  const [cards, setCards] = useState(seedData);
+  const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

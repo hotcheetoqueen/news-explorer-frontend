@@ -100,6 +100,7 @@ function App() {
 
   const handleLogIn = (e) => {
     e.preventDefault();
+    
     mainApi.signin(values.email, values.password)
       .then((data) => {
         setCurrentUser({ email: values.email, name: data.name, id: data.id });

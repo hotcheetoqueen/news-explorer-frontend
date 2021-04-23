@@ -77,10 +77,8 @@ function App() {
   };
 
   const closeModal = (e) => {
-    if (!e.key || e.key === 'Escape') {
       resetForm();
       setModalOpen(false);
-    }
   };
 
   const handleHamburgerClick = () => {
@@ -104,7 +102,12 @@ function App() {
 
     mainApi.signin(values.email, values.password)
       .then((data) => {
-        setCurrentUser({ email: values.email, name: data.name, id: data.id });
+        if (data && data.token) {
+          setToken(data.token);
+          localStorage.setItem('token', data.token);
+          setCurrentUser({ email: values.email, name: data.name, id: data.id });
+        }
+
         setLoggedIn(true);
         setModalOpen(false);
       })
@@ -118,6 +121,7 @@ function App() {
 
   const handleSignUp = (e) => {
     e.preventDefault();
+
     mainApi.signup(values.username, values.email, values.password)
       .then((data) => {
           setModalVersion('success');
@@ -129,7 +133,7 @@ function App() {
     setLoggedIn(false);
     handleHamburgerClose();
 
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
     
     history.push('/');
   };

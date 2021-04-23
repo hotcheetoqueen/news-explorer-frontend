@@ -3,12 +3,18 @@ import validator from 'validator';
 import './PopupWithForm.css';
 
 export default function PopupWithForm(props) {
-              const { handleSignUp, handleLogIn, modalVersion, handleValidation, isValid, values } = props
+    const { handleSignUp, handleLogIn, modalVersion, handleValidation, onClose } = props
+
+    function escape(e) {
+      if (e.keyCode === 27) {
+        onClose();
+      }
+    }
 
     useEffect(() => {
-        document.addEventListener('keydown', props.onClose);
+        document.addEventListener('keydown', escape, props.onClose);
         return () => {
-          document.removeEventListener('keydown', props.onClose);
+          document.removeEventListener('keydown', escape, props.onClose);
         };
       });
 

@@ -2,8 +2,8 @@ import React from 'react';
 import Header from '../Header/Header';
 import './SearchForm.css';
 
-export default function SearchForm({ openModal, isSavedResults, handleHamburgerClick, handleSearch, searchValue, handleSearchValue, loggedIn, handleLogOut }) {
-    return(
+export default function SearchForm({ openModal, isSavedResults, handleHamburgerClick, handleSearch, searchValue, handleSearchValue, loggedIn, handleLogOut }) {  
+    return (
         <>
             <section className='search-form' title='A hand holding a white smartphone showing activity data'>
                 <Header openModal={openModal} isSavedResults={isSavedResults}  handleHamburgerClick={handleHamburgerClick} loggedIn={loggedIn} handleLogOut={handleLogOut} />

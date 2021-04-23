@@ -100,7 +100,8 @@ function App() {
 
   const handleLogIn = (e) => {
     e.preventDefault();
-    
+    // e.stopImmediatePropagation()
+
     mainApi.signin(values.email, values.password)
       .then((data) => {
         setCurrentUser({ email: values.email, name: data.name, id: data.id });
@@ -126,6 +127,7 @@ function App() {
 
   function handleLogOut() {
     setLoggedIn(false);
+    handleHamburgerClose();
 
     localStorage.removeItem('jwt');
     

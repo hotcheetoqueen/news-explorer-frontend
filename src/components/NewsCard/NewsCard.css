@@ -95,6 +95,10 @@
     height: 304px;
 }
 
+.news-card__info-container-link {
+    text-decoration: none;
+}
+
 .news-card__date {
     color: #B6BCBF;
     font-family: 'Source Sans Pro', sans-serif;

@@ -170,6 +170,7 @@ function App() {
         });
 
         setCards(data);
+        showLessCards();
         setIsLoading(false);
         localStorage.setItem('searchResponse', JSON.stringify(data));
       })

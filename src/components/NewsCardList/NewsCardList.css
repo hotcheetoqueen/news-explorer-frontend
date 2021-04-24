@@ -2,7 +2,6 @@
     background-color: #F5F6F7;
     display: grid;
     margin: 0 auto;
-    padding-bottom: 64px;
 }
 
 .news-card__list-container {
@@ -35,7 +34,7 @@
     border: 0;
     color: #1A1B22;
     border-radius: 80px;
-    margin: 0 auto 80px;
+    margin: 64px auto 80px;
     font-weight: 500;
     font-size: 18px;
 }

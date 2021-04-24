@@ -7,7 +7,7 @@ import './NewsCardList.css';
 export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isLoading, showLessCards }) {
     return (
         <>
-            {loggedIn && (
+            {cards.length > 0 && (
                 <section className='news-card__list'>
                     {isLoading ? (
                         <Preloader />

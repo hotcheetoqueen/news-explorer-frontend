@@ -31,7 +31,7 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                             />
                                         ))}
                                     </ul>
-                                {!isSavedResults && (
+                                {!isSavedResults && allCards < cards.length && (
                                     <button className='news-card__list-button' onClick={showMoreCards}>Show more</button>
                                 )}
                                 </div>

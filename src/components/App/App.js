@@ -248,7 +248,11 @@ function App() {
 
   const showMoreCards = () => {
     setAllCards(cards.length);
-  };      
+  };
+
+  const showLessCards = () => {
+    setAllCards(3);
+  }
 
   return (
     <div className="App">
@@ -269,6 +273,7 @@ function App() {
               handleSaveClick={handleSaveClick}
               handleDeleteClick={handleDeleteClick}
               showMoreCards={showMoreCards}
+              showLessCards={showLessCards}
               allCards={allCards}
               userName={userName}
               handleHamburgerClick={handleHamburgerClick}

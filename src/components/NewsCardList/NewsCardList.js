@@ -4,7 +4,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
 import './NewsCardList.css';
 
-export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isLoading }) {
+export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isLoading, showLessCards }) {
     return (
         <>
             {loggedIn && (
@@ -33,6 +33,9 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                     </ul>
                                 {!isSavedResults && allCards < cards.length && (
                                     <button className='news-card__list-button' onClick={showMoreCards}>Show more</button>
+                                )}
+                                {!isSavedResults && allCards === cards.length && (
+                                   <button className='news-card__list-button' onClick={showLessCards}>Show less</button>
                                 )}
                                 </div>
                             )}

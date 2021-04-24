@@ -16,7 +16,7 @@ import newsApi from '../../utils/NewsApi';
 import './App.css';
 
 function App() {
-  const [allCards, setAllCards] = useState(false);
+  const [allCards, setAllCards] = useState(3);
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
@@ -247,7 +247,7 @@ function App() {
   // DISPLAY CARDS
 
   const showMoreCards = () => {
-    setAllCards(true);
+    setAllCards(cards.length);
   };      
 
   return (
@@ -269,6 +269,7 @@ function App() {
               handleSaveClick={handleSaveClick}
               handleDeleteClick={handleDeleteClick}
               showMoreCards={showMoreCards}
+              allCards={allCards}
               userName={userName}
               handleHamburgerClick={handleHamburgerClick}
               handleSearch={handleSearch}
@@ -290,7 +291,8 @@ function App() {
               modalVersion={modalVersion}
             />
           </Route>
-          <ProtectedRoute path='/saved-news' component={SavedNews}
+          {/* <ProtectedRoute path='/saved-news' component={SavedNews} */}
+          <Route path='/saved-news' component={SavedNews}
               cards={savedCards}
               // cards={cards}
               loggedIn={loggedIn} 
@@ -315,10 +317,6 @@ function App() {
               handleHamburgerClick={handleHamburgerClick}
               onClose={handleHamburgerClose}
             />
-          {/* Test Routes!! */}
-          <Route exact path='/preloader'>
-            <Preloader />
-          </Route>
         </Router>
       </CurrentUserContext.Provider>
     </div>

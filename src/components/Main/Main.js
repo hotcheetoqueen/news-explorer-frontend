@@ -7,12 +7,20 @@ import SearchForm from '../SearchForm/SearchForm';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import './Main.css';
 
-export default function Main({ cards, openModal, loggedIn, handleLogin, handleLoginClick, handleLogOut, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isSavedResults, handleHamburgerClick, isLoading, handleSearch, handleSearchValue }) {
+export default function Main({ cards, openModal, loggedIn, handleLogOut, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, allCards, isSavedResults, handleHamburgerClick, isLoading, handleSearch, handleSearchValue }) {
     const currentUser = React.useContext(CurrentUserContext);
 
     return(
         <>
-            <SearchForm openModal={openModal} isSavedResults={isSavedResults} handleHamburgerClick={handleHamburgerClick} loggedIn={loggedIn} handleLogOut={handleLogOut} handleSearch={handleSearch} handleSearchValue={handleSearchValue} />
+            <SearchForm
+                openModal={openModal}
+                isSavedResults={isSavedResults}
+                handleHamburgerClick={handleHamburgerClick}
+                loggedIn={loggedIn}
+                handleLogOut={handleLogOut}
+                handleSearch={handleSearch}
+                handleSearchValue={handleSearchValue}
+            />
             <NewsCardList
                 cards={cards}
                 isSaved={isSaved}
@@ -22,6 +30,8 @@ export default function Main({ cards, openModal, loggedIn, handleLogin, handleLo
                 loggedIn={loggedIn}
                 isLoading={isLoading}
                 currentUser={currentUser}
+                showMoreCards={showMoreCards}
+                allCards={allCards}
             />
             <About />
             <Footer />

@@ -34,9 +34,9 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                 {!isSavedResults && allCards < cards.length && (
                                     <button className='news-card__list-button' onClick={showMoreCards}>Show more</button>
                                 )}
-                                {!isSavedResults && allCards === cards.length && (
+                                {/* {!isSavedResults && allCards === cards.length && (
                                    <button className='news-card__list-button' onClick={showLessCards}>Show less</button>
-                                )}
+                                )} */}
                                 </div>
                             )}
                             {cards.length === 0 && (

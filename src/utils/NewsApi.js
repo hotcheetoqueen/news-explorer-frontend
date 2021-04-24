@@ -14,7 +14,7 @@ class NewsApi {
             `${this.proxyApiUrl}/v2/everything?q=${keyword}`
                 + `&from=${this.pastWeek.toISOString()}`
                 + `&to=${this.now.toISOString()}`
-                + `&sortBy=popularity&pageSize=99&apiKey=${this.apiKey}`,
+                + `&sortBy=popularity&pageSize=100&apiKey=${this.apiKey}`,
             {
                 headers: {
                     'Content-Type': 'application/json',

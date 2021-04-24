@@ -135,9 +135,19 @@ function App() {
     handleHamburgerClose();
 
     localStorage.removeItem('token');
-    
     history.push('/');
   };
+
+  useEffect(() => {
+    if (token) {
+      mainApi.getContent(token)
+        .then((res) => {
+          setLoggedIn(true);
+          setCurrentUser(res);
+        })
+        .catch(console.log('test'));
+    }
+  }, [token]);
 
   useEffect(() => {
     if (!loggedIn) {
@@ -182,11 +192,15 @@ function App() {
 
   const handleSaveClick = (card) => {
     if (!card.isSaved) {
-      card.isSaved = true;
-      const newCards = cards.map((res) => (res.id === card.id ? card : res));
-      savedCards.push(card);
-      setCards(newCards);
-      setSavedCards(savedCards);
+      mainApi.saveArticle(card, token)
+      .then((newCard) => {
+        newCard.isSaved = true;
+
+        const newSavedCards = cards.map((res) => (res.id === card.id ? card : res));
+        newSavedCards.push(card);
+        setSavedCards(newSavedCards);
+      })
+      .catch((err) => console.log(err));
     }
   };
 
@@ -223,7 +237,7 @@ function App() {
     return [isSaved, id];
   };
 
-  useEffect(() => {
+useEffect(() => {
     // if (token && !localStorage.getItem('savedCards')) {
     //   mainApi.getArticles(token)
     if (token) {

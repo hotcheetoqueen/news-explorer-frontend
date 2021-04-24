@@ -16,7 +16,7 @@ import newsApi from '../../utils/NewsApi';
 import './App.css';
 
 function App() {
-  const [allCards, setAllCards] = useState(3);
+  const [allCards, setAllCards] = useState('');
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
@@ -248,7 +248,7 @@ function App() {
   // DISPLAY CARDS
 
   const showMoreCards = () => {
-    setAllCards(cards.length);
+    setAllCards(allCards + 3);
   };
 
   const showLessCards = () => {

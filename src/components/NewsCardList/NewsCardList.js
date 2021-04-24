@@ -4,7 +4,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
 import './NewsCardList.css';
 
-export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isLoading, showLessCards }) {
+export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isLoading, showLessCards, openModal }) {
     return (
         <>
             {cards.length > 0 && (
@@ -28,6 +28,7 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                                 handleSaveClick={handleSaveClick}
                                                 isSaved={isSaved}
                                                 handleDeleteClick={handleDeleteClick}
+                                                openModal={openModal}
                                             />
                                         ))}
                                     </ul>

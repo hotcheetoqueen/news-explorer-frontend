@@ -33,6 +33,7 @@ export default function Main({ cards, openModal, loggedIn, handleLogOut, isSaved
                 showMoreCards={showMoreCards}
                 showLessCards={showLessCards}
                 allCards={allCards}
+                openModal={openModal}
             />
             <About />
             <Footer />

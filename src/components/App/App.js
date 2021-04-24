@@ -74,6 +74,7 @@ function App() {
   const openModal = () => {
     setModalOpen(true);
     setHamburgerMenuOpen(false);
+    window.scrollTo(0, 0)
   };
 
   const closeModal = (e) => {

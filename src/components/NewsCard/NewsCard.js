@@ -4,7 +4,7 @@ import NewsCardDeleteIcon from '../../images/bookmarks/news-card__delete-icon.sv
 import { formatDate } from '../../utils/helpers';
 import './NewsCard.css';
 
-export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveClick = () => { }, handleDeleteClick = () => { } }) {
+export default function NewsCard({ card, loggedIn, isSavedResults, openModal = () => { },  handleSaveClick = () => { }, handleDeleteClick = () => { } }) {
     return (
         <>
             {card && (
@@ -17,7 +17,7 @@ export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveCli
                         )}
                         <div className='news-card__image-container'>
                             <div className='news-card__save-container'>
-                                {!isSavedResults ?
+                                {!isSavedResults && loggedIn ?
                                     <button className='news-card__save' onClick={() => handleSaveClick(card)}>
                                         <div className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_saved' : ''}`} src={NewsCardSaveIcon} alt='Save article' />
                                     </button> :
@@ -25,6 +25,11 @@ export default function NewsCard({ card, loggedIn, isSavedResults, handleSaveCli
                                         <img className={`${card.isSaved ? ' news-card__save-icon_delete' : ''}`} src={NewsCardDeleteIcon} alt='Delete article' />
                                     </button>
                                 }
+                                {!isSavedResults && !loggedIn && (
+                                    <button className='news-card__save' onClick={() => openModal()}>
+                                        <div className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_saved' : ''}`} src={NewsCardSaveIcon} alt='Save article' />
+                                    </button>
+                                )}
                                 {isSavedResults && (
                                     <div className='news-card__save-helper-text'>Remove from saved</div>
                                 )}

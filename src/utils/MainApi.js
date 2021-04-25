@@ -63,7 +63,7 @@ class MainApi {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ keyword, source, title, publishedAt, description, urlToImage, url }),
+        body: JSON.stringify({ keyword, source, title, date: publishedAt, text: description, image: urlToImage, link: url }),
     })
         .then((res) => res.json());
     }

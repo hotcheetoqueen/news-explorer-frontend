@@ -16,7 +16,7 @@ import newsApi from '../../utils/NewsApi';
 import './App.css';
 
 function App() {
-  const [allCards, setAllCards] = useState('');
+  const [allCards, setAllCards] = useState(3);
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
@@ -26,7 +26,7 @@ function App() {
   const [modalVersion, setModalVersion] = useState('');
   const [savedCards, setSavedCards] = useState([]);
   const [searchValue, setSearchValue] = useState('');
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [token, setToken] = useState(false);
   const [user, setUser] = useState({});
   const [userName, setUserName] = useState('Tester');
 
@@ -35,13 +35,28 @@ function App() {
   // LOCAL STORAGE
 
   useEffect(() => {
-    if (localStorage.getItem('searchResponse')) {
-      setCards(JSON.parse(localStorage.getItem('searchResponse')));
+    const cards = localStorage.getItem('searchResponse');
+    const savedCards = localStorage.getItem('savedCards');
+
+    if (cards) {
+      setCards(JSON.parse(cards));
     }
-    if (localStorage.getItem('savedCards')) {
-      setSavedCards(JSON.parse(localStorage.getItem('savedCards')));
+    if (savedCards) {
+      setSavedCards(JSON.parse(savedCards));
     }
   }, []);
+
+  useEffect(() => {
+    if (cards) {
+      const newCards = cards.map(card => {
+        const url = card.url;
+        const isFound = savedCards.find(savedCard => savedCard.url === url);
+        return isFound ? {...card, isSaved: true, id: isFound._id} : card;
+      })
+      setCards(newCards);
+    }
+  }, [savedCards]);
+
   
   // VALIDATION
 
@@ -71,9 +86,10 @@ function App() {
 
 // POPUPS
 
-  const openModal = () => {
+  const openModal = (type) => {
     setModalOpen(true);
     setHamburgerMenuOpen(false);
+    setModalVersion(type);
     window.scrollTo(0, 0)
   };
 
@@ -139,15 +155,36 @@ function App() {
   };
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+
     if (token) {
+      setToken(token);
+
+      mainApi.getArticles(token)
+      .then((res) => {
+        const savedCards = res.data.map(card => formatCard(card));
+        setSavedCards(savedCards)
+      })
+
       mainApi.getContent(token)
         .then((res) => {
           setLoggedIn(true);
           setCurrentUser(res);
         })
         .catch(console.log('test'));
-    }
+      }
   }, [token]);
+
+  useEffect(() => {
+    if (cards.length) {
+      const newCards = cards.map(card => {
+        const url = card.url
+        const isFound = savedCards.find(savedCard => savedCard.url === url)
+        return isFound ? { ...card, isSaved: true, id:  isFound._id} : card
+      })
+      setCards(newCards)
+    }
+  }, [savedCards]);
 
   useEffect(() => {
     if (!loggedIn) {
@@ -190,17 +227,38 @@ function App() {
 
   // BOOKMARKS
 
+  function formatCard(card) {
+    const newCard = {...card}
+    card.url = card.link;
+    card.description = card.text;
+    card.urlToImage = card.image;
+    card.publishedAt = card.date;
+    card.id = card._id;
+    return newCard;
+  }
+
   const handleSaveClick = (card) => {
     if (!card.isSaved) {
       mainApi.saveArticle(card, token)
-      .then((newCard) => {
+      .then((res) => {
+        const newCard = res.data;
         newCard.isSaved = true;
 
-        const newSavedCards = cards.map((res) => (res.id === card.id ? card : res));
-        newSavedCards.push(card);
-        setSavedCards(newSavedCards);
+        const newCards  = [...cards].map(card => card.url === newCard.link ? formatCard(newCard) : card)
+        setCards(newCards);
       })
       .catch((err) => console.log(err));
+    } else {
+      mainApi.deleteArticle(card.id, token)
+        .then(res => {
+          // const newCard = res.data
+          // newCard.isSaved = true;
+
+          // const newCards = [...cards].map(card => card.url === newCard.link ? formatCard(newCard) : card)
+          // console.log('(=>>>>>>>>>>>> newCards', newCards)
+          // setCards(newCards)
+        })
+        .catch((err) => console.log(err));
     }
   };
 
@@ -245,6 +303,7 @@ useEffect(() => {
       .then((data) => {
         // const userCards = data.filter((card) => card.user === currentUser.id);
         setCards(cards);
+        setSavedCards(savedCards);
 
         // cards.forEach((c) => {
         //   const [isSaved, id] = articleSaved(res, savedCards);
@@ -295,7 +354,7 @@ useEffect(() => {
               handleHamburgerClick={handleHamburgerClick}
               handleSearch={handleSearch}
               searchValue={searchValue}
-              handleSearchValue = {handleSearchValue}
+              handleSearchValue={handleSearchValue}
               isLoading={isLoading}
             />
             <PopupWithForm 

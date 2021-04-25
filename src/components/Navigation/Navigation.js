@@ -33,7 +33,7 @@ export default function Navigation(props) {
                 <li className={`navigation__list-item ${!isSavedResults && `navigation__list-item_current`}`}><a className='navigation__list-link' href='/'>Home</a></li>
                 {!loggedIn ? (
                     <li className={`navigation__list-item navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
-                        <Link className='navigation__list-link' to='/' onClick={openModal}>Sign in</Link>
+                        <Link className='navigation__list-link' to='/' onClick={() => openModal('signin')}>Sign in</Link>
                     </li>
                 ) : (
                     <>

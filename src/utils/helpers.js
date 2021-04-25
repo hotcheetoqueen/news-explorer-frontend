@@ -1,11 +1,11 @@
-const months = ['January', 'February', 'March', 'April', 'May', 'June',
-  'July', 'August', 'September', 'October', 'November', 'December'];
+// const months = ['January', 'February', 'March', 'April', 'May', 'June',
+//   'July', 'August', 'September', 'October', 'November', 'December'];
 
-module.exports.formatDate = (published) => {
-  const [year, month] = published.split('-');
-  const [day] = published.split('-')[2].split('T');
-  return `${months[month - 1]} ${day}, ${year}`;
-};
+// module.exports.formatDate = (publishedAt) => {
+//   const [year, month] = publishedAt.split('-');
+//   const [day] = publishedAt.split('-')[2].split('T');
+//   return `${months[month - 1]} ${day}, ${year}`;
+// };
 
   const rankKeywords = (cards) => {
     const counts = {};

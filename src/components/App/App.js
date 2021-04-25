@@ -229,11 +229,13 @@ function App() {
 
   function formatCard(card) {
     const newCard = {...card}
+    
     card.url = card.link;
     card.description = card.text;
     card.urlToImage = card.image;
     card.publishedAt = card.date;
     card.id = card._id;
+
     return newCard;
   }
 

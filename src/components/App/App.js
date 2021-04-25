@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Main from '../Main/Main';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
-import Preloader from '../Preloader/Preloader';
 import SavedNews from '../SavedNews/SavedNews';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
@@ -171,7 +170,7 @@ function App() {
           setLoggedIn(true);
           setCurrentUser(res);
         })
-        .catch(console.log('test'));
+        .catch();
       }
   }, [token]);
 
@@ -350,17 +349,21 @@ function App() {
               modalVersion={modalVersion}
             />
           </Route>
-          {/* <ProtectedRoute path='/saved-news' component={SavedNews} */}
-          <Route path='/saved-news' component={SavedNews}
-              cards={savedCards}
-              loggedIn={loggedIn} 
-              handleSaveClick={handleSaveClick}
-              handleDeleteClick={handleDeleteClick}
-              userName={userName}
-              handleLogOut={handleLogOut}
-              isSavedResults={true}
-              handleHamburgerClick={handleHamburgerClick}
-              isLoading={isLoading}
+          {/* <ProtectedRoute path='/saved-news' */}
+          <Route path='/saved-news'
+            render={(props) => (
+              <SavedNews {...props}
+                cards={savedCards}
+                loggedIn={loggedIn} 
+                handleSaveClick={handleSaveClick}
+                handleDeleteClick={handleDeleteClick}
+                userName={userName}
+                handleLogOut={handleLogOut}
+                isSavedResults={true}
+                handleHamburgerClick={handleHamburgerClick}
+                isLoading={isLoading}
+              />
+            )}
           />
           <HamburgerMenu
               userName={userName}

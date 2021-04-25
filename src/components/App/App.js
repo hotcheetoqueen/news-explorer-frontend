@@ -367,18 +367,18 @@ function App() {
             )}
           />
           <HamburgerMenu
-              userName={userName}
-              handleSignUp={handleSignUp}
-              loggedIn={loggedIn}
-              handleLogIn={handleLogIn}
-              handleLogInClick={handleLogInClick}
-              handleLogOut={handleLogOut}
-              openModal={openModal}
-              modalOpen={modalOpen}
-              hamburgerMenuOpen={hamburgerMenuOpen}
-              handleHamburgerClick={handleHamburgerClick}
-              onClose={handleHamburgerClose}
-            />
+            userName={userName}
+            handleSignUp={handleSignUp}
+            loggedIn={loggedIn}
+            handleLogIn={handleLogIn}
+            handleLogInClick={handleLogInClick}
+            handleLogOut={handleLogOut}
+            openModal={openModal}
+            modalOpen={modalOpen}
+            hamburgerMenuOpen={hamburgerMenuOpen}
+            handleHamburgerClick={handleHamburgerClick}
+            onClose={handleHamburgerClose}
+          />
         </Router>
       </CurrentUserContext.Provider>
     </div>

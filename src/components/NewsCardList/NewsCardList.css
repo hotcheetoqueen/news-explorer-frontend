@@ -47,7 +47,7 @@
 
 @media screen and (min-width: 1560px) {
     .news-card__grid {
-        display: flex;
+        display: inline-grid;
         justify-content: center;
         gap: 32px;
         width: 1280px;
@@ -60,6 +60,7 @@
     
     .news-card__list-button {
         margin: 64px auto 80px;
+        display: block;
     }
 }
 
@@ -79,6 +80,7 @@
         gap: 12px;
         padding: 0;
         grid-template-columns: repeat(3, 300px);
+        margin: 32px auto;
     }
 }
 

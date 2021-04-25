@@ -7,7 +7,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import './Main.css';
 
-export default function Main({ cards, openModal, loggedIn, handleLogOut, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, showLessCards, allCards, isSavedResults, handleHamburgerClick, isLoading, handleSearch, handleSearchValue }) {
+export default function Main({ cards, openModal, loggedIn, handleLogOut, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, showLessCards, allCards, isSavedResults, handleHamburgerClick, isLoading, handleSearch, handleSearchValue, emptyState }) {
     const currentUser = React.useContext(CurrentUserContext);
 
     return(
@@ -34,6 +34,7 @@ export default function Main({ cards, openModal, loggedIn, handleLogOut, isSaved
                 showLessCards={showLessCards}
                 allCards={allCards}
                 openModal={openModal}
+                emptyState={emptyState}
             />
             <About />
             <Footer />

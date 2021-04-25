@@ -65,11 +65,11 @@
 
 @media screen and (max-width: 1400px) {
     .news-card__grid {
-        margin: 64px auto 0;
+        margin: 64px auto 80px;
     }
 
     .news-card__list-button {
-        margin: 32px auto 80px;
+        margin: 32px auto 0;
         display: block;
     }
 }

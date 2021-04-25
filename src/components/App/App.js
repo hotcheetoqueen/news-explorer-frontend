@@ -19,6 +19,7 @@ function App() {
   const [allCards, setAllCards] = useState(3);
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
+  const [emptyState, setEmptyState] = useState(false);
   const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -115,7 +116,6 @@ function App() {
 
   const handleLogIn = (e) => {
     e.preventDefault();
-    // e.stopImmediatePropagation()
 
     mainApi.signin(values.email, values.password)
       .then((data) => {
@@ -204,6 +204,7 @@ function App() {
 
     newsApi.getArticles(searchValue)
       .then((data) => {
+        setEmptyState(data.length === 0);
         data.forEach((res) => {
           res.keyword = searchValue;
           res.source = res.source.name;
@@ -295,31 +296,8 @@ function App() {
     return [isSaved, id];
   };
 
-useEffect(() => {
-    // if (token && !localStorage.getItem('savedCards')) {
-    //   mainApi.getArticles(token)
-    if (token) {
-      mainApi.getArticles(token)
-      .then((data) => {
-        // const userCards = data.filter((card) => card.user === currentUser.id);
-        setCards(cards);
-        setSavedCards(savedCards);
 
-        // cards.forEach((c) => {
-        //   const [isSaved, id] = articleSaved(res, savedCards);
-        //   if (isSaved) {
-        //     res.isSaved = true;
-        //     res.id = id;
-        //   }
-        // });
-      })
-      .catch();
-    }
-
-    // }
-  }, [loggedIn]);
-
-  // DISPLAY CARDS
+  // DISPLAY # OF CARDS
 
   const showMoreCards = () => {
     setAllCards(allCards + 3);
@@ -356,6 +334,7 @@ useEffect(() => {
               searchValue={searchValue}
               handleSearchValue={handleSearchValue}
               isLoading={isLoading}
+              emptyState={emptyState}
             />
             <PopupWithForm 
               openModal={modalOpen}

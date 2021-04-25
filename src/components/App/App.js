@@ -354,7 +354,8 @@ function App() {
             render={(props) => (
               <SavedNews {...props}
                 cards={savedCards}
-                loggedIn={loggedIn} 
+                loggedIn={loggedIn}
+                handleLogInClick={handleLogInClick}
                 handleSaveClick={handleSaveClick}
                 handleDeleteClick={handleDeleteClick}
                 userName={userName}

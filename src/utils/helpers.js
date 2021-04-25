@@ -31,18 +31,16 @@
     if (words.length === 1) {
       [keywordList] = words;
     } else if (words.length === 2) {
-      keywordList = `${words[0]} and ${words[1]}`;
+      keywordList = ` ${words[0]} and ${words[1]}`;
     } else if (words.length === 3) {
-      keywordList = `${words[0]}, ${words[1]} and ${words[2]}`;
+      keywordList = ` ${words[0]}, ${words[1]}, and ${words[2]}`;
     } else {
-      keywordList = `${words[0]}, ${words[1]} and ${words.length - 2} other${
-        words.length - 2 !== 1 ? 's' : ''
-      }`;
+      keywordList = ` ${words[0]}, ${words[1]}, and ${words.length - 2} others`;
     }
     return keywordList;
   };
   
-  module.exports.rankKeywodPopularity = (cards) => {
+  module.exports.rankKeywordPopularity = (cards) => {
     const popularity = rankKeywords(cards);
     const sortPopularity = (a, b) => popularity.indexOf(a.keyword) - popularity.indexOf(b.keyword);
     cards.sort(sortPopularity);

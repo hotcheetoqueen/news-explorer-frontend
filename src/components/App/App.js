@@ -353,7 +353,6 @@ function App() {
           {/* <ProtectedRoute path='/saved-news' component={SavedNews} */}
           <Route path='/saved-news' component={SavedNews}
               cards={savedCards}
-              // cards={cards}
               loggedIn={loggedIn} 
               handleSaveClick={handleSaveClick}
               handleDeleteClick={handleDeleteClick}

@@ -5,9 +5,11 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import './SavedNews.css';
 
 export default function SavedNews({ cards, loggedIn, handleDeleteClick, handleHamburgerClick, isLoading, isSaved }) {
-    return(
+    cards = [];
+
+    return (
         <>
-            <SavedNewsHeader handleHamburgerClick={handleHamburgerClick} loggedIn={loggedIn} />
+            <SavedNewsHeader cards={cards} handleHamburgerClick={handleHamburgerClick} loggedIn={loggedIn} />
             <NewsCardList cards={cards} isSavedResults={true} handleDeleteClick={handleDeleteClick} loggedIn={loggedIn} isLoading={isLoading} isSaved={isSaved} />
             <Footer />
         </>

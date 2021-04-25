@@ -308,7 +308,7 @@ function App() {
 
   return (
     <div className="App">
-      <CurrentUserContext.Provider value={user}>
+      <CurrentUserContext.Provider value={currentUser}>
         <Router>
           <Route exact path="/">
             <Main 

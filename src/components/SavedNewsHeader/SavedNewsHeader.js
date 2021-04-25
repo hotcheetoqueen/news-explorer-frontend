@@ -6,7 +6,6 @@ import './SavedNewsHeader.css';
 
 export default function SavedNewsHeader({ cards, userName, handleLogInClick, handleLogOut, handleHamburgerClick, isSavedResults, loggedIn }) {
     const keywords = buildKeywordList(cards);
-
     const currentUser = React.useContext(CurrentUserContext);
 
     return(

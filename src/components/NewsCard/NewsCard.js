@@ -10,10 +10,7 @@ export default function NewsCard({ card, loggedIn, isSavedResults, openModal = (
             {card && (
                 <li className='news-card'>
                         {isSavedResults && (
-                            // <p className="card__keyword">
-                            //     {card.keyword.slice(1)}
-                            // </p>
-                            <div className='news-card__keyword'>Keyword</div>
+                            <div className='news-card__keyword'>{card.keyword}</div>
                         )}
                         <div className='news-card__image-container'>
                             <div className='news-card__save-container'>

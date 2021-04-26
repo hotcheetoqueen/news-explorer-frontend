@@ -58,7 +58,6 @@ function App() {
     }
   }, [savedCards]);
 
-  
   // VALIDATION
 
   const [errors, setErrors] = useState({});
@@ -217,7 +216,8 @@ function App() {
         setIsLoading(false);
         localStorage.setItem('searchResponse', JSON.stringify(data));
       })
-      .catch();
+      .catch(error => window.alert('Please enter a keyword'))
+      .catch(window.location.reload())
   };
 
   // BOOKMARKS
@@ -249,10 +249,9 @@ function App() {
       mainApi.deleteArticle(card.id, token)
         .then(res => {
           // const newCard = res.data
-          // newCard.isSaved = true;
+          // newCard.isSaved = false;
 
           // const newCards = [...cards].map(card => card.url === newCard.link ? formatCard(newCard) : card)
-          // console.log('(=>>>>>>>>>>>> newCards', newCards)
           // setCards(newCards)
         })
         .catch((err) => console.log(err));
@@ -263,6 +262,7 @@ function App() {
     setSavedCards(
       savedCards.filter((res) => res.id !== card.id),
     );
+
     card.isSaved = false;
     const newCards = cards.map((res) => (res.id === card.id ? card : res));
     savedCards.push(card);

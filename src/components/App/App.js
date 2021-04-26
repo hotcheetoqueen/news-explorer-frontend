@@ -7,6 +7,7 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import SavedNews from '../SavedNews/SavedNews';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { CARDS_PER_RENDER } from '../../utils/constants';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import mainApi from '../../utils/MainApi';
@@ -15,7 +16,7 @@ import newsApi from '../../utils/NewsApi';
 import './App.css';
 
 function App() {
-  const [allCards, setAllCards] = useState(3);
+  const [allCards, setAllCards] = useState(CARDS_PER_RENDER);
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [emptyState, setEmptyState] = useState(false);
@@ -185,12 +186,6 @@ function App() {
     }
   }, [savedCards]);
 
-  useEffect(() => {
-    if (!loggedIn) {
-      history.push('/');
-    }
-  });
-
   // SEARCH
 
   const handleSearchValue = (e) => {
@@ -301,11 +296,11 @@ function App() {
   // DISPLAY # OF CARDS
 
   const showMoreCards = () => {
-    setAllCards(allCards + 3);
+    setAllCards(allCards + CARDS_PER_RENDER);
   };
 
   const showLessCards = () => {
-    setAllCards(3);
+    setAllCards(CARDS_PER_RENDER);
   }
 
   return (

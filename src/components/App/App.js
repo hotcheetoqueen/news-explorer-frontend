@@ -162,6 +162,7 @@ function App() {
 
       mainApi.getArticles(token)
       .then((res) => {
+        res.data.forEach(card => card.isSaved = true);
         const savedCards = res.data.map(card => formatCard(card));
         setSavedCards(savedCards)
       })
@@ -242,39 +243,47 @@ function App() {
   }
 
   const handleSaveClick = (card) => {
+    debugger;
+
     if (!card.isSaved) {
       mainApi.saveArticle(card, token)
       .then((res) => {
+        // let newCard = res.data;
+        // newCard = formatCard(newCard);
         const newCard = res.data;
         newCard.isSaved = true;
 
-        const newCards  = [...cards].map(card => card.url === newCard.link ? formatCard(newCard) : card)
+        const newCards = [...cards].map(card => card.url === newCard.link ? formatCard(newCard) : card)
         setCards(newCards);
+        // setSavedCards([...savedCards, newCard]);
       })
       .catch((err) => console.log(err));
     } else {
-      mainApi.deleteArticle(card.id, token)
+      mainApi.deleteArticle(card._id, token)
         .then(res => {
-          // const newCard = res.data
-          // newCard.isSaved = false;
+          card.isSaved = false;
 
-          // const newCards = [...cards].map(card => card.url === newCard.link ? formatCard(newCard) : card)
-          // setCards(newCards)
+          const newCards = cards.map(c => (c._id === card._id ? card : c));
+          setCards(newCards);
+
+          setSavedCards(
+            savedCards.filter((c) => c._id !== card._id),
+          );
         })
         .catch((err) => console.log(err));
     }
   };
 
-  const handleDeleteClick = (card) => {
-    setSavedCards(
-      savedCards.filter((res) => res.id !== card.id),
-    );
+  // const handleDeleteClick = (card) => {
+  //   setSavedCards(
+  //     savedCards.filter((res) => res.id !== card.id),
+  //   );
 
-    card.isSaved = false;
-    const newCards = cards.map((res) => (res.id === card.id ? card : res));
-    savedCards.push(card);
-    setCards(newCards);
-  };
+  //   card.isSaved = false;
+  //   const newCards = cards.map((res) => (res.id === card.id ? card : res));
+  //   savedCards.push(card);
+  //   setCards(newCards);
+  // };
 
   // ARTICLES
 
@@ -328,7 +337,6 @@ function App() {
               savedCards={savedCards}
               isSavedResults={false}
               handleSaveClick={handleSaveClick}
-              handleDeleteClick={handleDeleteClick}
               showMoreCards={showMoreCards}
               showLessCards={showLessCards}
               allCards={allCards}
@@ -362,7 +370,6 @@ function App() {
                 loggedIn={loggedIn}
                 handleLogInClick={handleLogInClick}
                 handleSaveClick={handleSaveClick}
-                handleDeleteClick={handleDeleteClick}
                 userName={userName}
                 handleLogOut={handleLogOut}
                 isSavedResults={true}

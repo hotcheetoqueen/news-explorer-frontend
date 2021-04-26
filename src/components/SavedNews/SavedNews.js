@@ -5,7 +5,7 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import './SavedNews.css';
 
-export default function SavedNews({ cards, loggedIn, handleLogInClick, handleDeleteClick, handleHamburgerClick, isLoading, isSaved }) {
+export default function SavedNews({ cards, loggedIn, handleLogInClick, handleSaveClick, handleHamburgerClick, isLoading, isSaved }) {
     // const history = useHistory();
 
     // useEffect(() => {
@@ -18,7 +18,7 @@ export default function SavedNews({ cards, loggedIn, handleLogInClick, handleDel
     return (
         <>
             <SavedNewsHeader cards={cards} handleHamburgerClick={handleHamburgerClick} loggedIn={loggedIn} handleLogInClick={handleLogInClick} />
-            <NewsCardList cards={cards} isSavedResults={true} handleDeleteClick={handleDeleteClick} loggedIn={loggedIn} isLoading={isLoading} isSaved={isSaved} />
+            <NewsCardList cards={cards} isSavedResults={true} handleSaveClick={handleSaveClick} loggedIn={loggedIn} isLoading={isLoading} isSaved={isSaved} />
             <Footer />
         </>
     )

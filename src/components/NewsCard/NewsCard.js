@@ -4,7 +4,7 @@ import NewsCardDeleteIcon from '../../images/bookmarks/news-card__delete-icon.sv
 import { formatDate } from '../../utils/helpers';
 import './NewsCard.css';
 
-export default function NewsCard({ card, loggedIn, isSavedResults, openModal = () => { },  handleSaveClick = () => { }, handleDeleteClick = () => { } }) {
+export default function NewsCard({ card, loggedIn, isSavedResults, openModal = () => { },  handleSaveClick = () => { } }) {
     return (
         <>
             {card && (
@@ -18,7 +18,7 @@ export default function NewsCard({ card, loggedIn, isSavedResults, openModal = (
                                     <button className='news-card__save' onClick={() => handleSaveClick(card)}>
                                         <div className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_saved' : ''}`} src={NewsCardSaveIcon} alt='Save article' />
                                     </button> :
-                                    <button className='news-card__save' onClick={() => handleDeleteClick(card)}>
+                                    <button className='news-card__save' onClick={() => handleSaveClick(card)}>
                                         <img className={`${card.isSaved ? ' news-card__save-icon_delete' : ''}`} src={NewsCardDeleteIcon} alt='Delete article' />
                                     </button>
                                 }

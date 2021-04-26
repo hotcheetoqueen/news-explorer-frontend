@@ -1,7 +1,7 @@
 import React from 'react';
 import NewsCardSaveIcon from '../../images/bookmarks/news-card__save-icon.svg';
 import NewsCardDeleteIcon from '../../images/bookmarks/news-card__delete-icon.svg';
-// import { formatDate } from '../../utils/helpers';
+import { formatDate } from '../../utils/helpers';
 import './NewsCard.css';
 
 export default function NewsCard({ card, loggedIn, isSavedResults, openModal = () => { },  handleSaveClick = () => { }, handleDeleteClick = () => { } }) {
@@ -45,15 +45,14 @@ export default function NewsCard({ card, loggedIn, isSavedResults, openModal = (
                         <div className='news-card__info-container'>
                             {!isSavedResults ? (
                                 <a className='news-card__link' href={card.url} rel='noreferrer' target='_blank'>
-                                    {/* <p className='news-card__date'>{formatDate(card.publishedAt)}</p> */}
-                                    <p className='news-card__date'>{card.publishedAt}</p>
+                                    <p className='news-card__date'>{formatDate(card.publishedAt)}</p>
                                     <h3 className='news-card__title'>{card.title}</h3>
                                     <p className='news-card__description'>{card.description}</p>
                                     <p className='news-card__source'>{card.source}</p>
                                 </a>
                                 ) : (
                                 <a className='news-card__link' href={card.link} rel='noreferrer' target='_blank'>
-                                    <p className='news-card__date'>{card.date}</p>
+                                    <p className='news-card__date'>{formatDate(card.date)}</p>
                                     <h3 className='news-card__title'>{card.title}</h3>
                                     <p className='news-card__description'>{card.text}</p>
                                     <p className='news-card__source'>{card.source}</p>

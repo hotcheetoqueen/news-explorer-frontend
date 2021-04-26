@@ -8,6 +8,7 @@ import SavedNews from '../SavedNews/SavedNews';
 
 import CurrentUserContext from '../../contexts/CurrentUserContext';
 import { CARDS_PER_RENDER } from '../../utils/constants';
+import { formatDate } from '../../utils/helpers';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import mainApi from '../../utils/MainApi';
@@ -122,9 +123,9 @@ function App() {
           setToken(data.token);
           localStorage.setItem('token', data.token);
           setCurrentUser({ email: values.email, name: data.name, id: data.id });
+          setLoggedIn(true);
         }
 
-        setLoggedIn(true);
         setModalOpen(false);
       })
       .catch();
@@ -198,27 +199,33 @@ function App() {
     newsApi.getArticles(searchValue)
       .then((data) => {
         setEmptyState(data.length === 0);
-        data.forEach((res) => {
-          res.keyword = searchValue;
-          res.source = res.source.name;
 
-          if (loggedIn) {
-            const [isSaved, id] = articleSaved(res, savedCards);
-            if (isSaved) {
-              res.isSaved = true;
-              res.id = id;
+        // if (searchValue.length !== 0) {
+          data.forEach((res) => {
+            res.keyword = searchValue;
+            res.source = res.source.name;
+            res.publishedAt = formatDate(res.publishedAt);
+  
+            if (loggedIn) {
+              const [isSaved, id] = articleSaved(res, savedCards);
+              if (isSaved) {
+                res.isSaved = true;
+                res.id = id;
+              }
             }
-          }
-        });
-
-        setCards(data);
-        showLessCards();
-        setIsLoading(false);
-        localStorage.setItem('searchResponse', JSON.stringify(data));
-      })
-      .catch(error => window.alert('Please enter a keyword'))
-      .catch(window.location.reload())
-  };
+          });
+          setCards(data);
+          showLessCards();
+          setIsLoading(false);
+          localStorage.setItem('searchResponse', JSON.stringify(data));
+        // } 
+        // else {
+        //   window.alert('Please enter a keyword');
+        //   window.location.reload();
+        // }
+        })
+      .catch();
+  }
 
   // BOOKMARKS
 
@@ -318,6 +325,7 @@ function App() {
               handleLogInClick={handleLogInClick}
               handleLogOut={handleLogOut}
               handleLogOut={handleLogOut}
+              savedCards={savedCards}
               isSavedResults={false}
               handleSaveClick={handleSaveClick}
               handleDeleteClick={handleDeleteClick}

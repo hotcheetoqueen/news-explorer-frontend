@@ -4,7 +4,7 @@ import NewsCard from '../NewsCard/NewsCard';
 import Preloader from '../Preloader/Preloader';
 import './NewsCardList.css';
 
-export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards, isLoading, emptyState, openModal }) {
+export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, handleSaveClick, handleDeleteClick, showMoreCards, isLoading, emptyState, openModal }) {
     return (
         <>
                 <section className='news-card__list'>
@@ -25,7 +25,6 @@ export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults
                                                 loggedIn={loggedIn}
                                                 isSavedResults={isSavedResults}
                                                 handleSaveClick={handleSaveClick}
-                                                isSaved={isSaved}
                                                 handleDeleteClick={handleDeleteClick}
                                                 openModal={openModal}
                                             />

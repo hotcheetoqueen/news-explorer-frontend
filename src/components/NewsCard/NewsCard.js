@@ -35,7 +35,7 @@ export default function NewsCard({ card, loggedIn, isSavedResults, openModal = (
                                 )}
                             </div>
                             <a className='news-card__link' href={card.url} rel='noreferrer' target='_blank'>
-                                {!isSavedResults ? (
+                                {!card.isSaved ? (
                                     <img className='news-card__photo' src={card.urlToImage} alt='News article subject' />
                                 ) : (
                                     <img className='news-card__photo' src={card.image} alt='News article subject' />
@@ -43,16 +43,16 @@ export default function NewsCard({ card, loggedIn, isSavedResults, openModal = (
                             </a>
                         </div>
                         <div className='news-card__info-container'>
-                            {!isSavedResults ? (
+                            {!card.isSaved ? (
                                 <a className='news-card__link' href={card.url} rel='noreferrer' target='_blank'>
-                                    <p className='news-card__date'>{formatDate(card.publishedAt)}</p>
+                                    <p className='news-card__date'>{card.publishedAt}</p>
                                     <h3 className='news-card__title'>{card.title}</h3>
                                     <p className='news-card__description'>{card.description}</p>
                                     <p className='news-card__source'>{card.source}</p>
                                 </a>
                                 ) : (
                                 <a className='news-card__link' href={card.link} rel='noreferrer' target='_blank'>
-                                    <p className='news-card__date'>{formatDate(card.date)}</p>
+                                    <p className='news-card__date'>{card.date}</p>
                                     <h3 className='news-card__title'>{card.title}</h3>
                                     <p className='news-card__description'>{card.text}</p>
                                     <p className='news-card__source'>{card.source}</p>

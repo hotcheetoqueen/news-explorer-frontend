@@ -21,10 +21,16 @@ class NewsApi {
             },
         },
     )
-    .then((res) => { if (res.ok) {
-        return res.json();
-    }})
-    .then((data) => data.articles);
+    .then((res) => { 
+        if (res.ok) {
+            return res.json();
+        } else {
+          window.alert('Please enter a keyword');
+          window.location.reload();
+        }
+    })
+    .then((data) => data.articles)
+    .catch()
     }
 }
 

@@ -10,7 +10,7 @@ import './Main.css';
 export default function Main({ cards, openModal, loggedIn, handleLogOut, isSaved, handleSaveClick, showMoreCards, showLessCards, allCards, isSavedResults, handleHamburgerClick, isLoading, handleSearch, handleSearchValue, emptyState }) {
     const currentUser = React.useContext(CurrentUserContext);
 
-    return(
+    return (
         <>
             <SearchForm
                 openModal={openModal}

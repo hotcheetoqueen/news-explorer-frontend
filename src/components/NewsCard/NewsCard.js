@@ -34,30 +34,17 @@ export default function NewsCard({ card, loggedIn, isSavedResults, openModal = (
                                     <div className={`${!loggedIn ? 'news-card__save-helper-text' : 'news-card__save-helper-text_hidden'}`} >Sign in to save articles</div>
                                 )}
                             </div>
-                            <a className='news-card__link' href={card.url} rel='noreferrer' target='_blank'>
-                                {!card.isSaved ? (
-                                    <img className='news-card__photo' src={card.urlToImage} alt='News article subject' />
-                                ) : (
-                                    <img className='news-card__photo' src={card.image} alt='News article subject' />
-                                )}
+                            <a className='news-card__link' href={card.link} rel='noreferrer' target='_blank'>
+                                <img className='news-card__photo' src={card.image} alt='News article subject' />
                             </a>
                         </div>
                         <div className='news-card__info-container'>
-                            {!card.isSaved ? (
-                                <a className='news-card__link' href={card.url} rel='noreferrer' target='_blank'>
-                                    <p className='news-card__date'>{card.publishedAt}</p>
-                                    <h3 className='news-card__title'>{card.title}</h3>
-                                    <p className='news-card__description'>{card.description}</p>
-                                    <p className='news-card__source'>{card.source}</p>
-                                </a>
-                                ) : (
                                 <a className='news-card__link' href={card.link} rel='noreferrer' target='_blank'>
                                     <p className='news-card__date'>{card.date}</p>
                                     <h3 className='news-card__title'>{card.title}</h3>
                                     <p className='news-card__description'>{card.text}</p>
                                     <p className='news-card__source'>{card.source}</p>
                                 </a>
-                            )}
                         </div>
                 </li>
             )}

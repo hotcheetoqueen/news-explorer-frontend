@@ -52,10 +52,11 @@ class MainApi {
         Authorization: `Bearer ${token}`,
         },
     })
-        .then((res) => res.json());
+    .then((res) => res.json());
+    // .then((res) => res.ok ? res.json() : Promise.reject(res.status));
     }
 
-    saveArticle({ keyword, source, title, publishedAt, description, urlToImage, url }, token) {
+    saveArticle({ keyword, source, title, date, text, image, link }, token) {
     return fetch(`${MAIN_API_URL}/articles`, {
         method: 'POST',
         headers: {
@@ -63,7 +64,7 @@ class MainApi {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ keyword, source, title, date: publishedAt, text: description, image: urlToImage, link: url }),
+        body: JSON.stringify({ keyword, source, title, date, text, image, link }),
     })
         .then((res) => res.json());
     }

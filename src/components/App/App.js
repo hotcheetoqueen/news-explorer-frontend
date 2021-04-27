@@ -1,4 +1,5 @@
 import { React, useEffect, useCallback, useState } from 'react';
+// import { BrowserRouter as Router, Route, useHistory, Switch } from 'react-router-dom';
 import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
 
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
@@ -48,17 +49,6 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
-    if (cards) {
-      const newCards = cards.map(card => {
-        const url = card.url;
-        const isFound = savedCards.find(savedCard => savedCard.url === url);
-        return isFound ? {...card, isSaved: true, id: isFound._id} : card;
-      })
-      setCards(newCards);
-    }
-  }, [savedCards]);
-
   // VALIDATION
 
   const [errors, setErrors] = useState({});
@@ -85,7 +75,7 @@ function App() {
     [setValues, setErrors, setIsValid],
   );
 
-// POPUPS
+  // POPUPS
 
   const openModal = (type) => {
     setModalOpen(true);
@@ -95,8 +85,8 @@ function App() {
   };
 
   const closeModal = (e) => {
-      resetForm();
-      setModalOpen(false);
+    resetForm();
+    setModalOpen(false);
   };
 
   const handleHamburgerClick = () => {
@@ -141,7 +131,7 @@ function App() {
 
     mainApi.signup(values.username, values.email, values.password)
       .then((data) => {
-          setModalVersion('success');
+        setModalVersion('success');
       })
       .catch();
   }
@@ -162,9 +152,10 @@ function App() {
 
       mainApi.getArticles(token)
       .then((res) => {
-        res.data.forEach(card => card.isSaved = true);
-        const savedCards = res.data.map(card => formatCard(card));
-        setSavedCards(savedCards)
+        // if (res) {
+          const savedCards = res.data;
+          setSavedCards(savedCards)
+        // }
       })
 
       mainApi.getContent(token)
@@ -173,15 +164,16 @@ function App() {
           setCurrentUser(res);
         })
         .catch();
-      }
+    }
   }, [token]);
 
   useEffect(() => {
     if (cards.length) {
       const newCards = cards.map(card => {
         const url = card.url
-        const isFound = savedCards.find(savedCard => savedCard.url === url)
-        return isFound ? { ...card, isSaved: true, id:  isFound._id} : card
+        const isFound = savedCards.find(savedCard => savedCard.link === url)
+        // const isFound = savedCards.find(savedCard => savedCard.link === url)
+        return isFound ? { ...card, isSaved: true, id: isFound._id } : card
       })
       setCards(newCards)
     }
@@ -202,11 +194,20 @@ function App() {
         setEmptyState(data.length === 0);
 
         // if (searchValue.length !== 0) {
-          data.forEach((res) => {
-            res.keyword = searchValue;
-            res.source = res.source.name;
-            res.publishedAt = formatDate(res.publishedAt);
-  
+        const newCards = data.map((res) => {
+            let newCard = {}
+
+            newCard.keyword = searchValue;
+            newCard.isSaved = false;
+
+            newCard.source = res.source.name;
+            newCard.date = formatDate(res.publishedAt);
+
+            newCard.title = res.title;
+            newCard.link = res.url;
+            newCard.text = res.description;
+            newCard.image = res.urlToImage;
+              
             if (loggedIn) {
               const [isSaved, id] = articleSaved(res, savedCards);
               if (isSaved) {
@@ -214,33 +215,19 @@ function App() {
                 res.id = id;
               }
             }
+
+            return newCard;
+
           });
-          setCards(data);
+          setCards(newCards);
           showLessCards();
           setIsLoading(false);
           localStorage.setItem('searchResponse', JSON.stringify(data));
-        // } 
-        // else {
-        //   window.alert('Please enter a keyword');
-        //   window.location.reload();
-        // }
         })
       .catch();
   }
 
   // BOOKMARKS
-
-  function formatCard(card) {
-    const newCard = {...card}
-    
-    card.url = card.link;
-    card.description = card.text;
-    card.urlToImage = card.image;
-    card.publishedAt = card.date;
-    card.id = card._id;
-
-    return newCard;
-  }
 
   const handleSaveClick = (card) => {
     debugger;
@@ -248,42 +235,40 @@ function App() {
     if (!card.isSaved) {
       mainApi.saveArticle(card, token)
       .then((res) => {
-        // let newCard = res.data;
-        // newCard = formatCard(newCard);
         const newCard = res.data;
         newCard.isSaved = true;
+        // remove above:  newCard.isSaved = true;
 
-        const newCards = [...cards].map(card => card.url === newCard.link ? formatCard(newCard) : card)
+        const newCards = [...cards].map(card => card.url === newCard.link ? {...card, isSaved: true} : card)
+        // const newCards = [...cards].map(card => card.url === newCard.link ? formatCard(newCard) : card)
         setCards(newCards);
-        // setSavedCards([...savedCards, newCard]);
       })
       .catch((err) => console.log(err));
     } else {
+      // mainApi.deleteArticle(card.id, token)
       mainApi.deleteArticle(card._id, token)
         .then(res => {
-          card.isSaved = false;
+          res.isSaved = false;
 
-          const newCards = cards.map(c => (c._id === card._id ? card : c));
-          setCards(newCards);
+          mainApi.getArticles(token)
+          .then((res) => {
+            // if (res) {
+              const savedCards = res.data;
+              setSavedCards(savedCards)
+            // }
+          })
 
-          setSavedCards(
-            savedCards.filter((c) => c._id !== card._id),
-          );
+          // TODO: DELETE ON BACKEND. RESETTING WITH getARTICLES ABOVE SHOULD WORK
+          // const newCards = cards.map(c => (c._id === card._id ? card : c));
+          // setCards(newCards);
+
+          // setSavedCards(
+          //   savedCards.filter((c) => c._id !== card._id),
+          // );
         })
         .catch((err) => console.log(err));
     }
   };
-
-  // const handleDeleteClick = (card) => {
-  //   setSavedCards(
-  //     savedCards.filter((res) => res.id !== card.id),
-  //   );
-
-  //   card.isSaved = false;
-  //   const newCards = cards.map((res) => (res.id === card.id ? card : res));
-  //   savedCards.push(card);
-  //   setCards(newCards);
-  // };
 
   // ARTICLES
 
@@ -293,7 +278,6 @@ function App() {
     return articleInfo.every((key) => article[key] === savedArticle[key]);
   };
   
-
   const articleSaved = (article, savedArticles) => {
     let isSaved = false;
     let id;
@@ -307,7 +291,6 @@ function App() {
 
     return [isSaved, id];
   };
-
 
   // DISPLAY # OF CARDS
 
@@ -323,8 +306,9 @@ function App() {
     <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
         <Router>
+          {/* <Switch> */}
           <Route exact path="/">
-            <Main 
+            <Main
               cards={cards}
               openModal={openModal}
               modalOpen={modalOpen}
@@ -348,7 +332,7 @@ function App() {
               isLoading={isLoading}
               emptyState={emptyState}
             />
-            <PopupWithForm 
+            <PopupWithForm
               openModal={modalOpen}
               onClose={closeModal}
               values={values}
@@ -378,6 +362,18 @@ function App() {
               />
             )}
           />
+          {/* <ProtectedRoute exact path='/saved-news' loggedIn={loggedIn} component={<SavedNews
+          cards={savedCards}
+            loggedIn={loggedIn}
+            handleLogInClick={handleLogInClick}
+            handleSaveClick={handleSaveClick}
+            userName={userName}
+            handleLogOut={handleLogOut}
+            isSavedResults={true}
+            handleHamburgerClick={handleHamburgerClick}
+            isLoading={isLoading}
+          />} /> */}
+          {/* </Switch> */}
           <HamburgerMenu
             userName={userName}
             handleSignUp={handleSignUp}

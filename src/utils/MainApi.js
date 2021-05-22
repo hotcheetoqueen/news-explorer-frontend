@@ -22,13 +22,23 @@ class MainApi {
             },
             body: JSON.stringify({ email, password }),
         })
-        .then((res) => res.json())
+        .then((res) => {
+            res.json()
+
+            if (!res.ok) {
+                if (res.status === 401) {
+                    window.alert('Please check your credentials and try again.');
+                    window.location.reload();
+                }
+            }
+        })
         .then((data) => {
             if (!data.message) {
                 localStorage.setItem('token', data.token);
             }
             return data;
         })
+        .catch();
     }
 
     getContent(token) {

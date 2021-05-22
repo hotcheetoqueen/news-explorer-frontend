@@ -1,6 +1,5 @@
 import { React, useEffect, useCallback, useState } from 'react';
-// import { BrowserRouter as Router, Route, useHistory, Switch } from 'react-router-dom';
-import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
+import { BrowserRouter as Router, Route, useHistory, Switch } from 'react-router-dom';
 
 import HamburgerMenu from '../HamburgerMenu/HamburgerMenu';
 import Main from '../Main/Main';
@@ -35,19 +34,31 @@ function App() {
 
   const history = useHistory();
 
-  // LOCAL STORAGE
+  // LOCAL STORAGE FOR CARDS
 
-  useEffect(() => {
-    const cards = localStorage.getItem('searchResponse');
-    const savedCards = localStorage.getItem('savedCards');
+  // useEffect(() => {
+  //   const cards = localStorage.getItem('searchResponse');
 
-    if (cards) {
-      setCards(JSON.parse(cards));
-    }
-    if (savedCards) {
-      setSavedCards(JSON.parse(savedCards));
-    }
-  }, []);
+  //   if (cards) {
+  //     setCards(JSON.parse(cards));
+  //   }
+
+  //   return () => cards = false;
+
+  // }, []);
+
+  // useEffect(() => {
+  // const savedCards = localStorage.getItem('savedCards');
+
+  //   if (savedCards) {
+  //     setSavedCards(JSON.parse(savedCards));
+  //   }
+
+  //   console.log('loggedIn', loggedIn);
+
+  //   return () => savedCards = false;
+
+  // }, []);
 
   // VALIDATION
 
@@ -112,13 +123,18 @@ function App() {
         if (data && data.token) {
           setToken(data.token);
           localStorage.setItem('token', data.token);
-          setCurrentUser({ email: values.email, name: data.name, id: data.id });
-          setLoggedIn(true);
-        }
 
-        setModalOpen(false);
+          setCurrentUser({ email: values.email, name: data.name, id: data.id });
+
+          setLoggedIn(true);
+          resetForm();
+
+          setModalOpen(false);
+        } 
       })
-      .catch();
+      .catch((err) => {
+        console.log('from catch', err);
+      });
   };
 
   const handleSignUpClick = () => {
@@ -138,6 +154,8 @@ function App() {
 
   function handleLogOut() {
     setLoggedIn(false);
+    console.log('loggedIn', loggedIn);
+
     handleHamburgerClose();
 
     localStorage.removeItem('token');
@@ -152,18 +170,23 @@ function App() {
 
       mainApi.getArticles(token)
       .then((res) => {
-        // if (res) {
-          const savedCards = res.data;
-          setSavedCards(savedCards)
-        // }
-      })
+            const savedCards = res.data;
+            setSavedCards(savedCards)
+        })
+      }
+    }, [token])
 
+useEffect(() => {
+  if (token) {
       mainApi.getContent(token)
         .then((res) => {
           setLoggedIn(true);
           setCurrentUser(res);
         })
         .catch();
+    } 
+    else {
+      setLoggedIn(false);
     }
   }, [token]);
 
@@ -172,7 +195,6 @@ function App() {
       const newCards = cards.map(card => {
         const url = card.url
         const isFound = savedCards.find(savedCard => savedCard.link === url)
-        // const isFound = savedCards.find(savedCard => savedCard.link === url)
         return isFound ? { ...card, isSaved: true, id: isFound._id } : card
       })
       setCards(newCards)
@@ -187,13 +209,12 @@ function App() {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setIsLoading(true);
+    setIsLoading(true);          
 
     newsApi.getArticles(searchValue)
       .then((data) => {
         setEmptyState(data.length === 0);
 
-        // if (searchValue.length !== 0) {
         const newCards = data.map((res) => {
             let newCard = {}
 
@@ -306,7 +327,7 @@ function App() {
     <div className="App">
       <CurrentUserContext.Provider value={currentUser}>
         <Router>
-          {/* <Switch> */}
+          <Switch>
           <Route exact path="/">
             <Main
               cards={cards}
@@ -346,10 +367,9 @@ function App() {
               modalVersion={modalVersion}
             />
           </Route>
-          {/* <ProtectedRoute path='/saved-news' */}
-          <Route path='/saved-news'
-            render={(props) => (
-              <SavedNews {...props}
+
+          <ProtectedRoute exact path='/saved-news'
+            component={SavedNews}
                 cards={savedCards}
                 loggedIn={loggedIn}
                 handleLogInClick={handleLogInClick}
@@ -359,21 +379,8 @@ function App() {
                 isSavedResults={true}
                 handleHamburgerClick={handleHamburgerClick}
                 isLoading={isLoading}
-              />
-            )}
-          />
-          {/* <ProtectedRoute exact path='/saved-news' loggedIn={loggedIn} component={<SavedNews
-          cards={savedCards}
-            loggedIn={loggedIn}
-            handleLogInClick={handleLogInClick}
-            handleSaveClick={handleSaveClick}
-            userName={userName}
-            handleLogOut={handleLogOut}
-            isSavedResults={true}
-            handleHamburgerClick={handleHamburgerClick}
-            isLoading={isLoading}
-          />} /> */}
-          {/* </Switch> */}
+            />
+          </Switch>
           <HamburgerMenu
             userName={userName}
             handleSignUp={handleSignUp}

@@ -15,10 +15,6 @@ export default function Navigation(props) {
         userName,
         isSavedResults,
         handleLogOut,
-        handleLogIn,
-        handleLogInClick,
-        modalOpen,
-        hamburgerMenuOpen,
         handleHamburgerClick
     } = props
 
@@ -30,22 +26,24 @@ export default function Navigation(props) {
                 <img className='navigation navigation__mobile-hamburger' src={isSavedResults ? HamburgerDark : Hamburger} alt='menu' />
             </div>
             <ul className={`navigation navigation__list ${theme ? `navigation_theme_${theme}` : ''}`}>
-                <li className={`navigation__list-item ${!isSavedResults && `navigation__list-item_current`}`}><a className='navigation__list-link' href='/'>Home</a></li>
-                {!loggedIn ? (
+                <li className={`navigation__list-item ${!isSavedResults && `navigation__list-item_current`}`}>
+                    <Link className='navigation__list-link' to='/'>Home</Link>
+                </li>
+                {loggedIn ? (
+                    <>
+                        <li className={`navigation__list-item navigation__list-item_large ${isSavedResults && `navigation__list-item_current`}`}>
+                            <Link className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} to='/saved-news'>Saved articles</Link>
+                        </li>
+                    <li className={`navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
+                        <Link className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} onClick={handleLogOut} to='/'>{currentUser.name}
+                            <img className='navigation__list-item_primary-icon' src={isSavedResults ? LogOutIconDark : LogOutIcon} alt='Logout'></img>
+                        </Link>
+                    </li>
+                    </>
+                ) : (
                     <li className={`navigation__list-item navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
                         <Link className='navigation__list-link' to='/' onClick={() => openModal('signin')}>Sign in</Link>
                     </li>
-                ) : (
-                    <>
-                        {/* <Link to='/saved-news'> */}
-                            <li className={`navigation__list-item navigation__list-item_large ${isSavedResults && `navigation__list-item_current`}`}><a className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} href='/saved-news'>Saved articles</a></li>
-                        {/* </Link> */}
-                        <li className={`navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
-                            <Link className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} onClick={handleLogOut} to='/'>{currentUser.name}
-                                <img className='navigation__list-item_primary-icon' src={isSavedResults ? LogOutIconDark : LogOutIcon} alt='Logout'></img>
-                            </Link>
-                        </li>
-                    </>
                 )}
             </ul>
         </section>

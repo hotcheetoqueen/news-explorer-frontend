@@ -23,14 +23,14 @@ class MainApi {
             body: JSON.stringify({ email, password }),
         })
         .then((res) => {
-            res.json()
-
             if (!res.ok) {
                 if (res.status === 401) {
                     window.alert('Please check your credentials and try again.');
                     window.location.reload();
                 }
             }
+            
+            return res.json();
         })
         .then((data) => {
             if (!data.message) {

@@ -361,19 +361,18 @@ useEffect(() => {
               modalVersion={modalVersion}
             />
           </Route>
-
           <ProtectedRoute exact path='/saved-news'
             component={SavedNews}
-                cards={savedCards}
-                loggedIn={loggedIn}
-                handleLogInClick={handleLogInClick}
-                handleSaveClick={handleSaveClick}
-                userName={userName}
-                handleLogOut={handleLogOut}
-                isSavedResults={true}
-                handleHamburgerClick={handleHamburgerClick}
-                isLoading={isLoading}
-            />
+            cards={savedCards}
+            loggedIn={loggedIn}
+            handleLogInClick={handleLogInClick}
+            handleSaveClick={handleSaveClick}
+            userName={userName}
+            handleLogOut={handleLogOut}
+            isSavedResults={true}
+            handleHamburgerClick={handleHamburgerClick}
+            isLoading={isLoading}
+          />
           </Switch>
           <HamburgerMenu
             userName={userName}

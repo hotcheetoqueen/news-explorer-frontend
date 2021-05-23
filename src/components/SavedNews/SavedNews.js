@@ -6,14 +6,14 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import './SavedNews.css';
 
 export default function SavedNews({ cards, loggedIn, handleLogInClick, handleSaveClick, handleHamburgerClick, isLoading, isSaved }) {
-    // const history = useHistory();
+    const history = useHistory();
 
-    // useEffect(() => {
-    //   if (!loggedIn) {
-    //     history.push('/');
-    //     handleLogInClick();
-    //   }
-    // });
+    useEffect(() => {
+      if (!loggedIn) {
+        history.push('/');
+        handleLogInClick();
+      }
+    });
   
     return (
         <>

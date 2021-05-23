@@ -154,7 +154,6 @@ function App() {
 
   function handleLogOut() {
     setLoggedIn(false);
-    console.log('loggedIn', loggedIn);
 
     handleHamburgerClose();
 
@@ -209,7 +208,7 @@ useEffect(() => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setIsLoading(true);          
+    setIsLoading(true);
 
     newsApi.getArticles(searchValue)
       .then((data) => {
@@ -257,11 +256,8 @@ useEffect(() => {
       mainApi.saveArticle(card, token)
       .then((res) => {
         const newCard = res.data;
-        newCard.isSaved = true;
-        // remove above:  newCard.isSaved = true;
 
-        const newCards = [...cards].map(card => card.url === newCard.link ? {...card, isSaved: true} : card)
-        // const newCards = [...cards].map(card => card.url === newCard.link ? formatCard(newCard) : card)
+        const newCards = [...cards].map(card => card.link === newCard.link ? {...card, isSaved: true} : card)
         setCards(newCards);
       })
       .catch((err) => console.log(err));

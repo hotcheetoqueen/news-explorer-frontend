@@ -34,31 +34,6 @@ function App() {
 
   const history = useHistory();
 
-  // LOCAL STORAGE FOR CARDS
-
-  // useEffect(() => {
-  //   const cards = localStorage.getItem('searchResponse');
-
-  //   if (cards) {
-  //     setCards(JSON.parse(cards));
-  //   }
-
-  //   return () => cards = false;
-
-  // }, []);
-
-  // useEffect(() => {
-  // const savedCards = localStorage.getItem('savedCards');
-
-  //   if (savedCards) {
-  //     setSavedCards(JSON.parse(savedCards));
-  //   }
-
-  //   console.log('loggedIn', loggedIn);
-
-  //   return () => savedCards = false;
-
-  // }, []);
 
   // VALIDATION
 
@@ -254,8 +229,6 @@ useEffect(() => {
   // BOOKMARKS
 
   const handleSaveClick = (card) => {
-    debugger;
-
     if (!card.isSaved) {
       mainApi.saveArticle(card, token)
       .then((res) => {

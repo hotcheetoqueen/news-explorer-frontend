@@ -169,8 +169,12 @@ function App() {
 
       mainApi.getArticles(token)
       .then((res) => {
-            const savedCards = res.data;
-            setSavedCards(savedCards)
+          res.data.forEach(card => {
+            card.isSaved = true;
+          })
+
+          const savedCards = res.data;
+          setSavedCards(savedCards)
         })
       }
     }, [token])
@@ -257,31 +261,25 @@ useEffect(() => {
       .then((res) => {
         const newCard = res.data;
 
-        const newCards = [...cards].map(card => card.link === newCard.link ? {...card, isSaved: true} : card)
+        const newCards = [...cards].map(card => card.link === newCard.link ? {...newCard, isSaved: true} : card);
         setCards(newCards);
+        setSavedCards([...savedCards, {...newCard, isSaved: true}]);
       })
       .catch((err) => console.log(err));
     } else {
-      // mainApi.deleteArticle(card.id, token)
       mainApi.deleteArticle(card._id, token)
         .then(res => {
           res.isSaved = false;
 
           mainApi.getArticles(token)
           .then((res) => {
-            // if (res) {
+              res.data.forEach(card => {
+                card.isSaved = true;
+              })
+    
               const savedCards = res.data;
               setSavedCards(savedCards)
-            // }
           })
-
-          // TODO: DELETE ON BACKEND. RESETTING WITH getARTICLES ABOVE SHOULD WORK
-          // const newCards = cards.map(c => (c._id === card._id ? card : c));
-          // setCards(newCards);
-
-          // setSavedCards(
-          //   savedCards.filter((c) => c._id !== card._id),
-          // );
         })
         .catch((err) => console.log(err));
     }

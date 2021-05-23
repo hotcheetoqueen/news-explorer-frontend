@@ -83,9 +83,9 @@ class MainApi {
     return fetch(`${MAIN_API_URL}/articles/${articleId}`, {
         method: 'DELETE',
         headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
         },
     });
     }

@@ -16,7 +16,7 @@ export default function NewsCard({ card, loggedIn, isSavedResults, openModal = (
                             <div className='news-card__save-container'>
                                 {!isSavedResults && loggedIn ?
                                     <button className='news-card__save' onClick={() => handleSaveClick(card)}>
-                                        <div className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_saved' : ''}`} src={NewsCardSaveIcon} alt='Save article' />
+                                        <div className={`news-card__save-icon ${card.isSaved ? ' news-card__save-icon_saved' : ' news-card__save-icon_unsaved'}`} alt='Save article' />
                                     </button> :
                                     <button className='news-card__save' onClick={() => handleSaveClick(card)}>
                                         <img className={`${card.isSaved ? ' news-card__save-icon_delete' : ''}`} src={NewsCardDeleteIcon} alt='Delete article' />

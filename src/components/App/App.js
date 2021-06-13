@@ -232,9 +232,7 @@ function App() {
   // BOOKMARKS
 
   const handleSaveClick = (card) => {
-    
     if (!card.isSaved) {
-      console.log('saving', card)
       mainApi.saveArticle(card, token)
       .then((res) => {
         const newCard = res.data;
@@ -245,7 +243,6 @@ function App() {
       })
       .catch((err) => console.log(err));
     } else {
-      console.log('deleting', card)
       mainApi.deleteArticle(card._id, token)
         .then(res => {
           const unlikedCard = card;

@@ -131,10 +131,13 @@ function App() {
     setLoggedIn(false);
 
     handleHamburgerClose();
-
     localStorage.removeItem('token');
+    window.location.reload();
+
     history.push('/');
   };
+
+  // ARTICLES
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -154,19 +157,19 @@ function App() {
       }
     }, [token])
 
-useEffect(() => {
-  if (token) {
-      mainApi.getContent(token)
-        .then((res) => {
-          setLoggedIn(true);
-          setCurrentUser(res);
-        })
-        .catch();
-    } 
-    else {
-      setLoggedIn(false);
-    }
-  }, [token]);
+  useEffect(() => {
+    if (token) {
+        mainApi.getContent(token)
+          .then((res) => {
+            setLoggedIn(true);
+            setCurrentUser(res);
+          })
+          .catch();
+      } 
+      else {
+        setLoggedIn(false);
+      }
+    }, [token]);
 
   useEffect(() => {
     if (cards.length) {

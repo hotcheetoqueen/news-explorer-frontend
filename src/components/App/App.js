@@ -232,7 +232,9 @@ function App() {
   // BOOKMARKS
 
   const handleSaveClick = (card) => {
+    
     if (!card.isSaved) {
+      console.log('saving', card)
       mainApi.saveArticle(card, token)
       .then((res) => {
         const newCard = res.data;
@@ -243,19 +245,15 @@ function App() {
       })
       .catch((err) => console.log(err));
     } else {
+      console.log('deleting', card)
       mainApi.deleteArticle(card._id, token)
         .then(res => {
-          res.isSaved = false;
+          const unlikedCard = card;
 
-          mainApi.getArticles(token)
-          .then((res) => {
-              res.data.forEach(card => {
-                card.isSaved = true;
-              })
-    
-              const savedCards = res.data;
-              setSavedCards(savedCards)
-          })
+          const unlikedCards = [...cards].map(card => card._id === unlikedCard._id ? {...unlikedCard, isSaved: false} : card);
+          setCards(unlikedCards);
+          const saved = savedCards.filter(card => card._id !== unlikedCard._id)
+          setSavedCards(saved)
         })
         .catch((err) => console.log(err));
     }

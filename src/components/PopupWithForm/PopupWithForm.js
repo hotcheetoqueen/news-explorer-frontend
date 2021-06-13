@@ -1,5 +1,4 @@
 import { React, useEffect, useCallback } from 'react';
-import validator from 'validator';
 import './PopupWithForm.css';
 
 export default function PopupWithForm(props) {

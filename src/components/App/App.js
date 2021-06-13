@@ -29,7 +29,6 @@ function App() {
   const [savedCards, setSavedCards] = useState([]);
   const [searchValue, setSearchValue] = useState('');
   const [token, setToken] = useState(false);
-  const [user, setUser] = useState({});
   const [userName, setUserName] = useState('Tester');
 
   const history = useHistory();

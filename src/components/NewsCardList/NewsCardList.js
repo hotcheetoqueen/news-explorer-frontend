@@ -1,60 +1,46 @@
 import React from 'react';
+import EmptyState from '../EmptyState/EmptyState';
 import NewsCard from '../NewsCard/NewsCard';
-import { seedData } from '../../seedData/seedData';
+import Preloader from '../Preloader/Preloader';
 import './NewsCardList.css';
 
-export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, isSaved, handleSaveClick, handleDeleteClick, showMoreCards }) {
-    return(
+export default function NewsCardList({ cards, allCards, loggedIn, isSavedResults, handleSaveClick, handleDeleteClick, showMoreCards, isLoading, emptyState, openModal }) {
+    return (
         <>
-            <section className='news-card__list'>
-                {/* {isLoading ? ( */}
-                    {/* 
+                <section className='news-card__list'>
+                    {isLoading ? (
                         <Preloader />
-                    */}
-                {/* ) : ( */}
+                    ) : (
                     <>
-                        {/* {!cards ? (
-                            <EmptyState />
-                        ) : ( */}
-                            {/* {cards.length > 0 ? ( */}
+                        {cards.length > 0 && (
                             <div className='news-card__list-container'>
                                 {!isSavedResults && (
                                     <h3 className='news-card__list-title'>Search results</h3>
                                 )}
-                                <ul className='news-card__grid'>
-                                    {cards && seedData.slice(0, 3).map((card) => (
-                                        <NewsCard key={card.id} card={card}
-                                            loggedIn={loggedIn}
-                                            isSavedResults={isSavedResults}
-                                            handleSaveClick={handleSaveClick}
-                                            isSaved={isSaved}
-                                            handleDeleteClick={handleDeleteClick}
-                                        />
-                                ))}
-                                </ul>
-                                {!allCards ? (
-                                    <button className='news-card__list-button' onClick={showMoreCards}>Show more</button>
-                                ) : (
-                                    <ul className="news-cards-list__grid">
-                                        {cards
-                                        && 
-                                            seedData.slice(3)
-                                            .map((card) => (
-                                            <NewsCard key={card.id} card={card}
+                                    <ul className='news-card__grid'>
+                                        {cards && cards.slice(0, allCards).map((card) => (
+                                            <NewsCard
+                                                key={cards.indexOf(card)}
+                                                card={card}
                                                 loggedIn={loggedIn}
-                                                isSavedResults={false}
+                                                isSavedResults={isSavedResults}
                                                 handleSaveClick={handleSaveClick}
-                                                isSaved={isSaved}
                                                 handleDeleteClick={handleDeleteClick}
+                                                openModal={openModal}
                                             />
                                         ))}
                                     </ul>
-                                    )}
-                            </div>   
+                                {!isSavedResults && allCards < cards.length && (
+                                    <button className='news-card__list-button' onClick={showMoreCards}>Show more</button>
+                                )}
+                                </div>
+                            )}
+                            {emptyState && (
+                                <EmptyState />
+                            )}
                         </>
-                    {/* )} */}
-                {/* )} */}
-            </section>
+                    )}
+                </section>
         </>
     )
 }

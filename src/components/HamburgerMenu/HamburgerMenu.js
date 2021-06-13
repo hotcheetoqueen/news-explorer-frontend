@@ -31,7 +31,7 @@ export default function HamburgerMenu(props) {
                     <>
                         <li className='hamburger-menu__list-item hamburger-menu__list-item_basic'><a className='hamburger-menu__list-link' href='/saved-news'>Saved articles</a></li>
                         <li className='hamburger-menu__list-item hamburger-menu__list-item_primary'>
-                            <Link className='hamburger-menu__list-link' onClick={props.handleLogOutClick} to='/'>Tester
+                            <Link className='hamburger-menu__list-link' onClick={props.handleLogOut} to='/'>Tester
                                 <img className='hamburger-menu__list-item hamburger-menu__list-item_primary-icon' src={LogOutIcon} alt='Logout'></img>
                             </Link>
                         </li>

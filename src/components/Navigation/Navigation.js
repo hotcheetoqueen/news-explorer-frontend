@@ -4,6 +4,7 @@ import Hamburger from '../../images/icons/hamburger-menu.svg';
 import HamburgerDark from '../../images/icons/hamburger-menu_dark.svg';
 import LogOutIcon from '../../images/icons/nav__logout-icon.png';
 import LogOutIconDark from '../../images/icons/nav__logout-icon_dark.svg';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 import './Navigation.css';
 
 export default function Navigation(props) {
@@ -14,13 +15,10 @@ export default function Navigation(props) {
         userName,
         isSavedResults,
         handleLogOut,
-        handleLogIn,
-        handleLogInClick,
-        handleLogOutClick,
-        modalOpen,
-        hamburgerMenuOpen,
         handleHamburgerClick
     } = props
+
+    const currentUser = React.useContext(CurrentUserContext);
 
     return(
         <section className={`navigation ${theme ? `navigation_theme_${theme}` : ''}`}>
@@ -28,21 +26,24 @@ export default function Navigation(props) {
                 <img className='navigation navigation__mobile-hamburger' src={isSavedResults ? HamburgerDark : Hamburger} alt='menu' />
             </div>
             <ul className={`navigation navigation__list ${theme ? `navigation_theme_${theme}` : ''}`}>
-                <li className={`navigation__list-item ${!isSavedResults && `navigation__list-item_current`}`}><a className='navigation__list-link' href='/'>Home</a></li>
-                {/* Add/remove ! before logged in to test opposite state */}
+                <li className={`navigation__list-item ${!isSavedResults && `navigation__list-item_current`}`}>
+                    <Link className='navigation__list-link' to='/'>Home</Link>
+                </li>
                 {loggedIn ? (
-                    <li className={`navigation__list-item navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
-                        <Link className='navigation__list-link' to='/' onClick={openModal}>Sign in</Link>
-                    </li>
-                ) : (
                     <>
-                        <li className={`navigation__list-item navigation__list-item_large ${isSavedResults && `navigation__list-item_current`}`}><a className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} href='/saved-news'>Saved articles</a></li>
-                        <li className={`navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
-                            <Link className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} onClick={handleLogOutClick} to='/'>Tester
-                                <img className='navigation__list-item_primary-icon' src={isSavedResults ? LogOutIconDark : LogOutIcon} alt='Logout'></img>
-                            </Link>
+                        <li className={`navigation__list-item navigation__list-item_large ${isSavedResults && `navigation__list-item_current`}`}>
+                            <Link className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} to='/saved-news'>Saved articles</Link>
                         </li>
+                    <li className={`navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
+                        <Link className={`navigation__list-link ${theme ? `navigation_theme_${theme}` : ''}`} onClick={handleLogOut} to='/'>{currentUser.name}
+                            <img className='navigation__list-item_primary-icon' src={isSavedResults ? LogOutIconDark : LogOutIcon} alt='Logout'></img>
+                        </Link>
+                    </li>
                     </>
+                ) : (
+                    <li className={`navigation__list-item navigation__list-item_primary ${theme ? `navigation_theme_${theme}` : ''}`}>
+                        <Link className='navigation__list-link' to='/' onClick={() => openModal('signin')}>Sign in</Link>
+                    </li>
                 )}
             </ul>
         </section>
